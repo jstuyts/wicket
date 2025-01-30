@@ -33,6 +33,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.caching.IStaticCacheableResource;
 import org.apache.wicket.resource.ITextResourceCompressor;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A resource bundle that automatically concatenates the given resources. These resources should all
@@ -114,7 +115,7 @@ public class ConcatResourceBundleReference<T extends HeaderItem & IReferenceHead
 	 *            the resources that are concatenated
 	 */
 	public ConcatResourceBundleReference(Class<?> scope, String name, Locale locale, String style,
-		String variation, List<T> resources)
+		String variation, @NonNull List<T> resources)
 	{
 		super(scope, name, locale, style, variation);
 		providedResources = Args.notNull(resources, "resources");

@@ -19,9 +19,9 @@ package org.apache.wicket.bean.validation;
 import java.util.Locale;
 
 import jakarta.validation.MessageInterpolator;
-
 import org.apache.wicket.Session;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * {@link MessageInterpolator} that adapts another to a locale from Wicket's {@link Session}
@@ -38,7 +38,7 @@ public class SessionLocaleInterpolator implements MessageInterpolator
 	 * @param delegate
 	 *            the MessageInterpolator to delegate to
 	 */
-	public SessionLocaleInterpolator(MessageInterpolator delegate)
+	public SessionLocaleInterpolator(@NonNull MessageInterpolator delegate)
 	{
 		Args.notNull(delegate, "delegate");
 		this.delegate = delegate;

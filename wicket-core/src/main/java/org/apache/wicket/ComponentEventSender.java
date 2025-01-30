@@ -27,6 +27,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
 import org.apache.wicket.util.visit.Visits;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Implements event {@link Broadcast}ing
@@ -45,7 +46,7 @@ final class ComponentEventSender implements IEventSource
 	 *            component that originated the event
 	 * @param dispatcher
 	 */
-	public ComponentEventSender(Component source, IEventDispatcher dispatcher)
+	public ComponentEventSender(@NonNull Component source, @NonNull IEventDispatcher dispatcher)
 	{
 		Args.notNull(source, "source");
 		Args.notNull(dispatcher, "dispatcher");
@@ -55,7 +56,7 @@ final class ComponentEventSender implements IEventSource
 
 	/** {@inheritDoc} */
 	@Override
-	public <T> void send(IEventSink sink, Broadcast type, T payload)
+	public <T> void send(IEventSink sink, @NonNull Broadcast type, T payload)
 	{
 		ComponentEvent<?> event = new ComponentEvent<T>(sink, source, type, payload);
 		Args.notNull(type, "type");

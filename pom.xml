@@ -121,10 +121,10 @@
 		<module>wicket-native-websocket</module>
 		<module>wicket-bean-validation</module>
 		<module>wicket-user-guide</module>
-        <module>wicket-migration</module>
+		<module>wicket-migration</module>
 		<module>wicket-tester</module>
 		<module>wicket-extensions-tester</module>
-    </modules>
+	</modules>
 	<properties>
 		<!-- Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -505,6 +505,11 @@
 				<groupId>org.jboss.weld.servlet</groupId>
 				<artifactId>weld-servlet-core</artifactId>
 				<version>${weld.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jspecify</groupId>
+				<artifactId>jspecify</artifactId>
+				<version>1.0.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.objenesis</groupId>

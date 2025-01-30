@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.wicket.util.string.interpolator.MapVariableInterpolator;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 
 /**
@@ -49,7 +50,7 @@ public class Threads
 	 * @param logger
 	 *            the logger where the collected information will be written
 	 */
-	public static void dumpAllThreads(Logger logger)
+	public static void dumpAllThreads(@NonNull Logger logger)
 	{
 		Args.notNull(logger, "logger");
 		if (!logger.isWarnEnabled())
@@ -89,7 +90,7 @@ public class Threads
 	 * @param thread
 	 *            the thread to dump
 	 */
-	public static void dumpSingleThread(Logger logger, Thread thread)
+	public static void dumpSingleThread(@NonNull Logger logger, Thread thread)
 	{
 		Args.notNull(logger, "logger");
 		if (!logger.isWarnEnabled())

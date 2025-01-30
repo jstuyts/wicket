@@ -28,6 +28,7 @@ import org.apache.wicket.markup.html.form.RadioChoice;
 import org.apache.wicket.markup.html.form.RadioGroup;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * This is an Ajax behavior that is meant to update a group of choices that are represented
@@ -124,7 +125,7 @@ public abstract class AjaxFormChoiceComponentUpdatingBehavior extends
 	 * @return the {@link AjaxFormChoiceComponentUpdatingBehavior}
 	 */
 	public static AjaxFormChoiceComponentUpdatingBehavior onUpdateChoice(
-		SerializableConsumer<AjaxRequestTarget> onUpdateChoice)
+		@NonNull SerializableConsumer<AjaxRequestTarget> onUpdateChoice)
 	{
 		Args.notNull(onUpdateChoice, "onUpdateChoice");
 		return new AjaxFormChoiceComponentUpdatingBehavior()

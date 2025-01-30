@@ -24,6 +24,7 @@ import org.apache.wicket.markup.IMarkupFragment;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Usually you either have a markup file or a xml tag with wicket:id="myComponent" to associate
@@ -88,7 +89,7 @@ public class Fragment extends WebMarkupContainer implements IQueueRegion
 	 * @param model
 	 *            The model for this fragment
 	 */
-	public Fragment(final String id, final String markupId, final MarkupContainer markupProvider,
+	public Fragment(final String id, @NonNull final String markupId, final MarkupContainer markupProvider,
 		final IModel<?> model)
 	{
 		super(id, model);

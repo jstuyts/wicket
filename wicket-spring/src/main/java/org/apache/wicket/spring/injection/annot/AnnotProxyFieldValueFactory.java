@@ -26,7 +26,6 @@ import java.util.concurrent.ConcurrentMap;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-
 import org.apache.wicket.injection.IFieldValueFactory;
 import org.apache.wicket.proxy.LazyInitProxyFactory;
 import org.apache.wicket.spring.ISpringContextLocator;
@@ -34,6 +33,7 @@ import org.apache.wicket.spring.SpringBeanLocator;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Generics;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -103,7 +103,7 @@ public class AnnotProxyFieldValueFactory implements IFieldValueFactory
 	 *            whether or not wicket should wrap dependencies with specialized proxies that can
 	 *            be safely serialized. in most cases this should be set to true.
 	 */
-	public AnnotProxyFieldValueFactory(final ISpringContextLocator contextLocator,
+	public AnnotProxyFieldValueFactory(@NonNull final ISpringContextLocator contextLocator,
 		final boolean wrapInProxies)
 	{
 		this.contextLocator = Args.notNull(contextLocator, "contextLocator");

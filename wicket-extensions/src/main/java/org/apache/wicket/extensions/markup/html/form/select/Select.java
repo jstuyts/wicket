@@ -30,6 +30,7 @@ import org.apache.wicket.util.lang.Objects;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -247,7 +248,7 @@ public class Select<T> extends FormComponent<T>
 	 * @param option
 	 * @return {@code true} if the option is selected, {@code false} otherwise
 	 */
-	boolean isSelected(final SelectOption<?> option)
+	boolean isSelected(@NonNull final SelectOption<?> option)
 	{
 		Args.notNull(option, "option");
 

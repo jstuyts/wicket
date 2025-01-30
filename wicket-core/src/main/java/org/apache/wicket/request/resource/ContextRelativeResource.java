@@ -28,6 +28,7 @@ import org.apache.wicket.util.io.Streams;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +52,7 @@ public class ContextRelativeResource extends AbstractResource implements IStatic
 	 * 
 	 * @param pathRelativeToContextRoot
 	 */
-	public ContextRelativeResource(String pathRelativeToContextRoot)
+	public ContextRelativeResource(@NonNull String pathRelativeToContextRoot)
 	{
 		Args.notNull(pathRelativeToContextRoot, "pathRelativeToContextRoot");
 

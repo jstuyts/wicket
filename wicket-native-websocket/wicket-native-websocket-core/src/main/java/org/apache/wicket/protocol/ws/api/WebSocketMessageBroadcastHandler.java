@@ -29,6 +29,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.SharedResourceReference;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An {@link org.apache.wicket.request.IRequestHandler} that broadcasts the payload to the
@@ -51,7 +52,7 @@ public class WebSocketMessageBroadcastHandler implements IRequestHandler
 	 * @param payload
 	 *          The payload to broadcast
 	 */
-	WebSocketMessageBroadcastHandler(int pageId, String resourceName, WebSocketPayload<?> payload)
+	WebSocketMessageBroadcastHandler(int pageId, String resourceName, @NonNull WebSocketPayload<?> payload)
 	{
 		this.pageId = pageId;
 		this.resourceName = resourceName;

@@ -20,6 +20,7 @@ import org.apache.wicket.pageStore.DefaultPageContext;
 import org.apache.wicket.pageStore.IPageContext;
 import org.apache.wicket.pageStore.IPageStore;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Default implementation of a page manager.
@@ -31,7 +32,7 @@ public class PageManager implements IPageManager
 {
 	private final IPageStore store;
 	
-	public PageManager(IPageStore store) {
+	public PageManager(@NonNull IPageStore store) {
 		this.store = Args.notNull(store, "store");
 	}
 

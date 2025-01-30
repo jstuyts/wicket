@@ -19,6 +19,7 @@ package org.apache.wicket.markup.renderStrategy;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.internal.HtmlHeaderContainer;
 import org.apache.wicket.markup.html.internal.HtmlHeaderContainer.HeaderStreamState;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Allows for different header render strategies. The difference per strategy will be order in which
@@ -40,6 +41,6 @@ public interface IHeaderRenderStrategy
 	 * @param component
 	 *            The root component (e.g. Page) to start the render process
 	 */
-	void renderHeader(HtmlHeaderContainer headerContainer, HeaderStreamState headerStreamState,
-		Component component);
+	void renderHeader(@NonNull HtmlHeaderContainer headerContainer, HeaderStreamState headerStreamState,
+		@NonNull Component component);
 }

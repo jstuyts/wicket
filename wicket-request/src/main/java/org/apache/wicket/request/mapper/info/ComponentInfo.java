@@ -18,6 +18,7 @@ package org.apache.wicket.request.mapper.info;
 
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Encodes listener and component path in form of
@@ -127,7 +128,7 @@ public class ComponentInfo
 	 * @param componentPath
 	 * @param behaviorId
 	 */
-	public ComponentInfo(final Integer renderCount, final String componentPath, final Integer behaviorId)
+	public ComponentInfo(final Integer renderCount, @NonNull final String componentPath, final Integer behaviorId)
 	{
 		Args.notNull(componentPath, "componentPath");
 

@@ -20,6 +20,7 @@ import org.apache.wicket.page.IManageablePage;
 import org.apache.wicket.serialize.ISerializer;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A store that serializes all pages before delegating and vice versa.
@@ -35,7 +36,7 @@ public class SerializingPageStore extends DelegatingPageStore
 	 * @param serializer
 	 *            serializer to use if session gets persisted
 	 */
-	public SerializingPageStore(IPageStore delegate, ISerializer serializer)
+	public SerializingPageStore(IPageStore delegate, @NonNull ISerializer serializer)
 	{
 		super(delegate);
 

@@ -20,7 +20,6 @@ import jakarta.enterprise.context.ContextNotActiveException;
 import jakarta.enterprise.context.Conversation;
 import jakarta.enterprise.context.ConversationScoped;
 import jakarta.inject.Inject;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.Page;
@@ -36,6 +35,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +77,7 @@ public class ConversationPropagator implements IRequestCycleListener
 	 * @param application
 	 * @param propagation
 	 */
-	public ConversationPropagator(Application application, IConversationPropagation propagation)
+	public ConversationPropagator(@NonNull Application application, @NonNull IConversationPropagation propagation)
 	{
 		Args.notNull(application, "application");
 		Args.notNull(propagation, "propagation");

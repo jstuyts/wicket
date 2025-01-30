@@ -22,6 +22,7 @@ import org.apache.wicket.request.IRequestHandlerDelegate;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A {@link IRequestHandler} that sets the current {@link Request} before delegating the responding
@@ -42,7 +43,7 @@ public class RequestSettingRequestHandler implements IRequestHandlerDelegate
 	 * @param delegate
 	 *      The request handler to delegate responding to
 	 */
-	public RequestSettingRequestHandler(Request request, IRequestHandler delegate)
+	public RequestSettingRequestHandler(@NonNull Request request, @NonNull IRequestHandler delegate)
 	{
 		this.request = Args.notNull(request, "request");
 		this.delegate = Args.notNull(delegate,"delegate");

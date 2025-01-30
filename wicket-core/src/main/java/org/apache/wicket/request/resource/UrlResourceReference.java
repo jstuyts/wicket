@@ -21,6 +21,7 @@ import org.apache.wicket.request.Url;
 import org.apache.wicket.request.UrlUtils;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A ResourceReference that can be used to point to a resource by using an Url. For example to a
@@ -75,7 +76,7 @@ public class UrlResourceReference extends ResourceReference
 		this.url = url;
 	}
 
-	private static String asName(Url externalUrl)
+	private static String asName(@NonNull Url externalUrl)
 	{
 		Args.notNull(externalUrl, "url");
 		return externalUrl.toString();

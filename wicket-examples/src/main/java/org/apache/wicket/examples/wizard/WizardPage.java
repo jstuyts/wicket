@@ -24,6 +24,7 @@ import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.request.resource.CssResourceReference;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -41,7 +42,7 @@ public class WizardPage extends WicketExamplePage
 	 * @param wizardClass
 	 *            class of the wizard component
 	 */
-	public <C extends Wizard> WizardPage(Class<C> wizardClass)
+	public <C extends Wizard> WizardPage(@NonNull Class<C> wizardClass)
 	{
 		Args.notNull(wizardClass, "wizardClass");
 		try

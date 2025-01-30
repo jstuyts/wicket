@@ -25,6 +25,7 @@ module org.apache.wicket.tester {
     requires org.apache.commons.collections4;
     requires org.danekja.jdk.serializable.functional;
     requires org.assertj.core;
+	requires static org.jspecify;
 
     exports org.apache.wicket.util.tester;
 

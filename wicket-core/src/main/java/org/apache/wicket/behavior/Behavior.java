@@ -29,6 +29,7 @@ import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableBiConsumer;
 import org.danekja.java.util.function.serializable.SerializableFunction;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Behaviors are kind of plug-ins for Components. They allow functionality to be added to a
@@ -100,7 +101,7 @@ public abstract class Behavior
 	 * @param component
 	 *            the component to bind to
 	 */
-	public void bind(Component component)
+	public void bind(@NonNull Component component)
 	{
 	}
 
@@ -277,7 +278,7 @@ public abstract class Behavior
 	 *            the {@code SerializableConsumer} that accepts the {@link ComponentTag}
 	 * @return The created behavior
 	 */
-	public static Behavior onTag(SerializableBiConsumer<Component, ComponentTag> onTagConsumer)
+	public static Behavior onTag(@NonNull SerializableBiConsumer<Component, ComponentTag> onTagConsumer)
 	{
 		Args.notNull(onTagConsumer, "onTagConsumer");
 
@@ -308,8 +309,8 @@ public abstract class Behavior
 	 *            returns a new value
 	 * @return The created behavior
 	 */
-	public static Behavior onAttribute(String name,
-		SerializableFunction<String, CharSequence> onAttribute)
+	public static Behavior onAttribute(@NonNull String name,
+		@NonNull SerializableFunction<String, CharSequence> onAttribute)
 	{
 		Args.notEmpty(name, "name");
 		Args.notNull(onAttribute, "onAttribute");

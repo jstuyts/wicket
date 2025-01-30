@@ -30,11 +30,11 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.metadata.ConstraintDescriptor;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Configures bean validation and integrates it with Wicket
@@ -99,8 +99,8 @@ public class BeanValidationConfiguration implements BeanValidationContext
 	 *            tag modifier to use
 	 * @return {@code this}
 	 */
-	public <T extends Annotation> BeanValidationConfiguration register(Class<T> annotationType,
-		ITagModifier<T> modifier)
+	public <T extends Annotation> BeanValidationConfiguration register(@NonNull Class<T> annotationType,
+		@NonNull ITagModifier<T> modifier)
 	{
 		Args.notNull(annotationType, "annotationType");
 		Args.notNull(modifier, "modifier");
@@ -117,7 +117,7 @@ public class BeanValidationConfiguration implements BeanValidationContext
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public <T extends Annotation> ITagModifier<T> getTagModifier(Class<T> annotationType)
+	public <T extends Annotation> ITagModifier<T> getTagModifier(@NonNull Class<T> annotationType)
 	{
 		Args.notNull(annotationType, "annotationType");
 
@@ -131,7 +131,7 @@ public class BeanValidationConfiguration implements BeanValidationContext
 	 * @param resolver
 	 * @return {@code this}
 	 */
-	public BeanValidationConfiguration add(IPropertyResolver resolver)
+	public BeanValidationConfiguration add(@NonNull IPropertyResolver resolver)
 	{
 		Args.notNull(resolver, "resolver");
 
@@ -156,7 +156,7 @@ public class BeanValidationConfiguration implements BeanValidationContext
 	 * 
 	 * @param validatorProvider
 	 */
-	public void setValidatorProvider(Supplier<Validator> validatorProvider)
+	public void setValidatorProvider(@NonNull Supplier<Validator> validatorProvider)
 	{
 		Args.notNull(validatorProvider, "validatorProvider");
 
@@ -187,7 +187,7 @@ public class BeanValidationConfiguration implements BeanValidationContext
 	 *            A violation translator that will convert {@link jakarta.validation.ConstraintViolation}s into Wicket's
 	 *            {@link org.apache.wicket.validation.ValidationError}s
 	 */
-	public void setViolationTranslator(IViolationTranslator violationTranslator)
+	public void setViolationTranslator(@NonNull IViolationTranslator violationTranslator)
 	{
 		Args.notNull(violationTranslator, "violationTranslator");
 

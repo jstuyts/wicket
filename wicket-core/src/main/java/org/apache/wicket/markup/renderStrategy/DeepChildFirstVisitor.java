@@ -22,6 +22,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
 import org.apache.wicket.util.visit.Visit;
+import org.jspecify.annotations.NonNull;
 
 /**
  * 
@@ -58,7 +59,7 @@ public abstract class DeepChildFirstVisitor implements IVisitor<Component, Void>
 	 * @param visit
 	 * @return The object return by component()
 	 */
-	public final Visit<Void> visit(final Component rootComponent, final Visit<Void> visit)
+	public final Visit<Void> visit(@NonNull final Component rootComponent, @NonNull final Visit<Void> visit)
 	{
 		Args.notNull(rootComponent, "rootComponent");
 		Args.notNull(visit, "visit");

@@ -53,6 +53,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.caching.IStaticCacheableResource;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Exceptions;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -130,7 +131,7 @@ public class RequestCycle implements IRequestCycle, IEventSink, IMetadataContext
 	 *
 	 * @param context
 	 */
-	public RequestCycle(RequestCycleContext context)
+	public RequestCycle(@NonNull RequestCycleContext context)
 	{
 		Args.notNull(context, "context");
 		Args.notNull(context.getRequest(), "context.request");
@@ -283,7 +284,7 @@ public class RequestCycle implements IRequestCycle, IEventSink, IMetadataContext
 	 *
 	 * @param handler
 	 */
-	private void execute(IRequestHandler handler)
+	private void execute(@NonNull IRequestHandler handler)
 	{
 		Args.notNull(handler, "handler");
 

@@ -16,6 +16,9 @@
  */
 package org.apache.wicket.markup.parser.filter;
 
+import java.text.ParseException;
+import java.util.regex.Pattern;
+
 import org.apache.wicket.core.util.string.JavaScriptUtils;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.Markup;
@@ -24,9 +27,7 @@ import org.apache.wicket.markup.RawMarkup;
 import org.apache.wicket.markup.parser.AbstractMarkupFilter;
 import org.apache.wicket.markup.parser.XmlPullParser;
 import org.apache.wicket.util.lang.Args;
-
-import java.text.ParseException;
-import java.util.regex.Pattern;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -122,7 +123,7 @@ public final class StyleAndScriptIdentifier extends AbstractMarkupFilter
 	// OES/*OES<![CDATA[OES*/OES
 	private static final Pattern JS_CDATA_START_COMMENT = Pattern.compile("^\\s*\\/\\*\\s*<!\\[CDATA\\[\\s*\\*\\/\\s*.*", Pattern.DOTALL);
 
-	boolean shouldWrapInCdata(final String elementBody)
+	boolean shouldWrapInCdata(@NonNull final String elementBody)
 	{
 		Args.notNull(elementBody, "elementBody");
 

@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Generics;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +39,7 @@ public abstract class AbstractObjectChecker implements IObjectChecker
 		this(Generics.<Class<?>>newArrayList());
 	}
 
-	protected AbstractObjectChecker(List<Class<?>> exclusions)
+	protected AbstractObjectChecker(@NonNull List<Class<?>> exclusions)
 	{
 		this.exclusions = Args.notNull(exclusions, "exclusions");
 	}

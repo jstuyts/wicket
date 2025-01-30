@@ -28,6 +28,7 @@ import org.apache.wicket.markup.html.form.IFormSubmitter;
 import org.apache.wicket.markup.html.form.IFormSubmittingComponent;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Ajax event behavior that submits a form via ajax when the event it is attached to, is invoked.
@@ -313,7 +314,7 @@ public abstract class AjaxFormSubmitBehavior extends AjaxEventBehavior
 	 * @return the {@link AjaxFormSubmitBehavior}
 	 */
 	public static AjaxFormSubmitBehavior onSubmit(String eventName,
-		SerializableConsumer<AjaxRequestTarget> onSubmit)
+		@NonNull SerializableConsumer<AjaxRequestTarget> onSubmit)
 	{
 		Args.notNull(onSubmit, "onSubmit");
 

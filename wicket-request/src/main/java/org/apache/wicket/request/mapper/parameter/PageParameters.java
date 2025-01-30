@@ -31,6 +31,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Mutable class that holds parameters of a Page. Page parameters consist of indexed parameters and
@@ -164,7 +165,7 @@ public class PageParameters implements IClusterable, IIndexedParameters, INamedP
 	 * @param name the parameter name
 	 * @return {@code true} if the parameter exists, {@code false} otherwise
 	 */
-	public boolean contains(final String name)
+	public boolean contains(@NonNull final String name)
 	{
 		Args.notNull(name, "name");
 
@@ -182,7 +183,7 @@ public class PageParameters implements IClusterable, IIndexedParameters, INamedP
 	}
 
 	@Override
-	public StringValue get(final String name)
+	public StringValue get(@NonNull final String name)
 	{
 		Args.notNull(name, "name");
 
@@ -200,7 +201,7 @@ public class PageParameters implements IClusterable, IIndexedParameters, INamedP
 	}
 
 	@Override
-	public List<StringValue> getValues(final String name)
+	public List<StringValue> getValues(@NonNull final String name)
 	{
 		Args.notNull(name, "name");
 
@@ -266,7 +267,7 @@ public class PageParameters implements IClusterable, IIndexedParameters, INamedP
 	}
 
 	@Override
-	public PageParameters remove(final String name, final String... values)
+	public PageParameters remove(@NonNull final String name, final String... values)
 	{
 		Args.notNull(name, "name");
 
@@ -317,7 +318,7 @@ public class PageParameters implements IClusterable, IIndexedParameters, INamedP
 	}
 
 	@Override
-	public PageParameters add(final String name, final Object value, final int index, Type type)
+	public PageParameters add(@NonNull final String name, @NonNull final Object value, final int index, Type type)
 	{
 		Args.notEmpty(name, "name");
 		Args.notNull(value, "value");

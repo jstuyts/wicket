@@ -22,6 +22,7 @@ import java.util.Locale;
 import javax.swing.text.MaskFormatter;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -100,7 +101,7 @@ public class MaskConverter<C> implements IConverter<C>
 	 * @param maskFormatter
 	 *            The mask formatter to use for masking and unmasking values
 	 */
-	public MaskConverter(final MaskFormatter maskFormatter)
+	public MaskConverter(@NonNull final MaskFormatter maskFormatter)
 	{
 		Args.notNull(maskFormatter, "maskFormatter");
 

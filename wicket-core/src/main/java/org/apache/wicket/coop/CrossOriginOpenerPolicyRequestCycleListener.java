@@ -16,16 +16,16 @@
  */
 package org.apache.wicket.coop;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.wicket.coep.CrossOriginEmbedderPolicyRequestCycleListener;
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.cycle.IRequestCycleListener;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Sets <a href="https://github.com/whatwg/html/pull/5334/files">Cross-Origin Opener Policy</a>
@@ -57,7 +57,7 @@ public class CrossOriginOpenerPolicyRequestCycleListener implements IRequestCycl
 
 	private final CrossOriginOpenerPolicyConfiguration coopConfig;
 
-	public CrossOriginOpenerPolicyRequestCycleListener(CrossOriginOpenerPolicyConfiguration coopConfig)
+	public CrossOriginOpenerPolicyRequestCycleListener(@NonNull CrossOriginOpenerPolicyConfiguration coopConfig)
 	{
 		this.coopConfig = Args.notNull(coopConfig, "coopConfig");
 	}

@@ -28,6 +28,7 @@ import org.apache.wicket.request.Url.QueryParameter;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
 import org.apache.wicket.util.string.StringValue;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Utility class that expresses query parameters from {@link Url} as {@link IRequestParameters}.
@@ -43,7 +44,7 @@ public class UrlRequestParametersAdapter implements IRequestParameters
 	 * 
 	 * @param url
 	 */
-	public UrlRequestParametersAdapter(final Url url)
+	public UrlRequestParametersAdapter(@NonNull final Url url)
 	{
 		Args.notNull(url, "url");
 

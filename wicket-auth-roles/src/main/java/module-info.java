@@ -16,10 +16,10 @@
  */
 
 module org.apache.wicket.auth.roles {
-    requires java.base;
     requires org.apache.wicket.util;
     requires org.apache.wicket.request;
     requires org.apache.wicket.core;
+	requires static org.jspecify;
 
     exports org.apache.wicket.authroles.authentication;
     exports org.apache.wicket.authroles.authentication.pages;

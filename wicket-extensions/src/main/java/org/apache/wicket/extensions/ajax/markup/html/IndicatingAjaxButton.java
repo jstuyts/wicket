@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableBiConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A variant of the {@link AjaxButton} that displays a busy indicator while the ajax request is in
@@ -97,7 +98,7 @@ public abstract class IndicatingAjaxButton extends AjaxButton implements IAjaxIn
 
 
 	public static IndicatingAjaxButton onSubmit(String id,
-		SerializableBiConsumer<AjaxButton, AjaxRequestTarget> onSubmit)
+		@NonNull SerializableBiConsumer<AjaxButton, AjaxRequestTarget> onSubmit)
 	{
 		Args.notNull(onSubmit, "onSubmit");
 

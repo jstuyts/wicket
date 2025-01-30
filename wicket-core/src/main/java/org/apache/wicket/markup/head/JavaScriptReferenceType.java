@@ -18,6 +18,7 @@ package org.apache.wicket.markup.head;
 
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * To be used to define the "type" attribute of the script tag written
@@ -30,7 +31,7 @@ public class JavaScriptReferenceType implements IClusterable {
 
 	private final String type;
 
-	public JavaScriptReferenceType(final String type) {
+	public JavaScriptReferenceType(@NonNull final String type) {
 		this.type = Args.notEmpty(type, "type");
 	}
 

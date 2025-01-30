@@ -29,6 +29,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.resource.bundles.IResourceBundle;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * {@link HeaderItem} for script tags that are rendered using a {@link ResourceReference}.
@@ -53,7 +54,7 @@ public class JavaScriptReferenceHeaderItem extends AbstractJavaScriptReferenceHe
 	 *            id that will be used to filter duplicate reference (it's still filtered by URL
 	 *            too)
 	 */
-	public JavaScriptReferenceHeaderItem(ResourceReference reference, PageParameters pageParameters, String id)
+	public JavaScriptReferenceHeaderItem(@NonNull ResourceReference reference, PageParameters pageParameters, String id)
 	{
 		this.reference = Args.notNull(reference, "reference");
 		this.pageParameters = pageParameters;

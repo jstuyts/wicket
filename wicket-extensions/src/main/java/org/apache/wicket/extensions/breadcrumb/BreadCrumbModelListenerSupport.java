@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -42,7 +43,7 @@ public final class BreadCrumbModelListenerSupport implements IClusterable
 	 * @param listener
 	 *            The listener to add
 	 */
-	public final void addListener(final IBreadCrumbModelListener listener)
+	public final void addListener(@NonNull final IBreadCrumbModelListener listener)
 	{
 		Args.notNull(listener, "listener");
 		listeners.add(listener);

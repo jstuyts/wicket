@@ -19,9 +19,9 @@ package org.apache.wicket.protocol.http.servlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Represents additional attributes present in a {@link ServletRequest} when the servlet
@@ -126,7 +126,7 @@ public class ForwardAttributes
 	 * @param request
 	 * @return instance of request contains forward attributes or {@code null} if it does not.
 	 */
-	public static ForwardAttributes of(HttpServletRequest request, String filterPrefix)
+	public static ForwardAttributes of(@NonNull HttpServletRequest request, String filterPrefix)
 	{
 		Args.notNull(request, "request");
 

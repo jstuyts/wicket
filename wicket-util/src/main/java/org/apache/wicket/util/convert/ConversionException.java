@@ -22,6 +22,7 @@ import java.util.Map;
 
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Generics;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -236,7 +237,7 @@ public class ConversionException extends RuntimeException
 	 *            variable value
 	 * @return this for chaining
 	 */
-	public ConversionException setVariable(final String name, final Object value)
+	public ConversionException setVariable(@NonNull final String name, @NonNull final Object value)
 	{
 		Args.notEmpty(name, "name");
 		Args.notNull(value, "value");

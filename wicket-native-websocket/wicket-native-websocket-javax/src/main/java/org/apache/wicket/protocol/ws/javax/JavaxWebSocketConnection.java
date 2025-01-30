@@ -23,11 +23,11 @@ import java.util.concurrent.Future;
 import jakarta.websocket.CloseReason;
 import jakarta.websocket.RemoteEndpoint;
 import jakarta.websocket.Session;
-
 import org.apache.wicket.protocol.ws.api.AbstractWebSocketConnection;
 import org.apache.wicket.protocol.ws.api.AbstractWebSocketProcessor;
 import org.apache.wicket.protocol.ws.api.IWebSocketConnection;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +48,7 @@ public class JavaxWebSocketConnection extends AbstractWebSocketConnection
 	 * @param session
 	 *            the WebSocket session
 	 */
-	public JavaxWebSocketConnection(Session session, AbstractWebSocketProcessor webSocketProcessor)
+	public JavaxWebSocketConnection(@NonNull Session session, AbstractWebSocketProcessor webSocketProcessor)
 	{
 		super(webSocketProcessor);
 		this.session = Args.notNull(session, "session");

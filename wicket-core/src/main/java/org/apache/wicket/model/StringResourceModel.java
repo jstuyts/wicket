@@ -28,6 +28,7 @@ import org.apache.wicket.core.util.string.interpolator.PropertyVariableInterpola
 import org.apache.wicket.resource.loader.ComponentStringResourceLoader;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -300,7 +301,7 @@ public class StringResourceModel extends LoadableDetachableModel<String>
 	 * @param model
 	 *            The model to use for property substitutions
 	 */
-	public StringResourceModel(final String resourceKey, final Component component, final IModel<?> model)
+	public StringResourceModel(@NonNull final String resourceKey, final Component component, final IModel<?> model)
 	{
 		Args.notNull(resourceKey, "resource key");
 

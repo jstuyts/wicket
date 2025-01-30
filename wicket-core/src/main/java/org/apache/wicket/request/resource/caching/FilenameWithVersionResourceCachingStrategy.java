@@ -24,6 +24,7 @@ import org.apache.wicket.request.resource.AbstractResource;
 import org.apache.wicket.request.resource.caching.version.CachingResourceVersion;
 import org.apache.wicket.request.resource.caching.version.IResourceVersion;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -83,8 +84,8 @@ public class FilenameWithVersionResourceCachingStrategy implements IResourceCach
 	 * 
 	 * @see #FilenameWithVersionResourceCachingStrategy(org.apache.wicket.request.resource.caching.version.IResourceVersion) 
 	 */
-	public FilenameWithVersionResourceCachingStrategy(String versionPrefix,
-	                                                  IResourceVersion resourceVersion)
+	public FilenameWithVersionResourceCachingStrategy(@NonNull String versionPrefix,
+			                                          @NonNull IResourceVersion resourceVersion)
 	{
 		this.resourceVersion = Args.notNull(resourceVersion, "resourceVersion");
 		this.versionPrefix = Args.notEmpty(versionPrefix, "versionPrefix");

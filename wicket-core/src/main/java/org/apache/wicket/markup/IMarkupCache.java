@@ -17,6 +17,7 @@
 package org.apache.wicket.markup;
 
 import org.apache.wicket.MarkupContainer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Each Wicket application has a single IMarkupCache associated with it (see
@@ -59,7 +60,7 @@ public interface IMarkupCache
 	 * @param cacheKey
 	 * @return The markup removed from the cache. Null, if nothing was found.
 	 */
-	IMarkupFragment removeMarkup(final String cacheKey);
+	IMarkupFragment removeMarkup(@NonNull final String cacheKey);
 
 	/**
 	 * @return the number of elements currently in the cache.

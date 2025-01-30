@@ -20,6 +20,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Implementation of ISortState that can keep track of sort information for a single property.
@@ -36,7 +37,7 @@ public class SingleSortState<T> implements ISortState<T>, IClusterable
 	SortParam<T> param;
 
 	@Override
-	public void setPropertySortOrder(final T property, final SortOrder order)
+	public void setPropertySortOrder(@NonNull final T property, @NonNull final SortOrder order)
 	{
 		Args.notNull(property, "property");
 		Args.notNull(order, "order");
@@ -55,7 +56,7 @@ public class SingleSortState<T> implements ISortState<T>, IClusterable
 	}
 
 	@Override
-	public SortOrder getPropertySortOrder(final T property)
+	public SortOrder getPropertySortOrder(@NonNull final T property)
 	{
 		Args.notNull(property, "property");
 

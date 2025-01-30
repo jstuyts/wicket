@@ -25,10 +25,10 @@ import java.util.Locale;
 import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.commons.fileupload2.core.FileUploadException;
 import org.apache.commons.fileupload2.core.FileUploadByteCountLimitException;
-import org.apache.commons.fileupload2.core.FileUploadSizeException;
+import org.apache.commons.fileupload2.core.FileUploadException;
 import org.apache.commons.fileupload2.core.FileUploadFileCountLimitException;
+import org.apache.commons.fileupload2.core.FileUploadSizeException;
 import org.apache.wicket.Component;
 import org.apache.wicket.IGenericComponent;
 import org.apache.wicket.IRequestListener;
@@ -64,7 +64,11 @@ import org.apache.wicket.util.string.PrependingStringBuffer;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.string.interpolator.MapVariableInterpolator;
 import org.apache.wicket.util.value.LongValue;
-import org.apache.wicket.util.visit.*;
+import org.apache.wicket.util.visit.IVisit;
+import org.apache.wicket.util.visit.IVisitFilter;
+import org.apache.wicket.util.visit.IVisitor;
+import org.apache.wicket.util.visit.Visits;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -339,7 +343,7 @@ public class Form<T> extends WebMarkupContainer
 	 *             if validator is null
 	 * @see IFormValidator
 	 */
-	public void add(final IFormValidator validator)
+	public void add(@NonNull final IFormValidator validator)
 	{
 		Args.notNull(validator, "validator");
 
@@ -362,7 +366,7 @@ public class Form<T> extends WebMarkupContainer
 	 *             if validator is null
 	 * @see IFormValidator
 	 */
-	public void remove(final IFormValidator validator)
+	public void remove(@NonNull final IFormValidator validator)
 	{
 		Args.notNull(validator, "validator");
 
@@ -1998,7 +2002,7 @@ public class Form<T> extends WebMarkupContainer
 	 *
 	 * @param validator
 	 */
-	protected final void validateFormValidator(final IFormValidator validator)
+	protected final void validateFormValidator(@NonNull final IFormValidator validator)
 	{
 		Args.notNull(validator, "validator");
 

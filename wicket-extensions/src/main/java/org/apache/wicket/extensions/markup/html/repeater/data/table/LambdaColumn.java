@@ -23,6 +23,7 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableFunction;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An implementation of column that adds a label to the cell whose model is determined by the
@@ -73,7 +74,7 @@ public class LambdaColumn<T, S> extends AbstractColumn<T, S> implements IExporta
 	 *            Wicket function to be applied to each row
 	 */
 	public LambdaColumn(final IModel<String> displayModel, final S sortProperty,
-		final SerializableFunction<T, ?> function)
+		@NonNull final SerializableFunction<T, ?> function)
 	{
 		super(displayModel, sortProperty);
 		

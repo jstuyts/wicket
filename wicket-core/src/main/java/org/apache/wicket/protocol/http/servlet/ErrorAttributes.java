@@ -19,9 +19,9 @@ package org.apache.wicket.protocol.http.servlet;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Represents additional error attributes present in a {@link ServletRequest} when the servlet
@@ -142,7 +142,7 @@ public class ErrorAttributes
 	 * @param request
 	 * @return instance of request contains error attributes or {@code null} if it does not.
 	 */
-	public static ErrorAttributes of(HttpServletRequest request, String filterPrefix)
+	public static ErrorAttributes of(@NonNull HttpServletRequest request, String filterPrefix)
 	{
 		Args.notNull(request, "request");
 		Integer code = (Integer)request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);

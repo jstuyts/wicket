@@ -18,6 +18,7 @@ package org.apache.wicket.protocol.ws.api.event;
 
 import org.apache.wicket.protocol.ws.api.WebSocketRequestHandler;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A base class for all event broadcasting payloads for WebSocket messages.
@@ -28,7 +29,7 @@ public abstract class WebSocketPayload<T>
 {
 	private final WebSocketRequestHandler handler;
 
-	public WebSocketPayload(final WebSocketRequestHandler handler)
+	public WebSocketPayload(@NonNull final WebSocketRequestHandler handler)
 	{
 		this.handler = Args.notNull(handler, "handler");
 	}

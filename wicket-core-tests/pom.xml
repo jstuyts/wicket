@@ -62,6 +62,11 @@
 			<artifactId>hamcrest</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jspecify</groupId>
+			<artifactId>jspecify</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<!-- 
@@ -78,8 +83,8 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-        		<executions>
-          			<execution>
+				<executions>
+					<execution>
 						<id>test-compile</id>
 						<goals>
 							<goal>testCompile</goal>
@@ -87,10 +92,10 @@
 						<configuration>
 							<useModulePath>false</useModulePath>
 						</configuration>
-          			</execution>
-       			</executions>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
-  	
+
 </project>

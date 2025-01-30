@@ -91,6 +91,7 @@ import org.apache.wicket.util.value.ValueMap;
 import org.apache.wicket.util.visit.IVisitFilter;
 import org.apache.wicket.util.visit.IVisitor;
 import org.apache.wicket.util.visit.Visit;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -2701,7 +2702,7 @@ public abstract class Component
 	 *            component to replace this one
 	 * @return the component which replaced this one
 	 */
-	public Component replaceWith(Component replacement)
+	public Component replaceWith(@NonNull Component replacement)
 	{
 		Args.notNull(replacement, "replacement");
 
@@ -2835,7 +2836,7 @@ public abstract class Component
 	 * 
 	 * @param comp
 	 */
-	final void setMarkupId(Component comp)
+	final void setMarkupId(@NonNull Component comp)
 	{
 		Args.notNull(comp, "comp");
 
@@ -2863,7 +2864,7 @@ public abstract class Component
 	 *            markup id value or null to clear any previous user defined value
 	 * @return this for chaining
 	 */
-	public Component setMarkupId(String markupId)
+	public Component setMarkupId(@NonNull String markupId)
 	{
 		Args.notEmpty(markupId, "markupId");
 
@@ -3411,7 +3412,7 @@ public abstract class Component
 	 */
 	@SuppressWarnings("unchecked")
 	public final <R, C extends MarkupContainer> R visitParents(final Class<C> parentClass,
-		final IVisitor<C, R> visitor, IVisitFilter filter)
+		final IVisitor<C, R> visitor, @NonNull IVisitFilter filter)
 	{
 		Args.notNull(filter, "filter");
 
@@ -4446,7 +4447,7 @@ public abstract class Component
 
 	/** {@inheritDoc} */
 	@Override
-	public final <T> void send(IEventSink sink, Broadcast type, T payload)
+	public final <T> void send(IEventSink sink, @NonNull Broadcast type, T payload)
 	{
 		// if there are no event dispatchers then don't even try to send event
 		if (getApplication().getFrameworkSettings().hasAnyEventDispatchers())

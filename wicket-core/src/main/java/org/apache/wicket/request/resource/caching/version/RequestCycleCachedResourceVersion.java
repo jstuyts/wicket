@@ -26,6 +26,7 @@ import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.resource.caching.IStaticCacheableResource;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Generics;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Caches the results of a delegating {@link IResourceVersion} instance
@@ -55,7 +56,7 @@ public class RequestCycleCachedResourceVersion implements IResourceVersion
 	 * @param delegate
 	 *           resource version provider to cache
 	 */
-	public RequestCycleCachedResourceVersion(IResourceVersion delegate)
+	public RequestCycleCachedResourceVersion(@NonNull IResourceVersion delegate)
 	{
 		this.delegate = Args.notNull(delegate, "delegate");
 	}

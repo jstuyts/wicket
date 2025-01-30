@@ -17,6 +17,7 @@
 package org.apache.wicket.util.visit;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * {@link IVisitFilter} that restricts visitors to only visiting objects of the specified class
@@ -33,7 +34,7 @@ public class ClassVisitFilter implements IVisitFilter
 	 * @param clazz
 	 *            class of objects that visitors should be restricted to
 	 */
-	public ClassVisitFilter(final Class<?> clazz)
+	public ClassVisitFilter(@NonNull final Class<?> clazz)
 	{
 		Args.notNull(clazz, "clazz");
 

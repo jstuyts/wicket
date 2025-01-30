@@ -25,6 +25,7 @@ import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Supplier;
+
 import org.apache.wicket.application.ComponentInitializationListenerCollection;
 import org.apache.wicket.application.ComponentInstantiationListenerCollection;
 import org.apache.wicket.application.ComponentOnAfterRenderListenerCollection;
@@ -42,9 +43,7 @@ import org.apache.wicket.event.IEvent;
 import org.apache.wicket.event.IEventSink;
 import org.apache.wicket.javascript.DefaultJavaScriptCompressor;
 import org.apache.wicket.markup.MarkupFactory;
-import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.ResourceAggregator;
 import org.apache.wicket.markup.html.HeaderResponseDecoratorCollection;
 import org.apache.wicket.markup.html.IHeaderContributor;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
@@ -93,6 +92,7 @@ import org.apache.wicket.settings.SecuritySettings;
 import org.apache.wicket.settings.StoreSettings;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Generics;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -673,7 +673,7 @@ public abstract class Application implements UnboundListener, IEventSink, IMetad
 		return exceptionMapperProvider;
 	}
 
-	public void setExceptionMapperProvider(Supplier<IExceptionMapper> exceptionMapperProvider) {
+	public void setExceptionMapperProvider(@NonNull Supplier<IExceptionMapper> exceptionMapperProvider) {
 		this.exceptionMapperProvider = Args.notNull(exceptionMapperProvider, "exceptionMapperProvider");
 	}
 
@@ -690,7 +690,7 @@ public abstract class Application implements UnboundListener, IEventSink, IMetad
 	 * 
 	 * @param sessionStoreProvider
 	 */
-	public final Application setSessionStoreProvider(final Supplier<ISessionStore> sessionStoreProvider)
+	public final Application setSessionStoreProvider(@NonNull final Supplier<ISessionStore> sessionStoreProvider)
 	{
 		this.sessionStoreProvider = Args.notNull(sessionStoreProvider, "sessionStoreProvider");
 		this.sessionStore = null;
@@ -800,7 +800,7 @@ public abstract class Application implements UnboundListener, IEventSink, IMetad
 	 * @param name
 	 *            unique application name
 	 */
-	public final void setName(final String name)
+	public final void setName(@NonNull final String name)
 	{
 		Args.notEmpty(name, "name");
 
@@ -1392,7 +1392,7 @@ public abstract class Application implements UnboundListener, IEventSink, IMetad
 	 * 
 	 * @param pageRendererProvider
 	 */
-	public final Application setPageRendererProvider(final IPageRendererProvider pageRendererProvider)
+	public final Application setPageRendererProvider(@NonNull final IPageRendererProvider pageRendererProvider)
 	{
 		Args.notNull(pageRendererProvider, "pageRendererProvider");
 		this.pageRendererProvider = pageRendererProvider;
@@ -1519,7 +1519,7 @@ public abstract class Application implements UnboundListener, IEventSink, IMetad
 	 * @param requestCycle
 	 * @return Session
 	 */
-	public Session fetchCreateAndSetSession(final RequestCycle requestCycle)
+	public Session fetchCreateAndSetSession(@NonNull final RequestCycle requestCycle)
 	{
 		Args.notNull(requestCycle, "requestCycle");
 

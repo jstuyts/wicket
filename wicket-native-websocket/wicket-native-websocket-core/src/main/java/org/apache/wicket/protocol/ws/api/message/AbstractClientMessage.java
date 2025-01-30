@@ -19,6 +19,7 @@ package org.apache.wicket.protocol.ws.api.message;
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.ws.api.registry.IKey;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A base message for all messages with information about the client
@@ -29,7 +30,7 @@ public abstract class AbstractClientMessage implements IWebSocketMessage
 	private final String sessionId;
 	private final IKey key;
 
-	public AbstractClientMessage(Application application, String sessionId, IKey key)
+	public AbstractClientMessage(@NonNull Application application, @NonNull String sessionId, @NonNull IKey key)
 	{
 		this.applicationName = Args.notNull(application, "application").getName();
 		this.sessionId = Args.notNull(sessionId, "sessionId");

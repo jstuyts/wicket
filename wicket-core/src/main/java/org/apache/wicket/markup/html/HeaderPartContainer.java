@@ -23,6 +23,7 @@ import org.apache.wicket.markup.IMarkupFragment;
 import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.resolver.IComponentResolver;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * For each wicket:head tag a HeaderPartContainer is created and added to the HtmlHeaderContainer
@@ -47,8 +48,8 @@ public final class HeaderPartContainer extends WebMarkupContainer implements ICo
 	 *            The Panel (or bordered page) the header part is associated with
 	 * @param markup
 	 */
-	public HeaderPartContainer(final String id, final MarkupContainer container,
-		final IMarkupFragment markup)
+	public HeaderPartContainer(final String id, @NonNull final MarkupContainer container,
+		@NonNull final IMarkupFragment markup)
 	{
 		super(id);
 

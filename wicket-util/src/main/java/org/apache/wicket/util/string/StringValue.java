@@ -28,6 +28,7 @@ import java.util.Locale;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -901,7 +902,7 @@ public class StringValue implements IClusterable
 	 * @return The value as an enum
 	 */
 	@SuppressWarnings("unchecked")
-	public final <T extends Enum<T>> T toEnum(final T defaultValue)
+	public final <T extends Enum<T>> T toEnum(@NonNull final T defaultValue)
 	{
 		Args.notNull(defaultValue, "defaultValue");
 		return toEnum((Class<T>)defaultValue.getClass(), defaultValue);

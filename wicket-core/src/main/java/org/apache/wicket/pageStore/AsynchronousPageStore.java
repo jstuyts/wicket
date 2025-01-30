@@ -31,6 +31,7 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.page.IManageablePage;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -142,7 +143,7 @@ public class AsynchronousPageStore extends DelegatingPageStore
 		 */
 		private final Map<MetaDataKey<?>, Serializable> dataCache = new HashMap<>();
 
-		public PendingAdd(final IPageContext context, final IManageablePage page)
+		public PendingAdd(@NonNull final IPageContext context, @NonNull final IManageablePage page)
 		{
 			this.context = Args.notNull(context, "context");
 			this.page = Args.notNull(page, "page");

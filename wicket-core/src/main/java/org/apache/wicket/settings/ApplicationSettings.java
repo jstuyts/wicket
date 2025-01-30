@@ -26,6 +26,7 @@ import org.apache.wicket.feedback.IFeedbackMessageFilter;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * * Settings class for application settings.
@@ -186,7 +187,7 @@ public class ApplicationSettings
 	 * @return {@code this} object for chaining
 	 * @see org.apache.wicket.request.cycle.IRequestCycleListener#onException(RequestCycle, Exception)
 	 */
-	public ApplicationSettings setInternalErrorPage(final Class<? extends Page> internalErrorPage)
+	public ApplicationSettings setInternalErrorPage(@NonNull final Class<? extends Page> internalErrorPage)
 	{
 		Args.notNull(internalErrorPage, "internalErrorPage");
 		checkPageClass(internalErrorPage);
@@ -202,7 +203,7 @@ public class ApplicationSettings
 	 *            The pageExpiredErrorPage to set.
 	 * @return {@code this} object for chaining
 	 */
-	public ApplicationSettings setPageExpiredErrorPage(final Class<? extends Page> pageExpiredErrorPage)
+	public ApplicationSettings setPageExpiredErrorPage(@NonNull final Class<? extends Page> pageExpiredErrorPage)
 	{
 		Args.notNull(pageExpiredErrorPage, "pageExpiredErrorPage");
 		checkPageClass(pageExpiredErrorPage);
@@ -252,7 +253,7 @@ public class ApplicationSettings
 	 * @param filter
 	 * @return {@code this} object for chaining
 	 */
-	public ApplicationSettings setFeedbackMessageCleanupFilter(IFeedbackMessageFilter filter)
+	public ApplicationSettings setFeedbackMessageCleanupFilter(@NonNull IFeedbackMessageFilter filter)
 	{
 		Args.notNull(filter, "filter");
 		feedbackMessageCleanupFilter = filter;

@@ -33,6 +33,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An {@link IDataExporter} that exports data to a CSV file. This class allows for customization of the exact CSV format, including
@@ -100,7 +101,7 @@ public class CSVDataExporter extends AbstractDataExporter
 	 *      The character set encoding to be used when exporting data.
 	 * @return {@code this}, for chaining.
 	 */
-	public CSVDataExporter setCharacterSet(String characterSet)
+	public CSVDataExporter setCharacterSet(@NonNull String characterSet)
 	{
 		this.characterSet = Args.notNull(characterSet, "characterSer");
 		return this;

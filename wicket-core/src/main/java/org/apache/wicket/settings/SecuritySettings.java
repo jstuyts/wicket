@@ -34,6 +34,7 @@ import org.apache.wicket.core.util.crypt.KeyInSessionSunJceCryptFactory;
 import org.apache.wicket.util.crypt.ICryptFactory;
 import org.apache.wicket.util.crypt.SunJceCrypt;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Class for security related settings
@@ -171,7 +172,7 @@ public class SecuritySettings
 	 *            new authorization strategy
 	 * @return {@code this} object for chaining
 	 */
-	public SecuritySettings setAuthorizationStrategy(IAuthorizationStrategy strategy)
+	public SecuritySettings setAuthorizationStrategy(@NonNull IAuthorizationStrategy strategy)
 	{
 		Args.notNull(strategy, "strategy");
 		authorizationStrategy = strategy;
@@ -185,7 +186,7 @@ public class SecuritySettings
 	 * @param cryptFactory
 	 * @return {@code this} object for chaining
 	 */
-	public SecuritySettings setCryptFactory(ICryptFactory cryptFactory)
+	public SecuritySettings setCryptFactory(@NonNull ICryptFactory cryptFactory)
 	{
 		Args.notNull(cryptFactory, "cryptFactory");
 		this.cryptFactory = cryptFactory;
@@ -201,7 +202,7 @@ public class SecuritySettings
 	 *            The new supplier, must not be null.
 	 * @return {@code this} object for chaining
 	 */
-	public SecuritySettings setRandomSupplier(ISecureRandomSupplier randomSupplier)
+	public SecuritySettings setRandomSupplier(@NonNull ISecureRandomSupplier randomSupplier)
 	{
 		Args.notNull(randomSupplier, "randomSupplier");
 		this.randomSupplier = randomSupplier;

@@ -23,6 +23,7 @@ import jakarta.inject.Inject;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A behavior that will be use injected services
@@ -38,7 +39,7 @@ public class JakartaInjectTestBehavior extends Behavior
 	private ITestService injectedFieldBlue;
 
 	@Override
-	public void bind(Component component)
+	public void bind(@NonNull Component component)
 	{
 		super.bind(component);
 

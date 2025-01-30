@@ -20,8 +20,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.servlet.http.Cookie;
-
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A helper class for dealing with cookies
@@ -69,7 +69,7 @@ public final class Cookies
 	 *            the second cookie
 	 * @return {@code true} only if the cookies have the same name, path and domain
 	 */
-	public static boolean isEqual(Cookie c1, Cookie c2)
+	public static boolean isEqual(@NonNull Cookie c1, @NonNull Cookie c2)
 	{
 		Args.notNull(c1, "c1");
 		Args.notNull(c2, "c2");
@@ -95,7 +95,7 @@ public final class Cookies
 		private final String path;
 		private final String domain;
 
-		protected Key(Cookie cookie)
+		protected Key(@NonNull Cookie cookie)
 		{
 			Args.notNull(cookie, "cookie");
 			name = cookie.getName();

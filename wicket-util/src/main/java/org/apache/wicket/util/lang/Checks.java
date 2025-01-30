@@ -17,6 +17,7 @@
 package org.apache.wicket.util.lang;
 
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * 
@@ -65,8 +66,8 @@ public class Checks
 	 * @param message
 	 * @throws IllegalStateException
 	 */
-	public static <T extends Comparable<? super T>> void withinRange(final T min, final T max,
-		final T value, final String message)
+	public static <T extends Comparable<? super T>> void withinRange(@NonNull final T min, @NonNull final T max,
+		@NonNull final T value, final String message)
 	{
 		notNull(min, message);
 		notNull(max, message);
@@ -111,8 +112,8 @@ public class Checks
 	 * @param name
 	 * @throws IllegalStateException
 	 */
-	public static <T extends Comparable<? super T>> void withinRangeShort(final T min, final T max,
-		final T value, final String name)
+	public static <T extends Comparable<? super T>> void withinRangeShort(@NonNull final T min, @NonNull final T max,
+		@NonNull final T value, final String name)
 	{
 		withinRange(min, max, value,
 			String.format("%s must have a value within [%s,%s], but was %s", name, min, max, value));

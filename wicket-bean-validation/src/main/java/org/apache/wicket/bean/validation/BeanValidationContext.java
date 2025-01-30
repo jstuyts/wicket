@@ -20,8 +20,8 @@ import java.lang.annotation.Annotation;
 
 import jakarta.validation.Validator;
 import jakarta.validation.metadata.ConstraintDescriptor;
-
 import org.apache.wicket.markup.html.form.FormComponent;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A read-only view of {@link BeanValidationConfiguration} that can be retrieved by components to
@@ -41,7 +41,7 @@ public interface BeanValidationContext extends IPropertyResolver
 	 * @param annotationType
 	 * @return tag modifier or {@code null} if none
 	 */
-	<T extends Annotation> ITagModifier<T> getTagModifier(Class<T> annotationType);
+	<T extends Annotation> ITagModifier<T> getTagModifier(@NonNull Class<T> annotationType);
 
 	/**
 	 * @return the validator

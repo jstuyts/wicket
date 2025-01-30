@@ -32,6 +32,7 @@ import org.apache.wicket.markup.parser.XmlTag;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.value.IValueMap;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Tag tester is used to test that a generated markup tag contains the correct attributes, values
@@ -245,7 +246,7 @@ public class TagTester
 	 *            the tag name to search for
 	 * @return <code>true</code> if this tag has a child with the given <code>tagName</code>.
 	 */
-	public boolean hasChildTag(String tagName)
+	public boolean hasChildTag(@NonNull String tagName)
 	{
 		Args.notEmpty(tagName, "tagName");
 
@@ -292,7 +293,7 @@ public class TagTester
 	 *            the tag name to search for
 	 * @return <code>true</code> if this tag has a child with the given <code>tagName</code>.
 	 */
-	public TagTester getChild(String tagName)
+	public TagTester getChild(@NonNull String tagName)
 	{
 		Args.notNull(tagName, "tagName");
 

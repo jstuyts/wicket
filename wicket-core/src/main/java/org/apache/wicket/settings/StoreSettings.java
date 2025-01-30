@@ -27,6 +27,7 @@ import org.apache.wicket.pageStore.crypt.ICrypter;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A class for settings related to the the storages where page instances are persisted, used by
@@ -85,7 +86,7 @@ public class StoreSettings
 	 *            bytes.
 	 * @return {@code this} object for chaining
 	 */
-	public StoreSettings setMaxSizePerSession(final Bytes maxSizePerSession)
+	public StoreSettings setMaxSizePerSession(@NonNull final Bytes maxSizePerSession)
 	{
 		this.maxSizePerSession = Args.notNull(maxSizePerSession, "maxSizePerSession");
 		return this;
@@ -130,7 +131,7 @@ public class StoreSettings
 	 *            the new location
 	 * @return {@code this} object for chaining
 	 */
-	public StoreSettings setFileStoreFolder(final File fileStoreFolder)
+	public StoreSettings setFileStoreFolder(@NonNull final File fileStoreFolder)
 	{
 		this.fileStoreFolder = Args.notNull(fileStoreFolder, "fileStoreFolder");
 		return this;

@@ -18,6 +18,7 @@ package org.apache.wicket.ajax;
 
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A Channel used to define how Ajax requests are processed at the client side.
@@ -104,7 +105,7 @@ public class AjaxChannel implements IClusterable
 	 * @param type
 	 *            the behavior type of this channel
 	 */
-	public AjaxChannel(final String name, final Type type)
+	public AjaxChannel(@NonNull final String name, @NonNull final Type type)
 	{
 		this.name = Args.notNull(name, "name");
 		this.type = Args.notNull(type, "type");

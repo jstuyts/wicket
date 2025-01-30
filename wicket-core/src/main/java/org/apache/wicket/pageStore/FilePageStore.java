@@ -39,6 +39,7 @@ import org.apache.wicket.util.file.Files;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -75,7 +76,7 @@ public class FilePageStore extends AbstractPersistentPageStore implements IPersi
 	 * 
 	 * @see SerializingPageStore
 	 */
-	public FilePageStore(String applicationName, File fileStoreFolder, Bytes maxSizePerSession)
+	public FilePageStore(String applicationName, File fileStoreFolder, @NonNull Bytes maxSizePerSession)
 	{
 		super(applicationName);
 		

@@ -19,6 +19,7 @@ package org.apache.wicket.ajax.json;
 import com.github.openjson.JSONString;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Represents a Json function. When written out these values are not escaped, so it's possible to write out raw
@@ -33,7 +34,7 @@ public class JSONFunction implements JSONString, CharSequence, IClusterable
 	 * Function to be used to output the json value without quotes
 	 * @param value the value
 	 */
-	public JSONFunction(CharSequence value)
+	public JSONFunction(@NonNull CharSequence value)
 	{
 		this.value = Args.notNull(value, "value");
 	}

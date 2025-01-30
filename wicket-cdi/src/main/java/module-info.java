@@ -23,6 +23,7 @@ module org.apache.wicket.cdi {
     requires org.apache.wicket.util;
     requires org.apache.wicket.request;
     requires org.apache.wicket.core;
+	requires static org.jspecify;
     requires org.slf4j;
     requires static jakarta.servlet;
 

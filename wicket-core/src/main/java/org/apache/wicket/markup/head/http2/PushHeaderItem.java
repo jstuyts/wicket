@@ -47,6 +47,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.mapper.parameter.PageParametersEncoder;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A push header item to be used in the http/2 context and to reduce the latency of the web
@@ -131,7 +132,7 @@ public class PushHeaderItem extends HeaderItem
 		this(page, pageRequest, pageResponse, new PushBuilder());
 	}
 
-	public PushHeaderItem(Page page, Request pageRequest, Response pageResponse, IPushBuilder pushBuilder)
+	public PushHeaderItem(Page page, Request pageRequest, Response pageResponse, @NonNull IPushBuilder pushBuilder)
 	{
 		if (!(page instanceof WebPage) || !(pageRequest instanceof WebRequest) || !(pageResponse instanceof WebResponse))
 		{

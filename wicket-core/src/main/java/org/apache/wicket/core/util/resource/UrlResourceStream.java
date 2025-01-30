@@ -24,6 +24,7 @@ import java.net.URLConnection;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.util.io.Connections;
 import org.apache.wicket.util.io.IOUtils;
@@ -33,6 +34,7 @@ import org.apache.wicket.util.lang.Objects;
 import org.apache.wicket.util.resource.AbstractResourceStream;
 import org.apache.wicket.util.resource.IFixedLocationResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -96,7 +98,7 @@ public class UrlResourceStream extends AbstractResourceStream
 	 * @param url
 	 *            URL of resource
 	 */
-	public UrlResourceStream(final URL url)
+	public UrlResourceStream(@NonNull final URL url)
 	{
 		this.url = Args.notNull(url, "url");
 	}

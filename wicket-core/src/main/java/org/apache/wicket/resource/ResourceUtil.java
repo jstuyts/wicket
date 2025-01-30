@@ -30,6 +30,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Utilities for resources.
@@ -82,7 +83,7 @@ public class ResourceUtil
 	 * 
 	 * @see ResourceReference.UrlAttributes
 	 */
-	public static ResourceReference.UrlAttributes decodeResourceReferenceAttributes(Url url)
+	public static ResourceReference.UrlAttributes decodeResourceReferenceAttributes(@NonNull Url url)
 	{
 		Args.notNull(url, "url");
 	
@@ -152,7 +153,7 @@ public class ResourceUtil
 	 * @see ResourceReference.UrlAttributes
 	 * @see Url
 	 */
-	public static void encodeResourceReferenceAttributes(Url url, ResourceReference reference)
+	public static void encodeResourceReferenceAttributes(@NonNull Url url, @NonNull ResourceReference reference)
 	{
 		Args.notNull(url, "url");
 		Args.notNull(reference, "reference");

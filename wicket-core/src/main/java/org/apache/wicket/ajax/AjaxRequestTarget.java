@@ -23,6 +23,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.request.ILoggableRequestHandler;
+import org.jspecify.annotations.NonNull;
 
 /**
  *
@@ -105,7 +106,7 @@ public interface AjaxRequestTarget extends IPartialPageRequestHandler, ILoggable
 	 *             if {@link AjaxRequestTarget.IListener}'s events are currently being fired or have both been fired
 	 *             already
 	 */
-	void addListener(AjaxRequestTarget.IListener listener);
+	void addListener(AjaxRequestTarget.@NonNull IListener listener);
 
 	/**
 	 * Register the given respond listener. The listener's

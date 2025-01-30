@@ -17,12 +17,12 @@
 package org.apache.wicket.request.http.handler;
 
 import jakarta.servlet.http.HttpServletResponse;
-
 import org.apache.wicket.request.IRequestCycle;
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A request handler that redirects to the given url.
@@ -77,7 +77,7 @@ public class RedirectRequestHandler implements IRequestHandler
 	 * @param status
 	 *            301 (Moved permanently) or 302 (Moved temporarily)
 	 */
-	public RedirectRequestHandler(final String redirectUrl, final int status)
+	public RedirectRequestHandler(@NonNull final String redirectUrl, final int status)
 	{
 		if ((status != HttpServletResponse.SC_MOVED_PERMANENTLY) &&
 			(status != HttpServletResponse.SC_MOVED_TEMPORARILY) &&

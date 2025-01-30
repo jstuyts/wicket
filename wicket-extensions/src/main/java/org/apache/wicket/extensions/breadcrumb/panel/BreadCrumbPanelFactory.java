@@ -20,6 +20,7 @@ import java.lang.reflect.Constructor;
 
 import org.apache.wicket.extensions.breadcrumb.IBreadCrumbModel;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -43,7 +44,7 @@ public final class BreadCrumbPanelFactory implements IBreadCrumbPanelFactory
 	 *            and must have constructor
 	 *            {@link BreadCrumbPanel#BreadCrumbPanel(String, IBreadCrumbModel)}
 	 */
-	public BreadCrumbPanelFactory(final Class<? extends BreadCrumbPanel> panelClass)
+	public BreadCrumbPanelFactory(@NonNull final Class<? extends BreadCrumbPanel> panelClass)
 	{
 		Args.notNull(panelClass, "panelClass");
 

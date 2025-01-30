@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Converts to {@link Calendar}.
@@ -46,7 +47,7 @@ public class CalendarConverter implements IConverter<Calendar>
 	 * @param dateConverter
 	 *            delegated converter, not null
 	 */
-	public CalendarConverter(IConverter<Date> dateConverter)
+	public CalendarConverter(@NonNull IConverter<Date> dateConverter)
 	{
 		Args.notNull(dateConverter, "dateConverter");
 

@@ -16,20 +16,22 @@
  */
 package org.apache.wicket.extensions.markup.html.image.resource;
 
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Instant;
+
 import javax.imageio.ImageIO;
+
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.request.resource.DynamicImageResource;
 import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.response.ByteArrayResponse;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Image resource that dynamically scales the given original resource to a thumbnail. It is scaled
@@ -61,7 +63,7 @@ public class ThumbnailImageResource extends DynamicImageResource
 	 * @param maxSize
 	 *            maximum size (width or height) for resize operation
 	 */
-	public ThumbnailImageResource(final IResource unscaledImageResource, final int maxSize)
+	public ThumbnailImageResource(@NonNull final IResource unscaledImageResource, final int maxSize)
 	{
 		Args.notNull(unscaledImageResource, "unscaledImageResource");
 		

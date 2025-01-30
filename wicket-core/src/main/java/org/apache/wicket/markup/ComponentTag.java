@@ -36,6 +36,7 @@ import org.apache.wicket.util.lang.Generics;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.value.IValueMap;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -203,7 +204,7 @@ public class ComponentTag extends MarkupElement
 	 * 
 	 * @param behavior
 	 */
-	public final void addBehavior(final Behavior behavior)
+	public final void addBehavior(@NonNull final Behavior behavior)
 	{
 		Args.notNull(behavior, "behavior");
 

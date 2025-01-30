@@ -16,13 +16,14 @@
  */
 package org.apache.wicket.coop;
 
-import org.apache.wicket.Application;
-import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.util.lang.Args;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.apache.wicket.Application;
+import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Specifies the configuration for Cross-Origin Opener Policy to be used by
@@ -74,13 +75,13 @@ public class CrossOriginOpenerPolicyConfiguration
 	private final Set<String> exemptions = new HashSet<>();
 	private final CoopMode mode;
 
-	public CrossOriginOpenerPolicyConfiguration(CoopMode mode, String... exemptions)
+	public CrossOriginOpenerPolicyConfiguration(@NonNull CoopMode mode, String... exemptions)
 	{
 		this.exemptions.addAll(Arrays.asList(exemptions));
 		this.mode = Args.notNull(mode, "mode");
 	}
 
-	public CrossOriginOpenerPolicyConfiguration(CoopMode mode)
+	public CrossOriginOpenerPolicyConfiguration(@NonNull CoopMode mode)
 	{
 		this.mode = Args.notNull(mode, "mode");
 	}

@@ -22,6 +22,7 @@ import org.apache.wicket.util.cookies.CookieUtils;
 import org.apache.wicket.util.crypt.ICrypt;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +60,7 @@ public class DefaultAuthenticationStrategy implements IAuthenticationStrategy
 	 * @param crypt
 	 *            the crypt
 	 */
-	public DefaultAuthenticationStrategy(final String cookieKey, ICrypt crypt)
+	public DefaultAuthenticationStrategy(@NonNull final String cookieKey, @NonNull ICrypt crypt)
 	{
 		this.cookieKey = Args.notEmpty(cookieKey, "cookieKey");
 		this.crypt = Args.notNull(crypt, "crypt");

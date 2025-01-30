@@ -22,6 +22,7 @@ import org.apache.wicket.markup.html.internal.HtmlHeaderContainer;
 import org.apache.wicket.markup.html.internal.HtmlHeaderContainer.HeaderStreamState;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.visit.IVisit;
+import org.jspecify.annotations.NonNull;
 
 /**
  * This a header render strategy implements a child-&gt;parent-&gt;root sequence, which is inverse to how
@@ -44,8 +45,8 @@ public class ChildFirstHeaderRenderStrategy extends AbstractHeaderRenderStrategy
 	}
 
 	@Override
-	public void renderHeader(final HtmlHeaderContainer headerContainer,
-		HeaderStreamState headerStreamState, final Component rootComponent)
+	public void renderHeader(@NonNull final HtmlHeaderContainer headerContainer,
+		HeaderStreamState headerStreamState, @NonNull final Component rootComponent)
 	{
 		Args.notNull(headerContainer, "headerContainer");
 		Args.notNull(rootComponent, "rootComponent");
@@ -67,8 +68,8 @@ public class ChildFirstHeaderRenderStrategy extends AbstractHeaderRenderStrategy
 	 * @param rootComponent
 	 */
 	@Override
-	protected void renderChildHeaders(final HtmlHeaderContainer headerContainer,
-		final Component rootComponent)
+	protected void renderChildHeaders(@NonNull final HtmlHeaderContainer headerContainer,
+		@NonNull final Component rootComponent)
 	{
 		Args.notNull(headerContainer, "headerContainer");
 		Args.notNull(rootComponent, "rootComponent");

@@ -19,11 +19,13 @@ package org.apache.wicket.markup.html.form.upload.resource;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Implementation of {@link IUploadsFileManager} that stores files in sub-folders of a given folder.
@@ -35,7 +37,7 @@ public class FolderUploadsFileManager implements IUploadsFileManager
 
     private final File folder;
 
-    public FolderUploadsFileManager(File folder)
+    public FolderUploadsFileManager(@NonNull File folder)
     {
         Args.notNull(folder, "folder");
         if (!folder.exists())

@@ -34,6 +34,7 @@ import org.apache.wicket.page.IManageablePage;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.lang.Classes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A storage of pages in memory.
@@ -339,7 +340,7 @@ public class InMemoryPageStore extends AbstractPersistentPageStore implements IP
 
 		private long size;
 
-		public SizeLimitedData(Bytes maxBytes)
+		public SizeLimitedData(@NonNull Bytes maxBytes)
 		{
 			Args.notNull(maxBytes, "maxBytes");
 

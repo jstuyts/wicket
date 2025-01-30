@@ -25,6 +25,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.settings.DefaultUnauthorizedResourceRequestListener;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Request handler that renders a resource.
@@ -42,7 +43,7 @@ public class ResourceRequestHandler implements IRequestHandler
 	 * @param resource
 	 * @param parameters
 	 */
-	public ResourceRequestHandler(IResource resource, PageParameters parameters)
+	public ResourceRequestHandler(@NonNull IResource resource, PageParameters parameters)
 	{
 		Args.notNull(resource, "resource");
 

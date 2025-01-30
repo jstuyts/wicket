@@ -24,6 +24,7 @@ import org.apache.wicket.request.resource.caching.version.CachingResourceVersion
 import org.apache.wicket.request.resource.caching.version.IResourceVersion;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.StringValue;
+import org.jspecify.annotations.NonNull;
 
 /**
  * resource caching strategy that adds a version string to the query parameters of the resource
@@ -79,8 +80,8 @@ public class QueryStringWithVersionResourceCachingStrategy implements IResourceC
 	 * @param resourceVersion
 	 *                resource version provider
 	 */
-	public QueryStringWithVersionResourceCachingStrategy(String versionParameter, 
-	                                                     IResourceVersion resourceVersion)
+	public QueryStringWithVersionResourceCachingStrategy(@NonNull String versionParameter,
+			                                             @NonNull IResourceVersion resourceVersion)
 	{
 		this.versionParameter = Args.notEmpty(versionParameter, "versionParameter");
 		this.resourceVersion = Args.notNull(resourceVersion, "resourceVersion");

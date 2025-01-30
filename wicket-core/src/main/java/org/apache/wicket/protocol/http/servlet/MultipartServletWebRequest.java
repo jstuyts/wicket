@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.apache.commons.fileupload2.core.FileItem;
 import org.apache.commons.fileupload2.core.FileUploadException;
 import org.apache.wicket.protocol.http.IMultipartWebRequest;
@@ -28,6 +27,7 @@ import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Servlet specific WebRequest subclass for multipart content uploads.
@@ -122,7 +122,7 @@ public abstract class MultipartServletWebRequest extends ServletWebRequest
 		return maxSize;
 	}
 
-	public void setMaxSize(Bytes maxSize)
+	public void setMaxSize(@NonNull Bytes maxSize)
 	{
 		Args.notNull(maxSize, "maxSize");
 		this.maxSize = maxSize;

@@ -31,6 +31,7 @@ import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -354,7 +355,7 @@ public class CookieUtils
 	 * @param attributeValue
 	 * 		The value of the attribute
 	 */
-	public static void setAttribute(final Cookie cookie, String attributeName, String attributeValue)
+	public static void setAttribute(final Cookie cookie, @NonNull String attributeName, String attributeValue)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 

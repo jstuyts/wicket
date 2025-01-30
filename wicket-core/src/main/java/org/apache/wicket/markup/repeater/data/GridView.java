@@ -24,6 +24,7 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Generics;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -273,7 +274,7 @@ public abstract class GridView<T> extends DataViewBase<T>
 		 * @param rows
 		 *            iterator over child row views
 		 */
-		public ItemsIterator(Iterator<MarkupContainer> rows)
+		public ItemsIterator(@NonNull Iterator<MarkupContainer> rows)
 		{
 			this.rows = Args.notNull(rows, "rows");
 			findNext();

@@ -25,9 +25,9 @@ import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.page.IManageablePage;
-import org.apache.wicket.pageStore.crypt.DefaultCrypter;
 import org.apache.wicket.pageStore.crypt.ICrypter;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A store that encrypts all pages before delegating and vice versa.
@@ -56,7 +56,7 @@ public class CryptingPageStore extends DelegatingPageStore
 	 * @param application
 	 *            the application
 	 */
-	public CryptingPageStore(IPageStore delegate, Application application)
+	public CryptingPageStore(IPageStore delegate, @NonNull Application application)
 	{
 		super(delegate);
 		this.application = Args.notNull(application, "application");
@@ -146,7 +146,7 @@ public class CryptingPageStore extends DelegatingPageStore
 
 		private final SecretKey key;
 
-		public SessionData(SecretKey key)
+		public SessionData(@NonNull SecretKey key)
 		{
 			Args.notNull(key, "key");
 

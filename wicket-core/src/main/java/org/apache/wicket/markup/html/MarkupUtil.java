@@ -18,7 +18,6 @@ package org.apache.wicket.markup.html;
 
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.Page;
-import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.IMarkupFragment;
 import org.apache.wicket.markup.MarkupResourceStream;
@@ -27,6 +26,7 @@ import org.apache.wicket.markup.WicketTag;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 
 /**
  * HTML5 helper
@@ -41,7 +41,7 @@ public class MarkupUtil
 	 * @return True if the Page and all it's Panels, Borders etc. have HTML5 compliant markup. HTML5
 	 *         markup is identified by &lt;DOCTYPE html&gt;
 	 */
-	public static boolean isMarkupHtml5Compliant(final MarkupContainer container)
+	public static boolean isMarkupHtml5Compliant(@NonNull final MarkupContainer container)
 	{
 		Args.notNull(container, "container");
 

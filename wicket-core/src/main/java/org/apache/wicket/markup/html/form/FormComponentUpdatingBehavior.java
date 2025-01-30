@@ -19,13 +19,13 @@ package org.apache.wicket.markup.html.form;
 import org.apache.wicket.Component;
 import org.apache.wicket.IRequestListener;
 import org.apache.wicket.WicketRuntimeException;
-import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.OnEventHeaderItem;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A behavior to get notifications when a {@link FormComponent} changes its value.
@@ -54,7 +54,7 @@ public class FormComponentUpdatingBehavior extends Behavior implements IRequestL
 	}
 
 	@Override
-	public final void bind(final Component component)
+	public final void bind(@NonNull final Component component)
 	{
 		Args.notNull(component, "component");
 

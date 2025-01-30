@@ -32,6 +32,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A <code>WicketTester</code>-specific helper class.
@@ -200,7 +201,7 @@ public class WicketTesterHelper
 	 * @param event
 	 * @return a list of all found AjaxEventBehavior or an empty list
 	 */
-	public static List<AjaxEventBehavior> findAjaxEventBehaviors(Component component, String event)
+	public static List<AjaxEventBehavior> findAjaxEventBehaviors(Component component, @NonNull String event)
 	{
 		Args.notEmpty(event, "event");
 		List<AjaxEventBehavior> behaviors = new ArrayList<>();

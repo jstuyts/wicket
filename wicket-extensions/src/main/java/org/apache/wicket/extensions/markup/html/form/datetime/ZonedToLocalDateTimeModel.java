@@ -27,6 +27,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.request.WebClientInfo;
 import org.apache.wicket.settings.RequestCycleSettings;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Model mapping {@link ZonedDateTime} to a {@link LocalDateTime} in {@link #getClientTimeZone()}.
@@ -43,7 +44,7 @@ public class ZonedToLocalDateTimeModel implements IModel<LocalDateTime>
 	 *  
 	 * @param model zoned date time
 	 */
-	public ZonedToLocalDateTimeModel(IModel<ZonedDateTime> model)
+	public ZonedToLocalDateTimeModel(@NonNull IModel<ZonedDateTime> model)
 	{
 		Args.notNull(model, "model");
 		

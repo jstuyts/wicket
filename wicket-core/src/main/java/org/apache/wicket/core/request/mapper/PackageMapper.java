@@ -30,6 +30,7 @@ import org.apache.wicket.request.mapper.parameter.PageParametersEncoder;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.PackageName;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A request mapper that mounts all bookmarkable pages in a given package.
@@ -84,7 +85,7 @@ public class PackageMapper extends AbstractBookmarkableMapper
 	 * @param packageName
 	 * @param pageParametersEncoder
 	 */
-	public PackageMapper(String mountPath, final PackageName packageName,
+	public PackageMapper(String mountPath, @NonNull final PackageName packageName,
 		final IPageParametersEncoder pageParametersEncoder)
 	{
 		super(mountPath, pageParametersEncoder);

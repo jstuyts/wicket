@@ -19,6 +19,7 @@ package org.apache.wicket.protocol.ws.api.event;
 import org.apache.wicket.protocol.ws.api.WebSocketRequestHandler;
 import org.apache.wicket.protocol.ws.api.message.BinaryMessage;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Payload for event broadcasting when a binary message comes in the WebSocket connection
@@ -29,7 +30,7 @@ public class WebSocketBinaryPayload extends WebSocketPayload<BinaryMessage>
 {
 	private final BinaryMessage binaryMessage;
 
-	public WebSocketBinaryPayload(BinaryMessage binaryMessage, WebSocketRequestHandler handler)
+	public WebSocketBinaryPayload(@NonNull BinaryMessage binaryMessage, WebSocketRequestHandler handler)
 	{
 		super(handler);
 

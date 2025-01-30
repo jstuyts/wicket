@@ -28,6 +28,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
 import org.apache.wicket.validation.ValidationError;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -46,7 +47,7 @@ public abstract class AbstractFormValidator extends Behavior implements IFormVal
 	 *             if component is not a form
 	 */
 	@Override
-	public void bind(Component component)
+	public void bind(@NonNull Component component)
 	{
 		if (!(component instanceof Form))
 		{
@@ -113,7 +114,7 @@ public abstract class AbstractFormValidator extends Behavior implements IFormVal
 	 * @param vars
 	 *            The model for variable interpolation
 	 */
-	public void error(FormComponent<?> fc, final String resourceKey, Map<String, Object> vars)
+	public void error(@NonNull FormComponent<?> fc, @NonNull final String resourceKey, @NonNull Map<String, Object> vars)
 	{
 		Args.notNull(fc, "fc");
 		Args.notNull(vars, "vars");

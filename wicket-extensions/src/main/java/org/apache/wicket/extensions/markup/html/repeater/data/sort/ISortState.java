@@ -17,6 +17,7 @@
 package org.apache.wicket.extensions.markup.html.repeater.data.sort;
 
 import org.apache.wicket.util.io.IClusterable;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Interface used by OrderByLink to interact with any object that keeps track of sorting state
@@ -36,7 +37,7 @@ public interface ISortState<S> extends IClusterable
 	 * @param order
 	 *            sort order
 	 */
-	void setPropertySortOrder(S property, SortOrder order);
+	void setPropertySortOrder(@NonNull S property, @NonNull SortOrder order);
 
 	/**
 	 * Gets the sort order of a property
@@ -45,6 +46,6 @@ public interface ISortState<S> extends IClusterable
 	 *            sort property to be checked
 	 * @return sort order
 	 */
-	SortOrder getPropertySortOrder(S property);
+	SortOrder getPropertySortOrder(@NonNull S property);
 
 }

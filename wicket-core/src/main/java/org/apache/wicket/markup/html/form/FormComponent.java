@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -67,6 +66,7 @@ import org.apache.wicket.validation.IValidationError;
 import org.apache.wicket.validation.IValidator;
 import org.apache.wicket.validation.ValidationError;
 import org.apache.wicket.validation.ValidatorAdapter;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -424,7 +424,7 @@ public abstract class FormComponent<T> extends LabeledWebMarkupContainer impleme
 	 * @return the visitor's result
 	 */
 	public static <R> R visitComponentsPostOrder(Component component,
-		final org.apache.wicket.util.visit.IVisitor<Component, R> visitor)
+		final org.apache.wicket.util.visit.@NonNull IVisitor<Component, R> visitor)
 	{
 		Args.notNull(visitor, "visitor");
 
@@ -520,7 +520,7 @@ public abstract class FormComponent<T> extends LabeledWebMarkupContainer impleme
 	 * @see IValidator
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public final FormComponent<T> add(final IValidator<? super T> validator)
+	public final FormComponent<T> add(@NonNull final IValidator<? super T> validator)
 	{
 		Args.notNull(validator, "validator");
 
@@ -546,7 +546,7 @@ public abstract class FormComponent<T> extends LabeledWebMarkupContainer impleme
 	 * @see #add(IValidator)
 	 * @return form component for chaining
 	 */
-	public final FormComponent<T> remove(final IValidator<? super T> validator)
+	public final FormComponent<T> remove(@NonNull final IValidator<? super T> validator)
 	{
 		Args.notNull(validator, "validator");
 		Behavior match = null;
@@ -590,7 +590,7 @@ public abstract class FormComponent<T> extends LabeledWebMarkupContainer impleme
 	 *             if validator is null
 	 * @see IValidator
 	 */
-	public final FormComponent<T> add(final IValidator<? super T>... validators)
+	public final FormComponent<T> add(@NonNull final IValidator<? super T>... validators)
 	{
 		Args.notNull(validators, "validators");
 
@@ -657,7 +657,7 @@ public abstract class FormComponent<T> extends LabeledWebMarkupContainer impleme
 	 * @param error
 	 *            validation error
 	 */
-	public void error(IValidationError error)
+	public void error(@NonNull IValidationError error)
 	{
 		Args.notNull(error, "error");
 

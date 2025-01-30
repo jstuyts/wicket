@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.CrossOrigin;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.value.AttributeMap;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A {@link org.apache.wicket.markup.head.HeaderItem} that renders a JavaScript reference.
@@ -113,7 +114,7 @@ public abstract class AbstractJavaScriptReferenceHeaderItem extends JavaScriptHe
 		return this;
 	}
 
-	protected final void internalRenderJavaScriptReference(Response response, String url)
+	protected final void internalRenderJavaScriptReference(Response response, @NonNull String url)
 	{
 		Args.notEmpty(url, "url");
 		final AttributeMap attributes = createAttributeMap(url);

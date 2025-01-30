@@ -29,11 +29,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 import org.apache.commons.fileupload2.core.AbstractFileUpload;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
 import org.apache.commons.fileupload2.core.FileItem;
 import org.apache.commons.fileupload2.core.FileItemFactory;
 import org.apache.commons.fileupload2.core.FileUploadByteCountLimitException;
 import org.apache.commons.fileupload2.core.FileUploadException;
-import org.apache.commons.fileupload2.core.DiskFileItemFactory;
 import org.apache.commons.fileupload2.jakarta.servlet5.JakartaServletFileUpload;
 import org.apache.commons.fileupload2.jakarta.servlet5.JakartaServletRequestContext;
 import org.apache.wicket.Application;
@@ -43,6 +43,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.value.ValueMap;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Servlet specific WebRequest subclass for multipart content uploads.
@@ -117,7 +118,7 @@ public class MultipartServletWebRequestImpl extends MultipartServletWebRequest
 	 *             Thrown if something goes wrong with upload
 	 */
 	public MultipartServletWebRequestImpl(HttpServletRequest request, String filterPrefix,
-		Bytes maxSize, String upload, FileItemFactory factory) throws FileUploadException
+		Bytes maxSize, @NonNull String upload, FileItemFactory factory) throws FileUploadException
 	{
 		super(request, filterPrefix);
 
@@ -521,7 +522,7 @@ public class MultipartServletWebRequestImpl extends MultipartServletWebRequest
 	 *            upload identifier
 	 * @return {@link UploadInfo} object from session, or null if not found
 	 */
-	public static UploadInfo getUploadInfo(final HttpServletRequest req, String upload)
+	public static UploadInfo getUploadInfo(@NonNull final HttpServletRequest req, String upload)
 	{
 		Args.notNull(req, "req");
 		return (UploadInfo)req.getSession().getAttribute(getSessionKey(upload));
@@ -537,8 +538,8 @@ public class MultipartServletWebRequestImpl extends MultipartServletWebRequest
 	 * @param uploadInfo
 	 *            {@link UploadInfo} object to be put into session, not null
 	 */
-	public static void setUploadInfo(final HttpServletRequest req, String upload,
-		final UploadInfo uploadInfo)
+	public static void setUploadInfo(@NonNull final HttpServletRequest req, @NonNull String upload,
+		@NonNull final UploadInfo uploadInfo)
 	{
 		Args.notNull(req, "req");
 		Args.notNull(upload, "upload");
@@ -554,7 +555,7 @@ public class MultipartServletWebRequestImpl extends MultipartServletWebRequest
 	 * @param upload
 	 *            upload identifier
 	 */
-	public static void clearUploadInfo(final HttpServletRequest req, String upload)
+	public static void clearUploadInfo(@NonNull final HttpServletRequest req, @NonNull String upload)
 	{
 		Args.notNull(req, "req");
 		Args.notNull(upload, "upload");

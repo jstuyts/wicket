@@ -26,6 +26,7 @@ import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -79,7 +80,7 @@ public abstract class AutoCompleteBehavior<T> extends AbstractAutoCompleteBehavi
 	 * @param settings
 	 *            settings for the autocomplete list
 	 */
-	public AutoCompleteBehavior(final IAutoCompleteRenderer<T> renderer,
+	public AutoCompleteBehavior(@NonNull final IAutoCompleteRenderer<T> renderer,
 		final AutoCompleteSettings settings)
 	{
 		super(settings);

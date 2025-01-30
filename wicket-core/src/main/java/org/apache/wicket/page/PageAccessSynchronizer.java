@@ -21,6 +21,7 @@ import java.time.Duration;
 
 import org.apache.wicket.pageStore.IPageStore;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,7 +55,7 @@ public class PageAccessSynchronizer implements Serializable
 	 *
 	 * @param pageLockManager the lock manager
 	 */
-	public PageAccessSynchronizer(IPageLockManager pageLockManager)
+	public PageAccessSynchronizer(@NonNull IPageLockManager pageLockManager)
 	{
 		this.pageLockManager = Args.notNull(pageLockManager, "pageLockManager");
 	}

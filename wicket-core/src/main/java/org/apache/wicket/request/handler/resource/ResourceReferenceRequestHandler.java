@@ -18,14 +18,15 @@ package org.apache.wicket.request.handler.resource;
 
 import java.util.Locale;
 
+import org.apache.wicket.core.request.handler.logger.ResourceReferenceLogData;
 import org.apache.wicket.request.ILoggableRequestHandler;
 import org.apache.wicket.request.IRequestCycle;
 import org.apache.wicket.request.IRequestHandler;
-import org.apache.wicket.core.request.handler.logger.ResourceReferenceLogData;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Request handler for {@link ResourceReference}. This handler is only used to generate URLs.
@@ -56,7 +57,7 @@ public class ResourceReferenceRequestHandler implements IRequestHandler, ILoggab
 	 * @param resourceReference
 	 * @param pageParameters
 	 */
-	public ResourceReferenceRequestHandler(ResourceReference resourceReference,
+	public ResourceReferenceRequestHandler(@NonNull ResourceReference resourceReference,
 		PageParameters pageParameters)
 	{
 		Args.notNull(resourceReference, "resourceReference");

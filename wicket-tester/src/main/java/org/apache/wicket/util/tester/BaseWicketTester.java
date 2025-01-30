@@ -37,6 +37,11 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpSession;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.IPageManagerProvider;
@@ -127,13 +132,9 @@ import org.apache.wicket.util.resource.StringResourceStream;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import jakarta.servlet.FilterConfig;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpSession;
 
 /**
  * A helper class to ease unit testing of Wicket applications without the need for a servlet
@@ -279,7 +280,7 @@ public class BaseWicketTester
 	 * @param init
 	 *            force the application to be initialized (default = true)
 	 */
-	public BaseWicketTester(final WebApplication application, final ServletContext servletCtx,
+	public BaseWicketTester(@NonNull final WebApplication application, final ServletContext servletCtx,
 		boolean init)
 	{
 		if (!init)
@@ -840,7 +841,7 @@ public class BaseWicketTester
 	 * @param key
 	 * @param value
 	 */
-	public final void addRequestHeader(final String key, final String value)
+	public final void addRequestHeader(@NonNull final String key, final String value)
 	{
 		Args.notEmpty(key, "key");
 
@@ -1077,7 +1078,7 @@ public class BaseWicketTester
 	 * @param link
 	 * @return url for Link
 	 */
-	public String urlFor(Link<?> link)
+	public String urlFor(@NonNull Link<?> link)
 	{
 		Args.notNull(link, "link");
 
@@ -1093,7 +1094,7 @@ public class BaseWicketTester
 	 *
 	 * @param component
 	 */
-	public void executeListener(final Component component)
+	public void executeListener(@NonNull final Component component)
 	{
 		Args.notNull(component, "component");
 
@@ -1129,7 +1130,7 @@ public class BaseWicketTester
 	 *
 	 * @param component
 	 */
-	public void invokeListener(final Component component)
+	public void invokeListener(@NonNull final Component component)
 	{
 		Args.notNull(component, "component");
 
@@ -1151,7 +1152,7 @@ public class BaseWicketTester
 	 * @param component
 	 * @param behavior
 	 */
-	public void invokeListener(Component component, final Behavior behavior)
+	public void invokeListener(@NonNull Component component, @NonNull final Behavior behavior)
 	{
 		Args.notNull(component, "component");
 		Args.notNull(behavior, "behavior");
@@ -1171,7 +1172,7 @@ public class BaseWicketTester
 	 * @param behavior
 	 *            an <code>AbstractAjaxBehavior</code> to execute
 	 */
-	public void executeBehavior(final AbstractAjaxBehavior behavior)
+	public void executeBehavior(@NonNull final AbstractAjaxBehavior behavior)
 	{
 		Args.notNull(behavior, "behavior");
 
@@ -1230,7 +1231,7 @@ public class BaseWicketTester
 	 *
 	 * @param url
 	 */
-	public void executeAjaxUrl(final Url url)
+	public void executeAjaxUrl(@NonNull final Url url)
 	{
 		Args.notNull(url, "url");
 
@@ -1266,7 +1267,7 @@ public class BaseWicketTester
 	 * @return the rendered <code>Page</code>
 	 */
 	@SuppressWarnings("unchecked")
-	public final <C extends Page> C startPage(final Class<C> pageClass,
+	public final <C extends Page> C startPage(@NonNull final Class<C> pageClass,
 		final PageParameters parameters)
 	{
 		Args.notNull(pageClass, "pageClass");
@@ -1358,7 +1359,7 @@ public class BaseWicketTester
 	 *            the markup for the Page that will be automatically created. May be {@code null}.
 	 * @return The component processed
 	 */
-	public final <C extends Component> C startComponentInPage(final Class<C> componentClass,
+	public final <C extends Component> C startComponentInPage(@NonNull final Class<C> componentClass,
 		final IMarkupFragment pageMarkup)
 	{
 		Args.notNull(componentClass, "componentClass");
@@ -1426,7 +1427,7 @@ public class BaseWicketTester
 	 *            the markup for the Page that will be automatically created. May be {@code null}.
 	 * @return The component processed
 	 */
-	public final <C extends Component> C startComponentInPage(final C component,
+	public final <C extends Component> C startComponentInPage(@NonNull final C component,
 		IMarkupFragment pageMarkup)
 	{
 		Args.notNull(component, "component");
@@ -2112,7 +2113,7 @@ public class BaseWicketTester
 	 *            expected class of last rendered page
 	 * @return a <code>Result</code>
 	 */
-	public <C extends Page> Result isRenderedPage(Class<C> expectedRenderedPageClass)
+	public <C extends Page> Result isRenderedPage(@NonNull Class<C> expectedRenderedPageClass)
 	{
 		Args.notNull(expectedRenderedPageClass, "expectedRenderedPageClass");
 
@@ -2464,7 +2465,7 @@ public class BaseWicketTester
 	 *            the event to simulate being fired. If <code>event</code> is <code>null</code>, the
 	 *            test will fail.
 	 */
-	public void executeAjaxEvent(final Component component, final String event)
+	public void executeAjaxEvent(@NonNull final Component component, @NonNull final String event)
 	{
 		Args.notNull(component, "component");
 		Args.notNull(event, "event");
@@ -2578,7 +2579,7 @@ public class BaseWicketTester
 	public String getContentTypeFromResponseHeader()
 	{
 		String contentType = getLastResponse().getContentType();
-		assertNotNull("No Content-Type header found", contentType);
+		assertNotNull(contentType, "No Content-Type header found");
 		return contentType;
 	}
 
@@ -2590,7 +2591,7 @@ public class BaseWicketTester
 	public int getContentLengthFromResponseHeader()
 	{
 		String contentLength = getLastResponse().getHeader("Content-Length");
-		assertNotNull("No Content-Length header found", contentLength);
+		assertNotNull(contentLength, "No Content-Length header found");
 		return Integer.parseInt(contentLength);
 	}
 

@@ -16,10 +16,6 @@
  */
 package org.apache.wicket.core.util.crypt;
 
-import org.apache.wicket.core.random.ISecureRandomSupplier;
-import org.apache.wicket.util.crypt.ICrypt;
-import org.apache.wicket.util.lang.Args;
-
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -30,6 +26,11 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
+
+import org.apache.wicket.core.random.ISecureRandomSupplier;
+import org.apache.wicket.util.crypt.ICrypt;
+import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * AES based {@link ICrypt} encrypt and decrypt strings such as passwords or URL segments.
@@ -68,8 +69,8 @@ public class AESCrypt extends AbstractJceCrypt
 	 * @param randomSupplier
 	 *              The {@link ISecureRandomSupplier} to use to generate random values.
 	 */
-	public AESCrypt(SecretKey secretKey, String algorithm, 
-		ISecureRandomSupplier randomSupplier)
+	public AESCrypt(@NonNull SecretKey secretKey, @NonNull String algorithm,
+		@NonNull ISecureRandomSupplier randomSupplier)
 	{
 		Args.notNull(secretKey, "secretKey");
 		Args.notNull(algorithm, "algorithm");

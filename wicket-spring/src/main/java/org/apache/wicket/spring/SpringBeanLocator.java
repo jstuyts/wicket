@@ -29,6 +29,7 @@ import org.apache.wicket.core.util.lang.WicketObjects;
 import org.apache.wicket.proxy.IProxyTargetLocator;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -114,8 +115,8 @@ public class SpringBeanLocator implements IProxyTargetLocator
 	 * @param locator
 	 *            spring context locator
 	 */
-	public SpringBeanLocator(final String beanName, final Class<?> beanType, Field beanField,
-		final ISpringContextLocator locator)
+	public SpringBeanLocator(final String beanName, @NonNull final Class<?> beanType, Field beanField,
+		@NonNull final ISpringContextLocator locator)
 	{
 		Args.notNull(locator, "locator");
 		Args.notNull(beanType, "beanType");

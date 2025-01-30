@@ -29,6 +29,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.value.IValueMap;
+import org.jspecify.annotations.NonNull;
 
 /**
  * This class allows a tag attribute of a component to be modified dynamically with a value obtained
@@ -102,7 +103,7 @@ public class AttributeModifier extends Behavior implements IClusterable
 	 * @param replaceModel
 	 *            The model to replace the value with
 	 */
-	public AttributeModifier(final String attribute, final IModel<?> replaceModel)
+	public AttributeModifier(@NonNull final String attribute, final IModel<?> replaceModel)
 	{
 		Args.notNull(attribute, "attribute");
 
@@ -264,7 +265,7 @@ public class AttributeModifier extends Behavior implements IClusterable
 	 * @return the attribute modifier
 	 * @since 1.5
 	 */
-	public static AttributeModifier replace(String attributeName, IModel<?> value)
+	public static AttributeModifier replace(@NonNull String attributeName, IModel<?> value)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 
@@ -279,7 +280,7 @@ public class AttributeModifier extends Behavior implements IClusterable
 	 * @return the attribute modifier
 	 * @since 1.5
 	 */
-	public static AttributeModifier replace(String attributeName, Serializable value)
+	public static AttributeModifier replace(@NonNull String attributeName, Serializable value)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 
@@ -296,7 +297,7 @@ public class AttributeModifier extends Behavior implements IClusterable
 	 * @since 1.5
 	 * @see AttributeAppender
 	 */
-	public static AttributeAppender append(String attributeName, IModel<?> value)
+	public static AttributeAppender append(@NonNull String attributeName, IModel<?> value)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 
@@ -313,7 +314,7 @@ public class AttributeModifier extends Behavior implements IClusterable
 	 * @since 1.5
 	 * @see AttributeAppender
 	 */
-	public static AttributeAppender append(String attributeName, Serializable value)
+	public static AttributeAppender append(@NonNull String attributeName, Serializable value)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 
@@ -330,7 +331,7 @@ public class AttributeModifier extends Behavior implements IClusterable
 	 * @since 1.5
 	 * @see AttributeAppender
 	 */
-	public static AttributeAppender prepend(String attributeName, IModel<?> value)
+	public static AttributeAppender prepend(@NonNull String attributeName, IModel<?> value)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 
@@ -357,7 +358,7 @@ public class AttributeModifier extends Behavior implements IClusterable
 	 * @since 1.5
 	 * @see AttributeAppender
 	 */
-	public static AttributeAppender prepend(String attributeName, Serializable value)
+	public static AttributeAppender prepend(@NonNull String attributeName, Serializable value)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 
@@ -372,7 +373,7 @@ public class AttributeModifier extends Behavior implements IClusterable
 	 * @return the attribute modifier
 	 * @since 1.5
 	 */
-	public static AttributeModifier remove(String attributeName)
+	public static AttributeModifier remove(@NonNull String attributeName)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 

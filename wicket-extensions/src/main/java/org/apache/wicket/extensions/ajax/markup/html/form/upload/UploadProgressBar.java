@@ -37,6 +37,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.SharedResourceReference;
 import org.apache.wicket.resource.CoreLibrariesContributor;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A panel to show the progress of an HTTP upload.
@@ -167,7 +168,7 @@ public class UploadProgressBar extends Panel
 	 *            the file upload field to check for a file upload, or null to display the upload
 	 *            field for every submit of the given form
 	 */
-	public UploadProgressBar(final String id, final Form<?> form, final FileUploadField uploadField)
+	public UploadProgressBar(final String id, @NonNull final Form<?> form, final FileUploadField uploadField)
 	{
 		super(id);
 

@@ -19,6 +19,7 @@ package org.apache.wicket.protocol.ws.api.registry;
 import java.util.Objects;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A key based on shared resource's name and a token
@@ -34,7 +35,7 @@ public class ResourceNameTokenKey extends AbstractKey
 		this(resourceName, connectionToken, null);
 	}
 
-	public ResourceNameTokenKey(String resourceName, String connectionToken, String context)
+	public ResourceNameTokenKey(@NonNull String resourceName, @NonNull String connectionToken, String context)
 	{
 		super(context);
 		this.resourceName = Args.notNull(resourceName, "resourceName");

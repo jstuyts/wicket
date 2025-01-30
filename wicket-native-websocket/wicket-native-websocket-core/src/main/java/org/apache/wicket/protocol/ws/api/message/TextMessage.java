@@ -19,6 +19,7 @@ package org.apache.wicket.protocol.ws.api.message;
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.ws.api.registry.IKey;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A {@link IWebSocketMessage message} with text data
@@ -40,7 +41,7 @@ public class TextMessage extends AbstractClientMessage
 	 * @param text
 	 *      the message sent from the client
 	 */
-	public TextMessage(Application application, String sessionId, IKey key, CharSequence text)
+	public TextMessage(Application application, String sessionId, IKey key, @NonNull CharSequence text)
 	{
 		super(application, sessionId, key);
 		this.text = Args.notEmpty(text, "text");

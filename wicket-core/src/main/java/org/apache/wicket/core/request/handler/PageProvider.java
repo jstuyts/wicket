@@ -26,6 +26,7 @@ import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Provides page instance for request handlers. Each of the constructors has just enough information
@@ -146,7 +147,7 @@ public class PageProvider implements IPageProvider, IClusterable
 	 * 
 	 * @param page
 	 */
-	public PageProvider(IRequestablePage page)
+	public PageProvider(@NonNull IRequestablePage page)
 	{
 		Args.notNull(page, "page");
 
@@ -300,7 +301,7 @@ public class PageProvider implements IPageProvider, IClusterable
 	 * 
 	 * @param pageClass
 	 */
-	private void setPageClass(Class<? extends IRequestablePage> pageClass)
+	private void setPageClass(@NonNull Class<? extends IRequestablePage> pageClass)
 	{
 		Args.notNull(pageClass, "pageClass");
 

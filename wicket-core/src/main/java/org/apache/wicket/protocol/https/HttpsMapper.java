@@ -17,7 +17,6 @@
 package org.apache.wicket.protocol.https;
 
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.apache.wicket.Session;
 import org.apache.wicket.core.request.handler.IPageClassRequestHandler;
 import org.apache.wicket.request.IRequestCycle;
@@ -31,6 +30,7 @@ import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.mapper.IRequestMapperDelegate;
 import org.apache.wicket.util.collections.ClassMetaCache;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A {@link IRequestMapper} that will issue a redirect to secured communication (over https) if the
@@ -73,7 +73,7 @@ public class HttpsMapper implements IRequestMapperDelegate
 	 * @param delegate
 	 * @param config
 	 */
-	public HttpsMapper(IRequestMapper delegate, HttpsConfig config)
+	public HttpsMapper(@NonNull IRequestMapper delegate, HttpsConfig config)
 	{
 		this.delegate = Args.notNull(delegate, "delegate");
 		this.config = config;
@@ -320,7 +320,7 @@ public class HttpsMapper implements IRequestMapperDelegate
 		 * @param url
 		 *            redirect location
 		 */
-		public RedirectHandler(String url, HttpsConfig config)
+		public RedirectHandler(@NonNull String url, @NonNull HttpsConfig config)
 		{
 			this.url = Args.notNull(url, "url");
 			this.config = Args.notNull(config, "config");

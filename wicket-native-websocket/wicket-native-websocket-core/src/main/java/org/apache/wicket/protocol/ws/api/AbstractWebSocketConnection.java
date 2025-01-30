@@ -20,8 +20,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.protocol.ws.api.message.IWebSocketPushMessage;
 import org.apache.wicket.protocol.ws.api.registry.IKey;
 import org.apache.wicket.util.lang.Args;
-
-import java.util.concurrent.Future;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Abstract class handling the Web Socket broadcast messages.
@@ -41,7 +40,7 @@ public abstract class AbstractWebSocketConnection implements IWebSocketConnectio
 	 * @param webSocketProcessor
 	 *      the web socket processor to delegate to
 	 */
-	public AbstractWebSocketConnection(AbstractWebSocketProcessor webSocketProcessor)
+	public AbstractWebSocketConnection(@NonNull AbstractWebSocketProcessor webSocketProcessor)
 	{
 		this.applicationName = webSocketProcessor.getApplication().getName();
 		this.sessionId = webSocketProcessor.getSessionId();

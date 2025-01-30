@@ -20,6 +20,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Filter for child-of relationship
@@ -39,7 +40,7 @@ public class ContainerFeedbackMessageFilter implements IFeedbackMessageFilter
 	 * @param container
 	 *            The container that message reporters must be a child of
 	 */
-	public ContainerFeedbackMessageFilter(MarkupContainer container)
+	public ContainerFeedbackMessageFilter(@NonNull MarkupContainer container)
 	{
 		this.container = Args.notNull(container, "container");
 	}

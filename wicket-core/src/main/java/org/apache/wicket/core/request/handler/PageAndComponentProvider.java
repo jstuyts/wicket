@@ -22,6 +22,7 @@ import org.apache.wicket.request.component.IRequestableComponent;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Extension of {@link PageProvider} that is also capable of providing a Component belonging to the
@@ -55,7 +56,7 @@ public class PageAndComponentProvider extends PageProvider implements IPageAndCo
 	 * @param page
 	 * @param component
 	 */
-	public PageAndComponentProvider(IRequestablePage page, IRequestableComponent component)
+	public PageAndComponentProvider(IRequestablePage page, @NonNull IRequestableComponent component)
 	{
 		super(page);
 
@@ -135,7 +136,7 @@ public class PageAndComponentProvider extends PageProvider implements IPageAndCo
 		setComponentPath(componentPath);
 	}
 
-	public PageAndComponentProvider(IRequestablePage page, IRequestableComponent component,
+	public PageAndComponentProvider(IRequestablePage page, @NonNull IRequestableComponent component,
 		PageParameters parameters)
 	{
 		super(page);
@@ -210,7 +211,7 @@ public class PageAndComponentProvider extends PageProvider implements IPageAndCo
 	 *
 	 * @param componentPath
 	 */
-	private void setComponentPath(String componentPath)
+	private void setComponentPath(@NonNull String componentPath)
 	{
 		Args.notNull(componentPath, "componentPath");
 

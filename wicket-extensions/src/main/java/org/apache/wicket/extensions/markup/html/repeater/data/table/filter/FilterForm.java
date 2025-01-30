@@ -29,6 +29,7 @@ import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A form with filter-related special functionality for its form components.
@@ -134,7 +135,7 @@ public class FilterForm<T> extends Form<T>
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void bind(Component component)
+			public void bind(@NonNull Component component)
 			{
 				super.bind(component);
 				component.setOutputMarkupId(true);

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Abstract base class for different implementations of response writing.
@@ -124,7 +125,7 @@ public abstract class Response
 	{
 		private final Response response;
 
-		public StreamAdapter(Response response)
+		public StreamAdapter(@NonNull Response response)
 		{
 			Args.notNull(response, "response");
 			this.response = response;

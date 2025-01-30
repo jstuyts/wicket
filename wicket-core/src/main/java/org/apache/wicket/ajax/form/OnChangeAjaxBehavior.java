@@ -24,6 +24,7 @@ import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A behavior that updates the hosting {@link FormComponent}'s model via Ajax when value
@@ -88,7 +89,7 @@ public abstract class OnChangeAjaxBehavior extends AjaxFormComponentUpdatingBeha
 	 *            the {@code SerializableConsumer} which accepts the {@link AjaxRequestTarget}
 	 * @return the {@link OnChangeAjaxBehavior}
 	 */
-	public static OnChangeAjaxBehavior onChange(SerializableConsumer<AjaxRequestTarget> onChange)
+	public static OnChangeAjaxBehavior onChange(@NonNull SerializableConsumer<AjaxRequestTarget> onChange)
 	{
 		Args.notNull(onChange, "onChange");
 

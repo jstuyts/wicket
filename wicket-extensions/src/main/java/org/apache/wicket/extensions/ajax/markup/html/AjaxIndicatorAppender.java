@@ -27,6 +27,7 @@ import org.apache.wicket.request.Response;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.handler.resource.ResourceReferenceRequestHandler;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A behavior that adds a span with wicket's default indicator gif to the end of the component's
@@ -133,7 +134,7 @@ public class AjaxIndicatorAppender extends Behavior
 	}
 
 	@Override
-	public final void bind(final Component component)
+	public final void bind(@NonNull final Component component)
 	{
 		this.component = component;
 	}

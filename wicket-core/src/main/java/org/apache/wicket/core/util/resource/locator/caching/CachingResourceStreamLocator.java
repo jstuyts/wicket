@@ -27,6 +27,7 @@ import org.apache.wicket.request.resource.ResourceReference.Key;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.FileResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -53,7 +54,7 @@ public class CachingResourceStreamLocator implements IResourceStreamLocator
 	 * @param resourceStreamLocator
 	 *            the delegate
 	 */
-	public CachingResourceStreamLocator(final IResourceStreamLocator resourceStreamLocator)
+	public CachingResourceStreamLocator(@NonNull final IResourceStreamLocator resourceStreamLocator)
 	{
 		Args.notNull(resourceStreamLocator, "resourceStreamLocator");
 

@@ -16,16 +16,16 @@
  */
 package org.apache.wicket.coep;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.wicket.coop.CrossOriginOpenerPolicyRequestCycleListener;
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.cycle.IRequestCycleListener;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Sets <a href="https://wicg.github.io/cross-origin-embedder-policy/">Cross-Origin Embedder
@@ -60,7 +60,7 @@ public class CrossOriginEmbedderPolicyRequestCycleListener implements IRequestCy
 
 	private final CrossOriginEmbedderPolicyConfiguration coepConfig;
 
-	public CrossOriginEmbedderPolicyRequestCycleListener(CrossOriginEmbedderPolicyConfiguration coepConfig)
+	public CrossOriginEmbedderPolicyRequestCycleListener(@NonNull CrossOriginEmbedderPolicyConfiguration coepConfig)
 	{
 		this.coepConfig = Args.notNull(coepConfig, "coepConfig");
 	}

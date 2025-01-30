@@ -27,6 +27,7 @@ import java.net.URLConnection;
 import java.util.Properties;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Utilities methods for working with input and output streams.
@@ -144,7 +145,7 @@ public final class Streams
 	 * @return the input stream for this url
 	 * @throws IOException when a connection cannot be opened
 	 */
-	public static InputStream readNonCaching(final URL url) throws IOException
+	public static InputStream readNonCaching(@NonNull final URL url) throws IOException
 	{
 		Args.notNull(url, "url");
 

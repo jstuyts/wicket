@@ -28,6 +28,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.AppendingStringBuffer;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.value.IValueMap;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -316,7 +317,7 @@ public class CheckBoxMultipleChoice<T> extends ListMultipleChoice<T>
 	 *              The preferred position for the label
 	 * @return {@code this} instance, for chaining
 	 */
-	public CheckBoxMultipleChoice<T> setLabelPosition(LabelPosition labelPosition)
+	public CheckBoxMultipleChoice<T> setLabelPosition(@NonNull LabelPosition labelPosition)
 	{
 		Args.notNull(labelPosition, "labelPosition");
 		this.labelPosition = labelPosition;

@@ -30,6 +30,7 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -77,7 +78,7 @@ public class SunJceCrypt extends AbstractCrypt
 	 * @param iterationCount
 	 * 				iteration count
 	 */
-	public SunJceCrypt(String cryptMethod, byte[] salt, int iterationCount)
+	public SunJceCrypt(@NonNull String cryptMethod, byte @NonNull [] salt, int iterationCount)
 	{
 		this.cryptMethod = Args.notNull(cryptMethod, "Crypt method");
 		this.salt = Args.notNull(salt, "salt");

@@ -47,6 +47,7 @@ import org.apache.wicket.util.LazyInitializer;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -220,7 +221,7 @@ public abstract class Session implements IClusterable, IEventSink, IMetadataCont
 	 * @param locale - locale to check
 	 * @return <code>true</code> in case passed locale is right-to-left
 	 */
-	public static boolean isRtlLanguage(final Locale locale) {
+	public static boolean isRtlLanguage(@NonNull final Locale locale) {
 		Args.notNull(locale, "locale");
 		return RTL_LOCALE_RE.matcher(locale.toLanguageTag()).find();
 	}
@@ -644,7 +645,7 @@ public abstract class Session implements IClusterable, IEventSink, IMetadataCont
 	 * @param locale
 	 *            New locale
 	 */
-	public Session setLocale(final Locale locale)
+	public Session setLocale(@NonNull final Locale locale)
 	{
 		Args.notNull(locale, "locale");
 

@@ -30,6 +30,7 @@ import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.TagUtils;
 import org.apache.wicket.markup.WicketTag;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A markup sourcing strategy suitable for Fragment components.
@@ -52,7 +53,7 @@ public class FragmentMarkupSourcingStrategy extends AbstractMarkupSourcingStrate
 	 * @param markupProvider
 	 *            The component whose markup contains the fragment's markup
 	 */
-	public FragmentMarkupSourcingStrategy(final String markupId,
+	public FragmentMarkupSourcingStrategy(@NonNull final String markupId,
 		final MarkupContainer markupProvider)
 	{
 		Args.notNull(markupId, "markupId");

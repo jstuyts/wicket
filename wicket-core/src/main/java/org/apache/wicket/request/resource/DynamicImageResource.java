@@ -20,10 +20,13 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.Instant;
+
 import javax.imageio.ImageIO;
+
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Base class for dynamically generated ImageResources.
@@ -71,7 +74,7 @@ public abstract class DynamicImageResource extends AbstractResource
 	 * @param format
 	 *            The format (jpg, png or gif..)
 	 */
-	public synchronized final void setFormat(String format)
+	public synchronized final void setFormat(@NonNull String format)
 	{
 		Args.notNull(format, "format");
 		this.format = format;

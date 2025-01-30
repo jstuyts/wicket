@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import jakarta.servlet.http.HttpSession;
-
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.Session;
 import org.apache.wicket.WicketRuntimeException;
@@ -34,6 +33,7 @@ import org.apache.wicket.serialize.ISerializer;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.lang.Classes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A store keeping a configurable maximum of pages in the session.
@@ -194,7 +194,7 @@ public class InSessionPageStore implements IPageStore
 		 * Call this method if session serialization should be supported, i.e. all pages get
 		 * serialized along with the session.
 		 */
-		public void supportSessionSerialization(ISerializer serializer)
+		public void supportSessionSerialization(@NonNull ISerializer serializer)
 		{
 			this.serializer = Args.notNull(serializer, "serializer");
 		}
@@ -328,7 +328,7 @@ public class InSessionPageStore implements IPageStore
 
 		private long size;
 
-		public SizeLimitedData(Bytes maxBytes)
+		public SizeLimitedData(@NonNull Bytes maxBytes)
 		{
 			Args.notNull(maxBytes, "maxBytes");
 

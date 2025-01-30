@@ -37,6 +37,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -141,7 +142,7 @@ public class DataTable<T, S> extends Panel implements IPageableItems
 	 * @param rowsPerPage
 	 *            number of rows per page
 	 */
-	public DataTable(final String id, final List<? extends IColumn<T, S>> columns,
+	public DataTable(final String id, @NonNull final List<? extends IColumn<T, S>> columns,
 		final IDataProvider<T> dataProvider, final long rowsPerPage)
 	{
 		super(id);
@@ -376,7 +377,7 @@ public class DataTable<T, S> extends Panel implements IPageableItems
 		return datagrid.getItemCount();
 	}
 
-	private void addToolbar(final AbstractToolbar toolbar, final ToolbarsContainer container)
+	private void addToolbar(@NonNull final AbstractToolbar toolbar, final ToolbarsContainer container)
 	{
 		Args.notNull(toolbar, "toolbar");
 

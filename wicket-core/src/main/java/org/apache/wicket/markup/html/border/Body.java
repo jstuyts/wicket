@@ -21,6 +21,7 @@ import org.apache.wicket.markup.IMarkupFragment;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * This is a simple Container component which can be used to build Border like components.
@@ -73,7 +74,7 @@ public class Body extends WebMarkupContainer
 	 * @param markupProvider
 	 *            Usually a Panel
 	 */
-	public Body(final String id, final IModel<?> model, final MarkupContainer markupProvider)
+	public Body(final String id, final IModel<?> model, @NonNull final MarkupContainer markupProvider)
 	{
 		super(id, model);
 

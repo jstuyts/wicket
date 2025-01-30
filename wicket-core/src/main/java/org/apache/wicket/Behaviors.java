@@ -23,6 +23,7 @@ import java.util.List;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.behavior.InvalidBehaviorIdException;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Manages behaviors for {@link Component} instances
@@ -37,7 +38,7 @@ final class Behaviors
 		// utility class
 	}
 
-	public static void add(Component component, Behavior... behaviors)
+	public static void add(Component component, @NonNull Behavior... behaviors)
 	{
 		Args.notNull(behaviors, "behaviors");
 
@@ -107,7 +108,7 @@ final class Behaviors
 	}
 
 
-	public static void remove(Component component, Behavior behavior)
+	public static void remove(Component component, @NonNull Behavior behavior)
 	{
 		Args.notNull(behavior, "behavior");
 
@@ -294,7 +295,7 @@ final class Behaviors
 		}
 	}
 
-	public static int getBehaviorId(Component component, Behavior behavior)
+	public static int getBehaviorId(Component component, @NonNull Behavior behavior)
 	{
 		Args.notNull(behavior, "behavior");
 

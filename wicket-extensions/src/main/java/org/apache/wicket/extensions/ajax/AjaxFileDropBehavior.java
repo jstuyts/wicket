@@ -38,6 +38,7 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Uploads files from a drop event.
@@ -165,7 +166,7 @@ public class AjaxFileDropBehavior extends AjaxEventBehavior
 	 *
 	 * @param maxSize maximum size, must not be null
 	 */
-	public void setMaxSize(Bytes maxSize)
+	public void setMaxSize(@NonNull Bytes maxSize)
 	{
 		Args.notNull(maxSize, "maxSize");
 		this.maxSize = maxSize;

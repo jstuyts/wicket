@@ -43,6 +43,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.StringResourceStream;
 import org.apache.wicket.util.tester.WicketTester;
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -584,7 +585,7 @@ class BasicResourceReferenceMapperTest extends AbstractResourceReferenceMapperTe
 		 * @param version
 		 *             static version string to deliver for all queries resources
 		 */
-		AlphaDigitResourceVersion(String version)
+		AlphaDigitResourceVersion(@NonNull String version)
 		{
 			this.version = Args.notNull(version, "version");
 		}

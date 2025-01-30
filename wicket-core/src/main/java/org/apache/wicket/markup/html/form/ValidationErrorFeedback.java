@@ -22,6 +22,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.validation.IValidationError;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -48,7 +49,7 @@ public class ValidationErrorFeedback implements IClusterable
 	 * @param error
 	 * @param message
 	 */
-	public ValidationErrorFeedback(final IValidationError error, final Serializable message)
+	public ValidationErrorFeedback(@NonNull final IValidationError error, final Serializable message)
 	{
 		this.error = Args.notNull(error, "error");
 		this.message = message;

@@ -16,10 +16,11 @@
  */
 package org.apache.wicket.protocol.ws.api;
 
+import java.util.concurrent.Future;
+
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.request.ILoggableRequestHandler;
-
-import java.util.concurrent.Future;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An interface for outbound communication with web socket clients
@@ -34,7 +35,7 @@ public interface IWebSocketRequestHandler extends IPartialPageRequestHandler, IL
 	 * @param message
 	 *      the text message to push to the client if the web socket connection is open
 	 */
-	void push(CharSequence message);
+	void push(@NonNull CharSequence message);
 
 	/**
 	 * Pushes a text message to the client in an asynchronous way.
@@ -56,7 +57,7 @@ public interface IWebSocketRequestHandler extends IPartialPageRequestHandler, IL
 	 * @return
 	 * 		a {@link java.util.concurrent.Future} representing the send operation. Or null if connection is closed.
 	 */
-	Future<Void> pushAsync(CharSequence message, long timeout);
+	Future<Void> pushAsync(@NonNull CharSequence message, long timeout);
 
 	/**
 	 * Pushes a binary message to the client.
@@ -68,7 +69,7 @@ public interface IWebSocketRequestHandler extends IPartialPageRequestHandler, IL
 	 * @param length
 	 *      how many bytes to read from the message
 	 */
-	void push(byte[] message, int offset, int length);
+	void push(byte @NonNull [] message, int offset, int length);
 
 	/**
 	 * Pushes a binary message to the client.
@@ -82,7 +83,7 @@ public interface IWebSocketRequestHandler extends IPartialPageRequestHandler, IL
 	 * @return
 	 * 		a {@link java.util.concurrent.Future} representing the send operation. Or null if connection is closed.
 	 */
-	Future<Void> pushAsync(byte[] message, int offset, int length);
+	Future<Void> pushAsync(byte @NonNull [] message, int offset, int length);
 
 	/**
 	 * Pushes a binary message to the client.
@@ -98,5 +99,5 @@ public interface IWebSocketRequestHandler extends IPartialPageRequestHandler, IL
 	 * @return
 	 * 		a {@link java.util.concurrent.Future} representing the send operation. Or null if connection is closed.
 	 */
-	Future<Void> pushAsync(byte[] message, int offset, int length, long timeout);
+	Future<Void> pushAsync(byte @NonNull [] message, int offset, int length, long timeout);
 }

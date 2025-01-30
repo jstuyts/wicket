@@ -16,14 +16,15 @@
  */
 package org.apache.wicket.behavior;
 
+import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.IRequestListener;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.request.mapper.parameter.INamedParameters;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
-
-import java.util.List;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Abstract class for handling Ajax roundtrips. This class serves as a base for javascript specific
@@ -54,7 +55,7 @@ public abstract class AbstractAjaxBehavior extends Behavior implements IRequestL
 	 *            the component to bind to
 	 */
 	@Override
-	public final void bind(final Component hostComponent)
+	public final void bind(@NonNull final Component hostComponent)
 	{
 		Args.notNull(hostComponent, "hostComponent");
 

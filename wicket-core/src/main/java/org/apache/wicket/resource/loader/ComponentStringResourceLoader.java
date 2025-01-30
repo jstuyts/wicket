@@ -34,6 +34,7 @@ import org.apache.wicket.resource.IPropertiesFactory;
 import org.apache.wicket.resource.Properties;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -268,7 +269,7 @@ public class ComponentStringResourceLoader implements IStringResourceLoader
 	 * @param component
 	 * @return path
 	 */
-	protected String getResourcePath(final Component component)
+	protected String getResourcePath(@NonNull final Component component)
 	{
 		Component current = Args.notNull(component, "component");
 

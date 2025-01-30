@@ -20,6 +20,7 @@ import java.io.IOException;
 
 import org.apache.wicket.util.resource.FileResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -68,7 +69,7 @@ public class Path implements IResourceFinder
 	 * @see org.apache.wicket.util.file.IResourceFinder#find(Class, String)
 	 */
 	@Override
-	public IResourceStream find(final Class<?> clazz, final String pathname)
+	public IResourceStream find(final Class<?> clazz, @NonNull final String pathname)
 	{
 		final File file = new File(folder, pathname);
 

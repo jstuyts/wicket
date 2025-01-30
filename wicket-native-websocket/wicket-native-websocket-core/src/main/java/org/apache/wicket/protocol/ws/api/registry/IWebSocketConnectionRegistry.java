@@ -20,6 +20,7 @@ import java.util.Collection;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.ws.api.IWebSocketConnection;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Tracks all currently connected WebSocket clients
@@ -49,7 +50,7 @@ public interface IWebSocketConnectionRegistry
 	 *      the web socket client key
 	 * @return the web socket connection used by a client from the specified coordinates
 	 */
-	IWebSocketConnection getConnection(Application application, String sessionId, IKey key);
+	IWebSocketConnection getConnection(@NonNull Application application, @NonNull String sessionId, @NonNull IKey key);
 
 	/**
 	 * @param application
@@ -58,7 +59,7 @@ public interface IWebSocketConnectionRegistry
 	 *            the http session id
 	 * @return collection of web socket connections used by a client with the given session id
 	 */
-	Collection<IWebSocketConnection> getConnections(Application application, String sessionId);
+	Collection<IWebSocketConnection> getConnections(@NonNull Application application, @NonNull String sessionId);
 
 
 	/**
@@ -70,7 +71,7 @@ public interface IWebSocketConnectionRegistry
 	 *
 	 * @return collection of web socket connections that match certain filter
 	 */
-	Collection<IWebSocketConnection> getConnections(Application application, IConnectionsFilter connectionsFilter);
+	Collection<IWebSocketConnection> getConnections(@NonNull Application application, @NonNull IConnectionsFilter connectionsFilter);
 
 
 	/**
@@ -78,7 +79,7 @@ public interface IWebSocketConnectionRegistry
 	 *            the web application to look in
 	 * @return collection of web socket connection used by any client connected to specified application
 	 */
-	Collection<IWebSocketConnection> getConnections(Application application);
+	Collection<IWebSocketConnection> getConnections(@NonNull Application application);
 
 	/**
 	 * Adds a new connection into the registry at the specified coordinates (application+session+page)
@@ -92,7 +93,7 @@ public interface IWebSocketConnectionRegistry
 	 * @param connection
 	 *      the web socket connection to add
 	 */
-	void setConnection(Application application, String sessionId, IKey key, IWebSocketConnection connection);
+	void setConnection(@NonNull Application application, @NonNull String sessionId, @NonNull IKey key, IWebSocketConnection connection);
 
 	/**
 	 * Removes a web socket connection from the registry at the specified coordinates (application+session+page)

@@ -29,6 +29,7 @@ import org.apache.wicket.markup.parser.XmlPullParser;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -213,7 +214,7 @@ public class MarkupFactory
 	 * @return The markup associated with the container. Null, if the markup was not found or could
 	 *         not yet be loaded (e.g. getMarkupType() == null). Wicket Exception in case of errors.
 	 */
-	public final Markup getMarkup(final MarkupContainer container, final Class<?> clazz,
+	public final Markup getMarkup(@NonNull final MarkupContainer container, final Class<?> clazz,
 		final boolean enforceReload)
 	{
 		Args.notNull(container, "container");
@@ -301,7 +302,7 @@ public class MarkupFactory
 	 *            Either the container class or any super class. Might be null.
 	 * @return A IResourceStream if the resource was found
 	 */
-	public final MarkupResourceStream getMarkupResourceStream(final MarkupContainer container,
+	public final MarkupResourceStream getMarkupResourceStream(@NonNull final MarkupContainer container,
 		Class<?> clazz)
 	{
 		Args.notNull(container, "container");
@@ -346,7 +347,7 @@ public class MarkupFactory
 	 *            Either null, or a super class of container
 	 * @return The container class to be used
 	 */
-	public final Class<?> getContainerClass(final MarkupContainer container, final Class<?> clazz)
+	public final Class<?> getContainerClass(@NonNull final MarkupContainer container, final Class<?> clazz)
 	{
 		Args.notNull(container, "container");
 
@@ -380,8 +381,8 @@ public class MarkupFactory
 	 *            reloaded. Whatever is in the cache, it will be ignored
 	 * @return The markup. Null, if the markup was not found. Wicket Exception in case of errors.
 	 */
-	public final Markup loadMarkup(final MarkupContainer container,
-		final MarkupResourceStream markupResourceStream, final boolean enforceReload)
+	public final Markup loadMarkup(@NonNull final MarkupContainer container,
+		@NonNull final MarkupResourceStream markupResourceStream, final boolean enforceReload)
 	{
 		// @TODO can markupResourceStream be replace with clazz???
 		Args.notNull(container, "container");

@@ -51,6 +51,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -320,7 +321,7 @@ public class WicketTester extends BaseWicketTester
 	 * @param expectedBehaviorClass
 	 *            expected <code>Behavior</code> class
 	 */
-	public void assertBehavior(String path, Class<? extends Behavior> expectedBehaviorClass)
+	public void assertBehavior(String path, @NonNull Class<? extends Behavior> expectedBehaviorClass)
 	{
 		Args.notNull(expectedBehaviorClass, "expectedBehaviorClass");
 
@@ -537,7 +538,7 @@ public class WicketTester extends BaseWicketTester
 	 *            the filter that decides in which messages to look in. E.g. with a specific level,
 	 *            rendered or not, etc.
 	 */
-	public void assertComponentFeedbackMessage(Component component, String key, IModel<?> model,
+	public void assertComponentFeedbackMessage(Component component, @NonNull String key, IModel<?> model,
 		IFeedbackMessageFilter filter)
 	{
 		Args.notNull(key, "key");

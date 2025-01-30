@@ -24,6 +24,7 @@ import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.util.NullProvider;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Mapper that rewrites parent path segments ({@code ../}) with the specified string and viceversa.
@@ -43,8 +44,8 @@ public class ParentPathReferenceRewriter implements IRequestMapperDelegate
 	 * 
 	 * @param escapeSequence
 	 */
-	public ParentPathReferenceRewriter(final IRequestMapper chain,
-		final Supplier<String> escapeSequence)
+	public ParentPathReferenceRewriter(@NonNull final IRequestMapper chain,
+		@NonNull final Supplier<String> escapeSequence)
 	{
 		Args.notNull(chain, "chain");
 		Args.notNull(escapeSequence, "relativePathPartEscapeSequence");

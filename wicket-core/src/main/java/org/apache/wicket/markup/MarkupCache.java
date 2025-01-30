@@ -28,6 +28,7 @@ import org.apache.wicket.util.listener.IChangeListener;
 import org.apache.wicket.util.watch.IModifiable;
 import org.apache.wicket.util.watch.IModificationWatcher;
 import org.apache.wicket.util.watch.ModificationWatcher;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -120,7 +121,7 @@ public class MarkupCache implements IMarkupCache
 	 * local application.
 	 */
 	@Override
-	public final IMarkupFragment removeMarkup(final String cacheKey)
+	public final IMarkupFragment removeMarkup(@NonNull final String cacheKey)
 	{
 		Args.notNull(cacheKey, "cacheKey");
 

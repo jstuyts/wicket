@@ -20,6 +20,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Validates that the input of two form components is identical. Errors are reported on the second
@@ -48,7 +49,7 @@ public class EqualInputValidator extends AbstractFormValidator
 	 * @param formComponent2
 	 *            a form component
 	 */
-	public EqualInputValidator(FormComponent<?> formComponent1, FormComponent<?> formComponent2)
+	public EqualInputValidator(@NonNull FormComponent<?> formComponent1, @NonNull FormComponent<?> formComponent2)
 	{
 		Args.notNull(formComponent1, "formComponent1");
 		Args.notNull(formComponent2, "formComponent2");

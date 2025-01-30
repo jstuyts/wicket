@@ -23,6 +23,7 @@ import java.nio.charset.IllegalCharsetNameException;
 import java.nio.charset.UnsupportedCharsetException;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +78,7 @@ public class UrlDecoder
 	 *            encoding to decode with
 	 * @return decoded string
 	 */
-	public String decode(final String s, final String enc)
+	public String decode(final String s, @NonNull final String enc)
 	{
 		Args.notNull(enc, "enc");
 
@@ -98,7 +99,7 @@ public class UrlDecoder
 	 *            encoding to decode with
 	 * @return decoded string
 	 */
-	public String decode(final String source, final Charset charset)
+	public String decode(final String source, @NonNull final Charset charset)
 	{
 		if (source == null || source.isEmpty())
 		{

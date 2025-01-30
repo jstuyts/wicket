@@ -27,8 +27,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.time.Instants;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A multivalue map of headers names and header values suitable for processing http request and
@@ -100,7 +102,7 @@ public class HttpHeaderCollection
 	 * @param value
 	 *            header value
 	 */
-	public void addHeader(String name, String value)
+	public void addHeader(String name, @NonNull String value)
 	{
 		// be lenient and strip leading / trailing blanks
 		value = Args.notNull(value, "value").trim();
@@ -315,7 +317,7 @@ public class HttpHeaderCollection
 		private final String key;
 		private final String name;
 
-		private HeaderKey(String name)
+		private HeaderKey(@NonNull String name)
 		{
 			this.name = Args.notEmpty(name, "name").trim();
 			key = this.name.toLowerCase(Locale.US);

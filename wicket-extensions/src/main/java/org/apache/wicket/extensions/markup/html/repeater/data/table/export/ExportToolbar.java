@@ -21,6 +21,7 @@ import java.io.OutputStream;
 import java.time.Duration;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractToolbar;
@@ -39,6 +40,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.AbstractResourceStreamWriter;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.IResourceStreamWriter;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A toolbar that provides links to download the data represented by all {@link IExportableColumn}s in the table
@@ -114,7 +116,7 @@ public class ExportToolbar extends AbstractToolbar
 	 *      the models of the export message displayed in the toolbar.
 	 * @return {@code this}, for chaining.
 	 */
-	public ExportToolbar setMessageModel(IModel<String> messageModel)
+	public ExportToolbar setMessageModel(@NonNull IModel<String> messageModel)
 	{
 		this.messageModel = wrap(Args.notNull(messageModel, "messageModel"));
 		return this;
@@ -127,7 +129,7 @@ public class ExportToolbar extends AbstractToolbar
 	 *      The model of the file name used for the exported data.
 	 * @return {@code this}, for chaining.
 	 */
-	public ExportToolbar setFileNameModel(IModel<String> fileNameModel)
+	public ExportToolbar setFileNameModel(@NonNull IModel<String> fileNameModel)
 	{
 		this.fileNameModel = wrap(Args.notNull(fileNameModel, "fileNameModel"));
 		return this;
@@ -287,7 +289,7 @@ public class ExportToolbar extends AbstractToolbar
 	 *      The {@link IDataExporter} to add to the toolbar.
 	 * @return {@code this}, for chaining.
 	 */
-	public ExportToolbar addDataExporter(IDataExporter exporter)
+	public ExportToolbar addDataExporter(@NonNull IDataExporter exporter)
 	{
 		Args.notNull(exporter, "exporter");
 		dataExporters.add(exporter);

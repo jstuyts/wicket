@@ -26,6 +26,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Abstract  {@link IPartialPageRequestHandler} that implements common methods for Ajax and Web-sockets
@@ -36,12 +37,12 @@ public abstract class AbstractPartialPageRequestHandler implements IPartialPageR
     /** The associated Page */
     private final Page page;
 
-    protected AbstractPartialPageRequestHandler(Page page) {
+    protected AbstractPartialPageRequestHandler(@NonNull Page page) {
         this.page = Args.notNull(page, "page");
     }
 
     @Override
-    public final void addChildren(MarkupContainer parent, Class<?> childCriteria)
+    public final void addChildren(@NonNull MarkupContainer parent, @NonNull Class<?> childCriteria)
     {
         Args.notNull(parent, "parent");
         Args.notNull(childCriteria, "childCriteria");

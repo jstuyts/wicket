@@ -23,6 +23,7 @@ import java.util.Set;
 
 import org.apache.wicket.util.file.Files;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Keep files in a nested filed structure to minimize amount of directory entries (inodes) in a single directory. 
@@ -38,7 +39,7 @@ public class NestedFolders
 	 * 
 	 * @param base base has to be a folder
 	 */
-	public NestedFolders(File base)
+	public NestedFolders(@NonNull File base)
 	{
 		this.base = Args.notNull(base, "base");
 	}

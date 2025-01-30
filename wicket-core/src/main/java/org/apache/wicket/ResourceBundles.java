@@ -35,6 +35,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 import org.apache.wicket.resource.bundles.ConcatResourceBundleReference;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Contains all resource bundles that are registered in the application. Resource bundles provide a
@@ -58,7 +59,7 @@ public class ResourceBundles
 	 * @param registry
 	 *      the registry that keeps all referenced resources
 	 */
-	public ResourceBundles(final ResourceReferenceRegistry registry)
+	public ResourceBundles(@NonNull final ResourceReferenceRegistry registry)
 	{
 		this.registry = Args.notNull(registry, "registry");
 		this.providedResourcesToBundles = new HashMap<HeaderItem, HeaderItem>();

@@ -31,8 +31,6 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import org.apache.wicket.Session;
 import org.apache.wicket.ThreadContext;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.protocol.http.servlet.ResponseIOException;
@@ -42,6 +40,7 @@ import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.file.WebXmlFile;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -117,7 +116,7 @@ public class WicketFilter implements Filter
 	 * @param application
 	 *            web application
 	 */
-	public WicketFilter(WebApplication application)
+	public WicketFilter(@NonNull WebApplication application)
 	{
 		this.application = Args.notNull(application, "application");
 	}

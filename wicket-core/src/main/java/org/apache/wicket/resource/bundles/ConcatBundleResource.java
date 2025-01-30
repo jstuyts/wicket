@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.MissingResourceException;
 
 import jakarta.servlet.http.HttpServletResponse;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.markup.head.IReferenceHeaderItem;
 import org.apache.wicket.request.resource.AbstractResource;
@@ -42,6 +41,7 @@ import org.apache.wicket.util.lang.Classes;
 import org.apache.wicket.util.resource.AbstractResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,7 +72,7 @@ public class ConcatBundleResource extends AbstractResource implements IStaticCac
 	 * 
 	 * @param providedResources
 	 */
-	public ConcatBundleResource(List<? extends IReferenceHeaderItem> providedResources)
+	public ConcatBundleResource(@NonNull List<? extends IReferenceHeaderItem> providedResources)
 	{
 		this.providedResources = Args.notNull(providedResources, "providedResources");
 		cachingEnabled = true;

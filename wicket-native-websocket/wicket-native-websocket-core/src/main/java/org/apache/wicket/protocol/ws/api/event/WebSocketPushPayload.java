@@ -19,6 +19,7 @@ package org.apache.wicket.protocol.ws.api.event;
 import org.apache.wicket.protocol.ws.api.WebSocketRequestHandler;
 import org.apache.wicket.protocol.ws.api.message.IWebSocketPushMessage;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A event broadcasting payload for the case when external source triggers a web socket push.
@@ -29,7 +30,7 @@ public class WebSocketPushPayload extends WebSocketPayload<IWebSocketPushMessage
 {
 	private final IWebSocketPushMessage data;
 
-	public WebSocketPushPayload(IWebSocketPushMessage data, WebSocketRequestHandler handler)
+	public WebSocketPushPayload(@NonNull IWebSocketPushMessage data, WebSocketRequestHandler handler)
 	{
 		super(handler);
 		this.data = Args.notNull(data, "data");

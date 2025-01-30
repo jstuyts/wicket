@@ -34,6 +34,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Generics;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.template.PackageTextTemplate;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A behavior that contributes {@link WicketWebSocketJQueryResourceReference}
@@ -94,7 +95,7 @@ public class BaseWebSocketBehavior extends Behavior
 	 *  @param connectionToken
 	 *  		an optional token to support connections to the same resource from multiple browser tabs
 	 */
-	public BaseWebSocketBehavior(String resourceName, String connectionToken)
+	public BaseWebSocketBehavior(@NonNull String resourceName, String connectionToken)
 	{
 		this.resourceName = Args.notEmpty(resourceName, "resourceName");
 		this.connectionToken = connectionToken;

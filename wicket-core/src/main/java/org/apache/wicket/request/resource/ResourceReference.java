@@ -28,6 +28,7 @@ import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
 import org.danekja.java.util.function.serializable.SerializableSupplier;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Reference to a resource. Can be used to reference global resources.
@@ -53,7 +54,7 @@ public abstract class ResourceReference implements IClusterable
 	 * @param key
 	 *            The data making up the resource reference
 	 */
-	public ResourceReference(final Key key)
+	public ResourceReference(@NonNull final Key key)
 	{
 		Args.notNull(key, "key");
 
@@ -74,7 +75,7 @@ public abstract class ResourceReference implements IClusterable
 	 * @param variation
 	 *            resource variation
 	 */
-	public ResourceReference(Class<?> scope, String name, Locale locale, String style,
+	public ResourceReference(@NonNull Class<?> scope, @NonNull String name, Locale locale, String style,
 		String variation)
 	{
 		Args.notNull(scope, "scope");
@@ -279,13 +280,13 @@ public abstract class ResourceReference implements IClusterable
 		
 		final SerializableSupplier<IResource> resourceBuilder;
 
-		public LambdaResourceReference(String name, SerializableSupplier<IResource> resourceBuilder) 
+		public LambdaResourceReference(String name, @NonNull SerializableSupplier<IResource> resourceBuilder)
 		{
 			super(name);
 			this.resourceBuilder = Args.notNull(resourceBuilder, "resourceBuilder");
 		}
 
-		public LambdaResourceReference(Key key, SerializableSupplier<IResource> resourceBuilder) 
+		public LambdaResourceReference(Key key, @NonNull SerializableSupplier<IResource> resourceBuilder)
 		{
 			super(key);
 			this.resourceBuilder = Args.notNull(resourceBuilder, "resourceBuilder");
@@ -437,7 +438,7 @@ public abstract class ResourceReference implements IClusterable
 		 * @param variation
 		 *            resource variation
 		 */
-		public Key(final String scope, final String name, final Locale locale, final String style,
+		public Key(@NonNull final String scope, @NonNull final String name, final Locale locale, final String style,
 			final String variation)
 		{
 			Args.notNull(scope, "scope");

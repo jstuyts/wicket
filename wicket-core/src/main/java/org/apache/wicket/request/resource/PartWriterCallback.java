@@ -27,6 +27,7 @@ import org.apache.wicket.request.resource.IResource.Attributes;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.io.Streams;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Used to read a part of an input stream and writes it to the output stream of the response taken
@@ -90,7 +91,7 @@ public class PartWriterCallback extends WriteCallback
 	 *            the end position to read to (if not null the stream is going to be read till
 	 *            endbyte, else to the end of the whole stream)
 	 */
-	public PartWriterCallback(InputStream inputStream, Long contentLength, Long startbyte,
+	public PartWriterCallback(InputStream inputStream, @NonNull Long contentLength, Long startbyte,
 		Long endbyte)
 	{
 		this.inputStream = inputStream;

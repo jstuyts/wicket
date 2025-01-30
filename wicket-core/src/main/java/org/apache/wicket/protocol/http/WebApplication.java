@@ -24,6 +24,10 @@ import java.util.LinkedList;
 import java.util.Locale;
 import java.util.function.Function;
 
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.RuntimeConfigurationType;
@@ -82,13 +86,9 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.PackageName;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.watch.IModificationWatcher;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 
 /**
@@ -323,7 +323,7 @@ public abstract class WebApplication extends Application
 	 * @param mapper
 	 *            the encoder that will be used for this mount
 	 */
-	public void mount(final IRequestMapper mapper)
+	public void mount(@NonNull final IRequestMapper mapper)
 	{
 		Args.notNull(mapper, "mapper");
 		getRootRequestMapperAsCompound().add(mapper);
@@ -405,7 +405,7 @@ public abstract class WebApplication extends Application
 	 * @param path
 	 *            the path to unmount
 	 */
-	public void unmount(String path)
+	public void unmount(@NonNull String path)
 	{
 		Args.notNull(path, "path");
 
@@ -670,7 +670,7 @@ public abstract class WebApplication extends Application
 	 * @param wicketFilter
 	 *            The wicket filter instance for this application
 	 */
-	public final void setWicketFilter(final WicketFilter wicketFilter)
+	public final void setWicketFilter(@NonNull final WicketFilter wicketFilter)
 	{
 		Args.notNull(wicketFilter, "wicketFilter");
 		this.wicketFilter = wicketFilter;
@@ -804,7 +804,7 @@ public abstract class WebApplication extends Application
 	 * 
 	 * @param configurationType
 	 */
-	public Application setConfigurationType(RuntimeConfigurationType configurationType)
+	public Application setConfigurationType(@NonNull RuntimeConfigurationType configurationType)
 	{
 		if (this.configurationType != null)
 		{

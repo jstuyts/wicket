@@ -47,6 +47,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
 import org.apache.wicket.util.string.AppendingStringBuffer;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A request target that produces ajax response envelopes used on the client side to update
@@ -155,7 +156,7 @@ public class AjaxRequestHandler extends AbstractPartialPageRequestHandler implem
 	}
 
 	@Override
-	public void addListener(AjaxRequestTarget.IListener listener) throws IllegalStateException
+	public void addListener(AjaxRequestTarget.@NonNull IListener listener) throws IllegalStateException
 	{
 		Args.notNull(listener, "listener");
 		assertListenersNotFrozen();

@@ -20,6 +20,7 @@ import java.io.Serializable;
 
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.reference.ClassReference;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A reference to a property that can be validated.
@@ -31,7 +32,7 @@ public final class Property implements Serializable
 	private final ClassReference<?> owner;
 	private final String name;
 
-	public Property(ClassReference<?> owner, String name)
+	public Property(@NonNull ClassReference<?> owner, @NonNull String name)
 	{
 		Args.notNull(owner, "owner");
 		Args.notEmpty(name, "name");

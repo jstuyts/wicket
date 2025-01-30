@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Utility class that contains visitor/traversal related code
@@ -126,7 +127,7 @@ public class Visits
 
 	@SuppressWarnings("unchecked")
 	private static <S, R> void visitChildren(final Iterable<? super S> container,
-		final IVisitor<S, R> visitor, final IVisitFilter filter, final Visit<R> visit)
+		@NonNull final IVisitor<S, R> visitor, final IVisitFilter filter, final Visit<R> visit)
 	{
 		Args.notNull(visitor, "visitor");
 
@@ -237,7 +238,7 @@ public class Visits
 	 * @return return value from the {@code visitor} or {@code null} if none
 	 */
 	public static <S, R> R visitPostOrder(final Object root,
-		final org.apache.wicket.util.visit.IVisitor<S, R> visitor, final IVisitFilter filter)
+		final org.apache.wicket.util.visit.@NonNull IVisitor<S, R> visitor, final IVisitFilter filter)
 	{
 		Args.notNull(visitor, "visitor");
 

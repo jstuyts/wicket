@@ -31,6 +31,7 @@ import org.apache.wicket.request.ILogData;
 import org.apache.wicket.request.IRequestCycle;
 import org.apache.wicket.response.StringResponse;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,14 +51,14 @@ public class WebSocketRequestHandler extends AbstractPartialPageRequestHandler i
 
 	private PageLogData logData;
 
-	public WebSocketRequestHandler(final Component component, final IWebSocketConnection connection)
+	public WebSocketRequestHandler(@NonNull final Component component, @NonNull final IWebSocketConnection connection)
 	{
 		super(Args.notNull(component, "component").getPage());
 		this.connection = Args.notNull(connection, "connection");
 	}
 
 	@Override
-	public void push(CharSequence message)
+	public void push(@NonNull CharSequence message)
 	{
 		if (connection.isOpen())
 		{
@@ -77,7 +78,7 @@ public class WebSocketRequestHandler extends AbstractPartialPageRequestHandler i
 	}
 
 	@Override
-	public Future<Void> pushAsync(CharSequence message, long timeout)
+	public Future<Void> pushAsync(@NonNull CharSequence message, long timeout)
 	{
 		if (connection.isOpen())
 		{
@@ -98,7 +99,7 @@ public class WebSocketRequestHandler extends AbstractPartialPageRequestHandler i
 	}
 
 	@Override
-	public void push(byte[] message, int offset, int length)
+	public void push(byte @NonNull [] message, int offset, int length)
 	{
 		if (connection.isOpen())
 		{
@@ -118,13 +119,13 @@ public class WebSocketRequestHandler extends AbstractPartialPageRequestHandler i
 	}
 
 	@Override
-	public Future<Void> pushAsync(byte[] message, int offset, int length)
+	public Future<Void> pushAsync(byte @NonNull [] message, int offset, int length)
 	{
 		return pushAsync(message, offset, length, -1);
 	}
 
 	@Override
-	public Future<Void> pushAsync(byte[] message, int offset, int length, long timeout)
+	public Future<Void> pushAsync(byte @NonNull [] message, int offset, int length, long timeout)
 	{
 		if (connection.isOpen())
 		{

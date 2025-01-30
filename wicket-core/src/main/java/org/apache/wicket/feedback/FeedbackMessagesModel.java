@@ -26,6 +26,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -61,7 +62,7 @@ public class FeedbackMessagesModel implements IModel<List<FeedbackMessage>>
 	 *            The component where the page will be get from for which messages will be displayed
 	 *            usually the same page as the one feedbackpanel is attached to
 	 */
-	public FeedbackMessagesModel(Component pageResolvingComponent)
+	public FeedbackMessagesModel(@NonNull Component pageResolvingComponent)
 	{
 		Args.notNull(pageResolvingComponent, "pageResolvingComponent");
 		this.pageResolvingComponent = pageResolvingComponent;

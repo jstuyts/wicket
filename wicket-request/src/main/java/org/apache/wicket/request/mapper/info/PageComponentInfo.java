@@ -18,6 +18,7 @@ package org.apache.wicket.request.mapper.info;
 
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Encapsulates both page and component info. Rendered in form of
@@ -39,7 +40,7 @@ public class PageComponentInfo
 	 * @param pageInfo
 	 * @param componentInfo
 	 */
-	public PageComponentInfo(final PageInfo pageInfo, final ComponentInfo componentInfo)
+	public PageComponentInfo(@NonNull final PageInfo pageInfo, final ComponentInfo componentInfo)
 	{
 		Args.notNull(pageInfo, "pageInfo");
 

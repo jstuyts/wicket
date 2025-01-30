@@ -17,6 +17,7 @@
 package org.apache.wicket.examples.upload;
 
 import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -31,13 +32,14 @@ import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.head.OnEventHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.upload.resource.IUploadsFileManager;
 import org.apache.wicket.markup.html.form.upload.resource.FileUploadToResourceField;
+import org.apache.wicket.markup.html.form.upload.resource.IUploadsFileManager;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Bytes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Upload example.
@@ -50,7 +52,7 @@ public class UploadToResourcePage extends WicketExamplePage
 	{
 
 		@Override
-		public void bind(Component component)
+		public void bind(@NonNull Component component)
 		{
 			component.setOutputMarkupPlaceholderTag(true);
 		}

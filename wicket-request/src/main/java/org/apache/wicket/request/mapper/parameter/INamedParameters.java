@@ -23,6 +23,7 @@ import org.apache.wicket.request.IRequestMapper;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.StringValue;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Container for parameters that are identified by their name
@@ -83,7 +84,7 @@ public interface INamedParameters
 		 * @param value
 		 * @param type
 		 */
-		public NamedPair(final String key, final String value, Type type)
+		public NamedPair(@NonNull final String key, @NonNull final String value, @NonNull Type type)
 		{
 			this.key = Args.notEmpty(key, "key");
 			this.value = Args.notNull(value, "value");
@@ -150,7 +151,7 @@ public interface INamedParameters
 	 * @param name
 	 * @return parameter value
 	 */
-	StringValue get(final String name);
+	StringValue get(@NonNull final String name);
 
 	/**
 	 * Return list of all values for named parameter with given name
@@ -158,7 +159,7 @@ public interface INamedParameters
 	 * @param name
 	 * @return list of parameter values
 	 */
-	List<StringValue> getValues(final String name);
+	List<StringValue> getValues(@NonNull final String name);
 
 	/**
 	 * @return All named parameters in exact order.
@@ -191,7 +192,7 @@ public interface INamedParameters
 	 *            to any of the criteria.
 	 * @return this
 	 */
-	INamedParameters remove(final String name, String... values);
+	INamedParameters remove(@NonNull final String name, String... values);
 
 	/**
 	 * Adds value to named parameter with given name.
@@ -213,7 +214,7 @@ public interface INamedParameters
 	 * @param type
 	 * @return this
 	 */
-	INamedParameters add(final String name, final Object value, final int index, Type type);
+	INamedParameters add(@NonNull final String name, @NonNull final Object value, final int index, Type type);
 
 	/**
 	 * Sets the named parameter on specified position. The {@link IRequestMapper}s may or may not

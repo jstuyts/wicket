@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
 
 import org.apache.wicket.request.resource.caching.IStaticCacheableResource;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * provides a static version string for all package resources 
@@ -39,7 +40,7 @@ public class StaticResourceVersion implements IResourceVersion
 	 * @param version
 	 *             static version string to deliver for all queries resources
 	 */
-	public StaticResourceVersion(String version)
+	public StaticResourceVersion(@NonNull String version)
 	{
 		this.version = Args.notNull(version, "version");
 		this.pattern = Pattern.compile(Pattern.quote(version));

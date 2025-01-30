@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A CSP value that renders the same value as rendered for the specified directive.
@@ -41,7 +42,7 @@ public class ClonedCSPValue implements CSPRenderable
 	 * @param sourceDirective
 	 *            the directive to clone;
 	 */
-	public ClonedCSPValue(CSPHeaderConfiguration headerConfiguration, CSPDirective sourceDirective)
+	public ClonedCSPValue(@NonNull CSPHeaderConfiguration headerConfiguration, @NonNull CSPDirective sourceDirective)
 	{
 		this.headerConfiguration = Args.notNull(headerConfiguration, "headerConfiguration");
 		this.sourceDirective = Args.notNull(sourceDirective, "sourceDirective");

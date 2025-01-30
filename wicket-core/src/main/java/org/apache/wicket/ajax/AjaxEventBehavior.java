@@ -28,6 +28,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Checks;
 import org.apache.wicket.util.string.Strings;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -79,7 +80,7 @@ public abstract class AjaxEventBehavior extends AbstractDefaultAjaxBehavior
 	 * @param event
 	 *      the event this behavior will be attached to
 	 */
-	public AjaxEventBehavior(String event)
+	public AjaxEventBehavior(@NonNull String event)
 	{
 		Args.notEmpty(event, "event");
 
@@ -164,7 +165,7 @@ public abstract class AjaxEventBehavior extends AbstractDefaultAjaxBehavior
 	 *            the {@code SerializableConsumer} which accepts the {@link AjaxRequestTarget}
 	 * @return the {@link AjaxEventBehavior}
 	 */
-	public static AjaxEventBehavior onEvent(String eventName, SerializableConsumer<AjaxRequestTarget> onEvent)
+	public static AjaxEventBehavior onEvent(String eventName, @NonNull SerializableConsumer<AjaxRequestTarget> onEvent)
 	{
 		Args.notNull(onEvent, "onEvent");
 

@@ -24,6 +24,7 @@ import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -67,7 +68,7 @@ public class TextRequestHandler implements IRequestHandler
 	 * @param string
 	 *            string for the response
 	 */
-	public TextRequestHandler(final String contentType, final String encoding, final String string)
+	public TextRequestHandler(@NonNull final String contentType, final String encoding, @NonNull final String string)
 	{
 		this.contentType = Args.notEmpty(contentType, "contentType");
 		this.string = Args.notNull(string, "string");

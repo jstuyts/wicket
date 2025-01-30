@@ -16,6 +16,8 @@
  */
 package org.apache.wicket.request.handler.resource;
 
+import java.time.Duration;
+
 import org.apache.wicket.core.request.handler.logger.ResourceStreamLogData;
 import org.apache.wicket.request.ILoggableRequestHandler;
 import org.apache.wicket.request.IRequestCycle;
@@ -26,7 +28,7 @@ import org.apache.wicket.request.resource.ResourceStreamResource;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.string.Strings;
-import java.time.Duration;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -79,7 +81,7 @@ public class ResourceStreamRequestHandler implements IRequestHandler, ILoggableR
 	 *            the resource stream for the response
 	 * @param fileName
 	 */
-	public ResourceStreamRequestHandler(IResourceStream resourceStream, String fileName)
+	public ResourceStreamRequestHandler(@NonNull IResourceStream resourceStream, String fileName)
 	{
 		Args.notNull(resourceStream, "resourceStream");
 

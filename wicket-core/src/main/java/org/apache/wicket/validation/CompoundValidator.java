@@ -27,6 +27,7 @@ import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A compound {@link IValidator}. Once an error is reported against the {@link IValidatable} being
@@ -57,7 +58,7 @@ public class CompoundValidator<T> extends Behavior implements IValidator<T>
 	 *            an <code>IValidator</code> to be added
 	 * @return this <code>ValidationError</code> for chaining purposes
 	 */
-	public final CompoundValidator<T> add(IValidator<T> validator)
+	public final CompoundValidator<T> add(@NonNull IValidator<T> validator)
 	{
 		Args.notNull(validator, "validator");
 
@@ -109,7 +110,7 @@ public class CompoundValidator<T> extends Behavior implements IValidator<T>
 	}
 
 	@Override
-	public void bind(Component component)
+	public void bind(@NonNull Component component)
 	{
 		for (IValidator<T> validator : validators) {
 			if (validator instanceof Behavior) {

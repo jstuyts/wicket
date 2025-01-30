@@ -20,6 +20,7 @@ import java.time.Duration;
 
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Automatically re-renders the component it is attached to via AJAX at a regular interval.
@@ -72,7 +73,7 @@ public class AjaxSelfUpdatingTimerBehavior extends AbstractAjaxTimerBehavior
 	 *            the {@code SerializableConsumer} which accepts the {@link AjaxRequestTarget}
 	 * @return the {@link AbstractAjaxTimerBehavior}
 	 */
-	public static AjaxSelfUpdatingTimerBehavior onSelfUpdate(Duration interval, SerializableConsumer<AjaxRequestTarget> onTimer)
+	public static AjaxSelfUpdatingTimerBehavior onSelfUpdate(Duration interval, @NonNull SerializableConsumer<AjaxRequestTarget> onTimer)
 	{
 		Args.notNull(onTimer, "onTimer");
 

@@ -17,14 +17,16 @@
 package org.apache.wicket.markup.html.form.upload.resource;
 
 import java.util.List;
+
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.lang.Args;
-import com.github.openjson.JSONArray;
-import com.github.openjson.JSONException;
-import com.github.openjson.JSONObject;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A resource reference that provides default implementation of AbstractFileUploadResource.
@@ -67,7 +69,7 @@ public class FileUploadResourceReference extends ResourceReference
 		return instance;
 	}
 
-	protected FileUploadResourceReference(IUploadsFileManager uploadFileManager)
+	protected FileUploadResourceReference(@NonNull IUploadsFileManager uploadFileManager)
 	{
 		super(FileUploadResourceReference.class, "file-uploads");
 

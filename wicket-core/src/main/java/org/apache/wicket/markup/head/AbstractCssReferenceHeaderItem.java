@@ -23,6 +23,7 @@ import org.apache.wicket.markup.html.CrossOrigin;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.value.AttributeMap;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A {@link org.apache.wicket.markup.head.HeaderItem} that renders a CSS reference.
@@ -82,7 +83,7 @@ public abstract class AbstractCssReferenceHeaderItem extends CssHeaderItem imple
 		return this;
 	}
 
-	protected final void internalRenderCSSReference(Response response, String url)
+	protected final void internalRenderCSSReference(Response response, @NonNull String url)
 	{
 		Args.notEmpty(url, "url");
 

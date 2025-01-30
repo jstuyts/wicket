@@ -16,6 +16,14 @@
  */
 package org.apache.wicket.protocol.ws;
 
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Function;
+
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.Page;
@@ -37,16 +45,9 @@ import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Function;
 
 /**
  * Web Socket related settings.
@@ -205,7 +206,7 @@ public class WebSocketSettings
 	 * @param executor
 	 *            The executor used for processing push messages.
 	 */
-	public WebSocketSettings setWebSocketPushMessageExecutor(Executor executor)
+	public WebSocketSettings setWebSocketPushMessageExecutor(@NonNull Executor executor)
 	{
 		Args.notNull(executor, "executor");
 		this.webSocketPushMessageExecutor = executor;
@@ -235,7 +236,7 @@ public class WebSocketSettings
 	 *              The registry that tracks all currently connected WebSocket clients
 	 * @return {@code this}, for method chaining
 	 */
-	public WebSocketSettings setConnectionRegistry(IWebSocketConnectionRegistry connectionRegistry)
+	public WebSocketSettings setConnectionRegistry(@NonNull IWebSocketConnectionRegistry connectionRegistry)
 	{
 		Args.notNull(connectionRegistry, "connectionRegistry");
 		this.connectionRegistry = connectionRegistry;
@@ -252,7 +253,7 @@ public class WebSocketSettings
 	 *            {@link org.apache.wicket.protocol.ws.api.WebSocketBehavior}s and
 	 *            {@link org.apache.wicket.protocol.ws.api.WebSocketResource}s.
 	 */
-	public WebSocketSettings setSendPayloadExecutor(Executor sendPayloadExecutor)
+	public WebSocketSettings setSendPayloadExecutor(@NonNull Executor sendPayloadExecutor)
 	{
 		Args.notNull(sendPayloadExecutor, "sendPayloadExecutor");
 		this.sendPayloadExecutor = sendPayloadExecutor;
@@ -277,7 +278,7 @@ public class WebSocketSettings
 	 * Sets the IWebSocketSessionConfigurer
 	 * @param socketSessionConfigurer A non-null {@link org.apache.wicket.protocol.ws.api.IWebSocketSessionConfigurer}
 	 */
-	public void setSocketSessionConfigurer(IWebSocketSessionConfigurer socketSessionConfigurer) {
+	public void setSocketSessionConfigurer(@NonNull IWebSocketSessionConfigurer socketSessionConfigurer) {
 		Args.notNull(socketSessionConfigurer, "socketSessionConfigurer");
 		this.socketSessionConfigurer = socketSessionConfigurer;
 	}

@@ -17,6 +17,7 @@
 package org.apache.wicket.util.file;
 
 import org.apache.wicket.util.resource.IResourceStream;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Knows how to find resources.
@@ -35,5 +36,5 @@ public interface IResourceFinder
 	 *            The filename with possible path
 	 * @return The resource stream
 	 */
-	IResourceStream find(final Class<?> clazz, final String pathname);
+	IResourceStream find(final Class<?> clazz, @NonNull final String pathname);
 }

@@ -23,6 +23,7 @@ import java.nio.charset.IllegalCharsetNameException;
 import java.nio.charset.UnsupportedCharsetException;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Adapted from Spring Framework's UriUtils class, but defines instances for query string encoding versus URL path
@@ -177,7 +178,7 @@ public class UrlEncoder
 	 *            charset to use for encoding
 	 * @return encoded string
 	 */
-	public String encode(final String s, final String charsetName)
+	public String encode(final String s, @NonNull final String charsetName)
 	{
 		Args.notNull(charsetName, "charsetName");
 
@@ -198,7 +199,7 @@ public class UrlEncoder
 	 *            encoding to use
 	 * @return encoded string
 	 */
-	public String encode(final String unsafeInput, final Charset charset)
+	public String encode(final String unsafeInput, @NonNull final Charset charset)
 	{
 		if (unsafeInput == null || unsafeInput.isEmpty())
 		{

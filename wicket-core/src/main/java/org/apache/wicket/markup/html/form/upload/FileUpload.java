@@ -32,6 +32,7 @@ import org.apache.wicket.util.file.Files;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -54,7 +55,7 @@ public class FileUpload
 	 * @param item
 	 *            The uploaded file item
 	 */
-	public FileUpload(final FileItem item)
+	public FileUpload(@NonNull final FileItem item)
 	{
 		Args.notNull(item, "item");
 		this.item = item;
@@ -106,7 +107,7 @@ public class FileUpload
 	 *
 	 * @return The cryptographic digest of the file
 	 */
-	public byte[] getDigest(String algorithm)
+	public byte[] getDigest(@NonNull String algorithm)
 	{
 		try
 		{

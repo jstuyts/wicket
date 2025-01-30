@@ -19,6 +19,7 @@ package org.apache.wicket.request.resource;
 import org.apache.wicket.Application;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.ResourceUtils;
+import org.jspecify.annotations.NonNull;
 
 /**
  * This is a ResourceReference to handle context-relative resources such as js, css and 
@@ -92,7 +93,7 @@ public class ContextRelativeResourceReference extends ResourceReference
 	 * @param minifyIt 
 	 * 				says if the resource name can be minified or not
 	 */
-	public ContextRelativeResourceReference(final String name, final String minPostfix, final boolean minifyIt)
+	public ContextRelativeResourceReference(final String name, @NonNull final String minPostfix, final boolean minifyIt)
 	{
 		super(name);
 		

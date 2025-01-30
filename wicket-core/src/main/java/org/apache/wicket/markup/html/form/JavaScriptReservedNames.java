@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Utility class for names used by JavaScript DOM API. These names should not be used as form element names, as they would interfere
@@ -142,7 +143,7 @@ class JavaScriptReservedNames
 	 *
 	 * @return {@code true} if the name is used by the JavaScript DOM API.
 	 */
-	public static boolean isNameReserved(String name)
+	public static boolean isNameReserved(@NonNull String name)
 	{
 		Args.notNull(name, "name");
 

@@ -16,16 +16,17 @@
  */
 package org.apache.wicket.core.util.crypt;
 
+import java.security.Provider;
+import java.security.Security;
+import java.util.UUID;
+
 import org.apache.wicket.Session;
 import org.apache.wicket.core.util.crypt.KeyInSessionSunJceCryptFactory.CryptData;
 import org.apache.wicket.util.crypt.ICrypt;
 import org.apache.wicket.util.crypt.SunJceCrypt;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
-
-import java.security.Provider;
-import java.security.Security;
-import java.util.UUID;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Crypt factory that produces {@link SunJceCrypt} instances based on session-specific
@@ -55,7 +56,7 @@ public class KeyInSessionSunJceCryptFactory extends AbstractKeyInSessionCryptFac
 	 * @param cryptMethod
 	 *              the name of the crypt method (cipher)
 	 */
-	public KeyInSessionSunJceCryptFactory(String cryptMethod)
+	public KeyInSessionSunJceCryptFactory(@NonNull String cryptMethod)
 	{
 		this.cryptMethod = Args.notNull(cryptMethod, "Crypt method");
 

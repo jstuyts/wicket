@@ -26,7 +26,6 @@ import java.util.Locale;
 import java.util.Set;
 
 import jakarta.servlet.http.HttpServletResponse;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.WicketRuntimeException;
@@ -42,6 +41,7 @@ import org.apache.wicket.util.io.Streams;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Convenience resource implementation. The subclass must implement
@@ -264,7 +264,7 @@ public abstract class AbstractResource implements IResource
 		 *
 		 * @return {@code this}, for chaining.
 		 */
-		public ResourceResponse setContentDisposition(ContentDisposition contentDisposition)
+		public ResourceResponse setContentDisposition(@NonNull ContentDisposition contentDisposition)
 		{
 			Args.notNull(contentDisposition, "contentDisposition");
 			this.contentDisposition = contentDisposition;
@@ -483,7 +483,7 @@ public abstract class AbstractResource implements IResource
 		 *
 		 * @return {@code this}, for chaining.
 		 */
-		public ResourceResponse setCacheDuration(Duration duration)
+		public ResourceResponse setCacheDuration(@NonNull Duration duration)
 		{
 			cacheDuration = Args.notNull(duration, "duration");
 			return this;
@@ -540,7 +540,7 @@ public abstract class AbstractResource implements IResource
 		 *
 		 * @return {@code this}, for chaining.
 		 */
-		public ResourceResponse setCacheScope(WebResponse.CacheScope scope)
+		public ResourceResponse setCacheScope(WebResponse.@NonNull CacheScope scope)
 		{
 			cacheScope = Args.notNull(scope, "scope");
 			return this;
@@ -559,7 +559,7 @@ public abstract class AbstractResource implements IResource
 		 *
 		 * @return {@code this}, for chaining.
 		 */
-		public ResourceResponse setWriteCallback(final WriteCallback writeCallback)
+		public ResourceResponse setWriteCallback(@NonNull final WriteCallback writeCallback)
 		{
 			Args.notNull(writeCallback, "writeCallback");
 			this.writeCallback = writeCallback;
@@ -691,7 +691,7 @@ public abstract class AbstractResource implements IResource
 	 * @throws IllegalArgumentException
 	 *             if access is forbidden
 	 */
-	private void checkHeaderAccess(String name)
+	private void checkHeaderAccess(@NonNull String name)
 	{
 		name = Args.notEmpty(name.trim().toLowerCase(Locale.ROOT), "name");
 

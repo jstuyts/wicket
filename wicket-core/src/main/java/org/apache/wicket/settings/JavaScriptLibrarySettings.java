@@ -20,6 +20,7 @@ import org.apache.wicket.ajax.WicketAjaxJQueryResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.resource.JQueryResourceReference;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Class for settings related to the JavaScript libraries that come with and are used by Wicket.
@@ -54,7 +55,7 @@ public class JavaScriptLibrarySettings
 	 *            wicket-event and wicket-ajax
 	 * @return {@code this} object for chaining
 	 */
-	public JavaScriptLibrarySettings setJQueryReference(ResourceReference jQueryReference)
+	public JavaScriptLibrarySettings setJQueryReference(@NonNull ResourceReference jQueryReference)
 	{
 		this.jQueryReference = Args.notNull(jQueryReference, "jQueryReference");
 		return this;
@@ -73,7 +74,7 @@ public class JavaScriptLibrarySettings
 	 *            a reference to the implementation of wicket-ajax.js
 	 * @return {@code this} object for chaining
 	 */
-	public JavaScriptLibrarySettings setWicketAjaxReference(ResourceReference wicketAjaxReference)
+	public JavaScriptLibrarySettings setWicketAjaxReference(@NonNull ResourceReference wicketAjaxReference)
 	{
 		this.wicketAjaxReference = Args.notNull(wicketAjaxReference, "wicketAjaxReference");
 		return this;

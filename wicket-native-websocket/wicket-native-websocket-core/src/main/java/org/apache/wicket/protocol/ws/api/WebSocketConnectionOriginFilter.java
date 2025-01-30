@@ -21,9 +21,9 @@ import java.util.Enumeration;
 import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * This filter will reject those requests which contain 'Origin' header that does not match the origin of the
@@ -53,7 +53,7 @@ public class WebSocketConnectionOriginFilter implements IWebSocketConnectionFilt
 
 	private final List<String> allowedDomains;
 
-	public WebSocketConnectionOriginFilter(final List<String> allowedDomains)
+	public WebSocketConnectionOriginFilter(@NonNull final List<String> allowedDomains)
 	{
 		this.allowedDomains = Args.notNull(allowedDomains, "allowedDomains");
 	}

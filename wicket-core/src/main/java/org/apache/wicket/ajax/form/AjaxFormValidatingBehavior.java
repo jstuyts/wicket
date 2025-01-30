@@ -16,6 +16,8 @@
  */
 package org.apache.wicket.ajax.form;
 
+import java.time.Duration;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -26,9 +28,9 @@ import org.apache.wicket.feedback.IFeedback;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.util.io.IClusterable;
-import java.time.Duration;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Ajax event behavior that submits the form and updates all form feedback panels on the page.
@@ -86,7 +88,7 @@ public class AjaxFormValidatingBehavior extends Behavior
 	}
 
 	@Override
-	public void bind(Component component)
+	public void bind(@NonNull Component component)
 	{
 		super.bind(component);
 

@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Compound implementation of IFieldValueFactory. This field value factory will keep trying added
@@ -42,7 +43,7 @@ public class CompoundFieldValueFactory implements IFieldValueFactory
 	 * 
 	 * @param factories
 	 */
-	public CompoundFieldValueFactory(final IFieldValueFactory[] factories)
+	public CompoundFieldValueFactory(final IFieldValueFactory @NonNull [] factories)
 	{
 		Args.notNull(factories, "factories");
 
@@ -54,7 +55,7 @@ public class CompoundFieldValueFactory implements IFieldValueFactory
 	 * 
 	 * @param factories
 	 */
-	public CompoundFieldValueFactory(final List<IFieldValueFactory> factories)
+	public CompoundFieldValueFactory(@NonNull final List<IFieldValueFactory> factories)
 	{
 		Args.notNull(factories, "factories");
 
@@ -67,7 +68,7 @@ public class CompoundFieldValueFactory implements IFieldValueFactory
 	 * @param f1
 	 * @param f2
 	 */
-	public CompoundFieldValueFactory(final IFieldValueFactory f1, final IFieldValueFactory f2)
+	public CompoundFieldValueFactory(@NonNull final IFieldValueFactory f1, @NonNull final IFieldValueFactory f2)
 	{
 		Args.notNull(f1, "f1");
 		Args.notNull(f2, "f2");
@@ -81,7 +82,7 @@ public class CompoundFieldValueFactory implements IFieldValueFactory
 	 * 
 	 * @param factory
 	 */
-	public void addFactory(final IFieldValueFactory factory)
+	public void addFactory(@NonNull final IFieldValueFactory factory)
 	{
 		Args.notNull(factory, "factory");
 

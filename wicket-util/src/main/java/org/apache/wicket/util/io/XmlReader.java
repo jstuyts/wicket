@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -63,7 +64,7 @@ public final class XmlReader extends Reader
 	 * @throws IOException
 	 *             In case something went wrong while reading the data
 	 */
-	public XmlReader(final InputStream inputStream, final String defaultEncoding)
+	public XmlReader(@NonNull final InputStream inputStream, final String defaultEncoding)
 		throws IOException
 	{
 		Args.notNull(inputStream, "inputStream");

@@ -20,6 +20,7 @@ import org.apache.wicket.extensions.breadcrumb.BreadCrumbLink;
 import org.apache.wicket.extensions.breadcrumb.IBreadCrumbModel;
 import org.apache.wicket.extensions.breadcrumb.IBreadCrumbParticipant;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Bread crumb link specifically for {@link BreadCrumbPanel bread crumb panels}. It uses a
@@ -84,8 +85,8 @@ public class BreadCrumbPanelLink extends BreadCrumbLink
 	 * @param breadCrumbPanelFactory
 	 *            The factory to create bread crumb panels
 	 */
-	public BreadCrumbPanelLink(final String id, final IBreadCrumbModel breadCrumbModel,
-		final IBreadCrumbPanelFactory breadCrumbPanelFactory)
+	public BreadCrumbPanelLink(final String id, @NonNull final IBreadCrumbModel breadCrumbModel,
+		@NonNull final IBreadCrumbPanelFactory breadCrumbPanelFactory)
 	{
 		super(id, breadCrumbModel);
 

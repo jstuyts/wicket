@@ -25,7 +25,6 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import jakarta.validation.groups.Default;
 import jakarta.validation.metadata.ConstraintDescriptor;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.ComponentTag;
@@ -34,6 +33,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.INullAcceptingValidator;
 import org.apache.wicket.validation.IValidatable;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Validator that delegates to the bean validation framework. The integration has to be first
@@ -150,7 +150,7 @@ public class PropertyValidator<T> extends Behavior implements INullAcceptingVali
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void bind(Component component)
+	public void bind(@NonNull Component component)
 	{
 		if (this.component != null)
 		{

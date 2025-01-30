@@ -28,6 +28,7 @@ import org.apache.wicket.request.Response;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.value.ValueMap;
+import org.jspecify.annotations.NonNull;
 
 /**
  * {@link HeaderItem} for meta information such as &lt;meta&gt; tags or
@@ -59,7 +60,7 @@ public class MetaDataHeaderItem extends HeaderItem
 	 * @param tagName
 	 * 		the name of the tag
 	 */
-	public MetaDataHeaderItem(String tagName)
+	public MetaDataHeaderItem(@NonNull String tagName)
 	{
 		this.tagName = Args.notEmpty(tagName, "tagName");
 		this.tagAttributes = new ValueMap();
@@ -77,7 +78,7 @@ public class MetaDataHeaderItem extends HeaderItem
 	 * @return
 	 * 		The current item.
 	 */
-	public MetaDataHeaderItem addTagAttribute(String attributeName, Object attributeValue)
+	public MetaDataHeaderItem addTagAttribute(@NonNull String attributeName, @NonNull Object attributeValue)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 		Args.notNull(attributeValue, "attributeValue");
@@ -95,7 +96,7 @@ public class MetaDataHeaderItem extends HeaderItem
 	 * @return
 	 * 		The current item.
 	 */
-	public MetaDataHeaderItem addTagAttribute(String attributeName)
+	public MetaDataHeaderItem addTagAttribute(@NonNull String attributeName)
 	{
 		Args.notEmpty(attributeName, "attributeName");
 		

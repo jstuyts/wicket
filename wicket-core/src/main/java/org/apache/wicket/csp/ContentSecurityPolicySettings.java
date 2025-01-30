@@ -31,6 +31,7 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Build the CSP configuration like this:
@@ -73,7 +74,7 @@ public class ContentSecurityPolicySettings
 
 	private Supplier<String> nonceCreator;
 	
-	public ContentSecurityPolicySettings(Application application)
+	public ContentSecurityPolicySettings(@NonNull Application application)
 	{
 		Args.notNull(application, "application");
 		
@@ -99,7 +100,7 @@ public class ContentSecurityPolicySettings
 	 *            The new creator, must not be null.
 	 * @return {@code this} for chaining.
 	 */
-	public ContentSecurityPolicySettings setNonceCreator(Supplier<String> nonceCreator)
+	public ContentSecurityPolicySettings setNonceCreator(@NonNull Supplier<String> nonceCreator)
 	{
 		Args.notNull(nonceCreator, "nonceCreator");
 		this.nonceCreator = nonceCreator;
@@ -115,7 +116,7 @@ public class ContentSecurityPolicySettings
 	 * @return {@code this} for chaining.
 	 */
 	public ContentSecurityPolicySettings setProtectedFilter(
-		Predicate<IRequestHandler> protectedFilter)
+		@NonNull Predicate<IRequestHandler> protectedFilter)
 	{
 		Args.notNull(protectedFilter, "protectedFilter");
 		this.protectedFilter = protectedFilter;

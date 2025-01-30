@@ -18,6 +18,7 @@ package org.apache.wicket.pageStore;
 
 import org.apache.wicket.page.IManageablePage;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A wrapper around a serialized page.
@@ -57,7 +58,7 @@ public final class SerializedPage implements IManageablePage
 	 * @param pageType type of page, might be {@code null}
 	 * @param data
 	 */
-	public SerializedPage(int pageId, String pageType, byte[] data)
+	public SerializedPage(int pageId, String pageType, byte @NonNull [] data)
 	{
 		this.pageId = pageId;
 		this.pageType = pageType;

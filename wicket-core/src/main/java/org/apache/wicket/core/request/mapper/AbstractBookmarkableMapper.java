@@ -46,6 +46,7 @@ import org.apache.wicket.request.mapper.parameter.IPageParametersEncoder;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.mapper.parameter.PageParametersEncoder;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Abstract encoder for Bookmarkable, Hybrid and BookmarkableListener URLs.
@@ -85,7 +86,7 @@ public abstract class AbstractBookmarkableMapper extends AbstractComponentMapper
 		 *            optional parameter providing pageParameters
 		 */
 		public UrlInfo(PageComponentInfo pageComponentInfo,
-			Class<? extends IRequestablePage> pageClass, PageParameters pageParameters)
+			@NonNull Class<? extends IRequestablePage> pageClass, PageParameters pageParameters)
 		{
 			Args.notNull(pageClass, "pageClass");
 
@@ -162,7 +163,7 @@ public abstract class AbstractBookmarkableMapper extends AbstractComponentMapper
 		this("notUsed", new PageParametersEncoder());
 	}
 
-	public AbstractBookmarkableMapper(String mountPath, IPageParametersEncoder pageParametersEncoder)
+	public AbstractBookmarkableMapper(@NonNull String mountPath, @NonNull IPageParametersEncoder pageParametersEncoder)
 	{
 		Args.notEmpty(mountPath, "mountPath");
 
@@ -461,7 +462,7 @@ public abstract class AbstractBookmarkableMapper extends AbstractComponentMapper
 		return null;
 	}
 
-	protected final PageInfo getPageInfo(IPageRequestHandler handler)
+	protected final PageInfo getPageInfo(@NonNull IPageRequestHandler handler)
 	{
 		Args.notNull(handler, "handler");
 

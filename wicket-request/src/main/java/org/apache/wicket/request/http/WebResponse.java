@@ -16,15 +16,16 @@
  */
 package org.apache.wicket.request.http;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
+
 import jakarta.servlet.http.Cookie;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.util.encoding.UrlEncoder;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Base class for web-related responses.
@@ -84,7 +85,7 @@ public abstract class WebResponse extends Response
 	 * @param name
 	 * @param date
 	 */
-	public abstract void setDateHeader(String name, Instant date);
+	public abstract void setDateHeader(String name, @NonNull Instant date);
 
 	/**
 	 * Set the content length on the response, if appropriate in the subclass. This default
@@ -258,7 +259,7 @@ public abstract class WebResponse extends Response
 	 *
 	 * @see WebResponse#MAX_CACHE_DURATION
 	 */
-	public void enableCaching(Duration duration, final WebResponse.CacheScope scope)
+	public void enableCaching(@NonNull Duration duration, final WebResponse.@NonNull CacheScope scope)
 	{
 		Args.notNull(duration, "duration");
 		Args.notNull(scope, "scope");

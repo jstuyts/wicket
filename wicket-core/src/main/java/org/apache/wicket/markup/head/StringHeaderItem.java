@@ -21,6 +21,7 @@ import java.util.Objects;
 
 import org.apache.wicket.request.Response;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Free form {@code HeaderItem}. No checks are performed on what is added to the header.
@@ -49,7 +50,7 @@ public class StringHeaderItem extends HeaderItem
 	 * 
 	 * @param string
 	 */
-	public StringHeaderItem(CharSequence string)
+	public StringHeaderItem(@NonNull CharSequence string)
 	{
 		this.string = Args.notNull(string, "string");
 	}

@@ -32,6 +32,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.parse.metapattern.parsers.TagNameParser;
 import org.apache.wicket.util.parse.metapattern.parsers.VariableAssignmentParser;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A fairly shallow markup pull parser which parses a markup string of a given type of markup (for
@@ -561,7 +562,7 @@ public final class XmlPullParser implements IXmlPullParser
 	 *             Error while reading the resource
 	 */
 	@Override
-	public void parse(final CharSequence string) throws IOException
+	public void parse(@NonNull final CharSequence string) throws IOException
 	{
 		Args.notNull(string, "string");
 
@@ -598,7 +599,7 @@ public final class XmlPullParser implements IXmlPullParser
 	 * @throws IOException
 	 */
 	@Override
-	public void parse(final InputStream inputStream, final String encoding) throws IOException
+	public void parse(@NonNull final InputStream inputStream, final String encoding) throws IOException
 	{
 		Args.notNull(inputStream, "inputStream");
 

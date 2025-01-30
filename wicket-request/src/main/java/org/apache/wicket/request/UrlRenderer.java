@@ -24,6 +24,7 @@ import java.util.Map;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.PrependingStringBuffer;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,7 +70,7 @@ public class UrlRenderer
 	 * @param base
 	 * @return original base Url
 	 */
-	public Url setBaseUrl(final Url base)
+	public Url setBaseUrl(@NonNull final Url base)
 	{
 		Args.notNull(base, "base");
 
@@ -229,7 +230,7 @@ public class UrlRenderer
 	 * @param url
 	 * @return Url rendered as string
 	 */
-	public String renderRelativeUrl(final Url url)
+	public String renderRelativeUrl(@NonNull final Url url)
 	{
 		Args.notNull(url, "url");
 
@@ -394,7 +395,7 @@ public class UrlRenderer
 	 * @param url
 	 * @return relative URL
 	 */
-	public String renderContextRelativeUrl(String url)
+	public String renderContextRelativeUrl(@NonNull String url)
 	{
 		Args.notNull(url, "url");
 

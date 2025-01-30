@@ -33,6 +33,7 @@ import org.apache.wicket.request.mapper.parameter.PageParametersEncoder;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.reference.ClassReference;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Encoder for mounted URL. The mount path can contain parameter placeholders, i.e.
@@ -111,7 +112,7 @@ public class MountedMapper extends AbstractBookmarkableMapper
 	 * @param pageParametersEncoder
 	 */
 	public MountedMapper(String mountPath,
-		Supplier<Class<? extends IRequestablePage>> pageClassProvider,
+		@NonNull Supplier<Class<? extends IRequestablePage>> pageClassProvider,
 		IPageParametersEncoder pageParametersEncoder)
 	{
 		super(mountPath, pageParametersEncoder);

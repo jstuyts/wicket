@@ -16,10 +16,12 @@
  */
 package org.apache.wicket.ajax.attributes;
 
+import java.time.Duration;
+
 import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
-import java.time.Duration;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Class to keep track of throttling settings.
@@ -80,7 +82,7 @@ public class ThrottlingSettings implements IClusterable
 	 * @param delay
 	 *            the amount of time the action should be postponed
 	 */
-	public ThrottlingSettings(final String id, final Duration delay,
+	public ThrottlingSettings(final String id, @NonNull final Duration delay,
 		final boolean postponeTimerOnUpdate)
 	{
 		this.id = id;
@@ -96,7 +98,7 @@ public class ThrottlingSettings implements IClusterable
 		return delay;
 	}
 
-	public void setDelay(Duration delay)
+	public void setDelay(@NonNull Duration delay)
 	{
 		this.delay = Args.notNull(delay, "delay");
 	}

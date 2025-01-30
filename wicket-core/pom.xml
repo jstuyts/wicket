@@ -170,6 +170,10 @@ org.apache.wicket.validation.validator;-noimport:=true
 			<artifactId>jdk-serializable-functional</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.jspecify</groupId>
+			<artifactId>jspecify</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 		</dependency>

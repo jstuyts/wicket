@@ -38,6 +38,7 @@ import org.apache.wicket.settings.FrameworkSettings;
 import org.apache.wicket.settings.StoreSettings;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A provider of a {@link PageManager} managing @link IManageablePage}s with a default chain of {@link IPageStore}s:
@@ -90,7 +91,7 @@ public class DefaultPageManagerProvider implements IPageManagerProvider
 	 * @param application
 	 *            The application instance
 	 */
-	public DefaultPageManagerProvider(Application application)
+	public DefaultPageManagerProvider(@NonNull Application application)
 	{
 		this.application = Args.notNull(application, "application");
 	}

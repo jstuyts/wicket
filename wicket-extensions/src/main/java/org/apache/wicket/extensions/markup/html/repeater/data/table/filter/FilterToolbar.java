@@ -31,6 +31,7 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -59,7 +60,7 @@ public class FilterToolbar extends AbstractToolbar
 	 *            the type of filter state object
 	 * 
 	 */
-	public <T, S, F> FilterToolbar(final DataTable<T, S> table, final FilterForm<F> form)
+	public <T, S, F> FilterToolbar(@NonNull final DataTable<T, S> table, final FilterForm<F> form)
 	{
 		super(table);
 

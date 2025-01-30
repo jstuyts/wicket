@@ -22,12 +22,12 @@ import java.util.concurrent.ConcurrentMap;
 
 import jakarta.servlet.http.HttpSessionBindingEvent;
 import jakarta.servlet.http.HttpSessionBindingListener;
-
 import org.apache.wicket.Session;
 import org.apache.wicket.page.IManageablePage;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.lang.Classes;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +58,7 @@ public abstract class AbstractPersistentPageStore implements IPageStore
 
 	private final String storeKey;
 
-	protected AbstractPersistentPageStore(String applicationName)
+	protected AbstractPersistentPageStore(@NonNull String applicationName)
 	{
 		this.storeKey = Args.notNull(applicationName, "applicationName") + ":" + getClass().getSimpleName();
 
@@ -197,7 +197,7 @@ public abstract class AbstractPersistentPageStore implements IPageStore
 		 */
 		public final String sessionIdentifier;
 
-		public SessionAttribute(String storeKey, String sessionIdentifier)
+		public SessionAttribute(@NonNull String storeKey, @NonNull String sessionIdentifier)
 		{
 			this.storeKey = Args.notNull(storeKey, "storeKey");
 			this.sessionIdentifier = Args.notNull(sessionIdentifier, "sessionIdentifier");

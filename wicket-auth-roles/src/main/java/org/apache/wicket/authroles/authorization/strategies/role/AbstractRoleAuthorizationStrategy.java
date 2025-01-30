@@ -18,6 +18,7 @@ package org.apache.wicket.authroles.authorization.strategies.role;
 
 import org.apache.wicket.authorization.IAuthorizationStrategy;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Base strategy that uses an instance of
@@ -36,7 +37,7 @@ public abstract class AbstractRoleAuthorizationStrategy extends IAuthorizationSt
 	 * @param roleCheckingStrategy
 	 *            the authorizer delegate
 	 */
-	public AbstractRoleAuthorizationStrategy(IRoleCheckingStrategy roleCheckingStrategy)
+	public AbstractRoleAuthorizationStrategy(@NonNull IRoleCheckingStrategy roleCheckingStrategy)
 	{
 		Args.notNull(roleCheckingStrategy, "roleCheckingStrategy");
 		this.roleCheckingStrategy = roleCheckingStrategy;

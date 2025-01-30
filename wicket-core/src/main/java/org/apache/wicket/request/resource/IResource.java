@@ -22,6 +22,7 @@ import org.apache.wicket.request.handler.resource.ResourceRequestHandler;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Resource is an object capable of writing output to response.
@@ -51,7 +52,7 @@ public interface IResource extends IClusterable
 		 * @param response
 		 * @param parameters
 		 */
-		public Attributes(Request request, Response response, PageParameters parameters)
+		public Attributes(@NonNull Request request, @NonNull Response response, PageParameters parameters)
 		{
 			Args.notNull(request, "request");
 			Args.notNull(response, "response");

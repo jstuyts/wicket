@@ -25,6 +25,7 @@ import java.util.List;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.apache.wicket.util.string.AppendingStringBuffer;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -109,7 +110,7 @@ public class Markup extends AbstractMarkupFragment
 	 * @param markupResourceStream
 	 *            The associated Markup
 	 */
-	public Markup(final MarkupResourceStream markupResourceStream)
+	public Markup(@NonNull final MarkupResourceStream markupResourceStream)
 	{
 		Args.notNull(markupResourceStream, "markupResourceStream");
 
@@ -134,7 +135,7 @@ public class Markup extends AbstractMarkupFragment
 	 * @param index
 	 * @param elem
 	 */
-	public final void replace(final int index, final MarkupElement elem)
+	public final void replace(final int index, @NonNull final MarkupElement elem)
 	{
 		Args.notNull(elem, "elem");
 

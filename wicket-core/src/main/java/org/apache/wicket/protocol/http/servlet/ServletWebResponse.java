@@ -18,6 +18,7 @@ package org.apache.wicket.protocol.http.servlet;
 
 import java.io.IOException;
 import java.time.Instant;
+
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,6 +28,7 @@ import org.apache.wicket.request.UrlRenderer;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * WebResponse that wraps a {@link ServletWebResponse}.
@@ -46,7 +48,7 @@ public class ServletWebResponse extends WebResponse
 	 * @param webRequest
 	 * @param httpServletResponse
 	 */
-	public ServletWebResponse(ServletWebRequest webRequest, HttpServletResponse httpServletResponse)
+	public ServletWebResponse(@NonNull ServletWebRequest webRequest, @NonNull HttpServletResponse httpServletResponse)
 	{
 		Args.notNull(webRequest, "webRequest");
 		Args.notNull(httpServletResponse, "httpServletResponse");
@@ -82,7 +84,7 @@ public class ServletWebResponse extends WebResponse
 	}
 
 	@Override
-	public void setDateHeader(String name, Instant date)
+	public void setDateHeader(String name, @NonNull Instant date)
 	{
 		Args.notNull(date, "date");
 		httpServletResponse.setDateHeader(name, date.toEpochMilli());
@@ -173,7 +175,7 @@ public class ServletWebResponse extends WebResponse
 	}
 
 	@Override
-	public String encodeURL(CharSequence url)
+	public String encodeURL(@NonNull CharSequence url)
 	{
 		Args.notNull(url, "url");
 
@@ -223,7 +225,7 @@ public class ServletWebResponse extends WebResponse
 	}
 
 	@Override
-	public String encodeRedirectURL(CharSequence url)
+	public String encodeRedirectURL(@NonNull CharSequence url)
 	{
 		Args.notNull(url, "url");
 

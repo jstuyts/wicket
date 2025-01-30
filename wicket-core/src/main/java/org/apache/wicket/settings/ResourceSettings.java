@@ -61,6 +61,7 @@ import org.apache.wicket.util.lang.Generics;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.watch.IModificationWatcher;
 import org.apache.wicket.util.watch.ModificationWatcher;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Class for resource related settings
@@ -419,7 +420,7 @@ public class ResourceSettings implements IPropertiesFactoryContext
 	 *            The package resource guard
 	 * @return {@code this} object for chaining
 	 */
-	public ResourceSettings setPackageResourceGuard(IPackageResourceGuard packageResourceGuard)
+	public ResourceSettings setPackageResourceGuard(@NonNull IPackageResourceGuard packageResourceGuard)
 	{
 		this.packageResourceGuard = Args.notNull(packageResourceGuard, "packageResourceGuard");
 		return this;
@@ -447,7 +448,7 @@ public class ResourceSettings implements IPropertiesFactoryContext
 	 *            The resourceFinders to set
 	 * @return {@code this} object for chaining
 	 */
-	public ResourceSettings setResourceFinders(final List<IResourceFinder> resourceFinders)
+	public ResourceSettings setResourceFinders(@NonNull final List<IResourceFinder> resourceFinders)
 	{
 		Args.notNull(resourceFinders, "resourceFinders");
 		this.resourceFinders = resourceFinders;
@@ -539,7 +540,7 @@ public class ResourceSettings implements IPropertiesFactoryContext
 	 * @see org.apache.wicket.request.http.WebResponse#MAX_CACHE_DURATION
 	 * @return {@code this} object for chaining
 	 */
-	public final ResourceSettings setDefaultCacheDuration(Duration duration)
+	public final ResourceSettings setDefaultCacheDuration(@NonNull Duration duration)
 	{
 		Args.notNull(duration, "duration");
 		defaultCacheDuration = duration;

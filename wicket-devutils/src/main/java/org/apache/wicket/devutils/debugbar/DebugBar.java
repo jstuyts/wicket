@@ -38,6 +38,7 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.resource.CoreLibrariesContributor;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * The debug bar is for use during development. It allows contributors to add useful functions or
@@ -207,7 +208,7 @@ public class DebugBar extends DevUtilsPanel
 	 * @param contrib
 	 *            custom contributor - can not be null
 	 */
-	public static void registerContributor(final IDebugBarContributor contrib,
+	public static void registerContributor(@NonNull final IDebugBarContributor contrib,
 		final Application application)
 	{
 		Args.notNull(contrib, "contrib");
@@ -223,7 +224,7 @@ public class DebugBar extends DevUtilsPanel
 		return list == null ? new ArrayList<IDebugBarContributor>() : list;
 	}
 
-	public static void setContributors(List<IDebugBarContributor> contributors, Application application)
+	public static void setContributors(List<IDebugBarContributor> contributors, @NonNull Application application)
 	{
 		Args.notNull(application, "application");
 

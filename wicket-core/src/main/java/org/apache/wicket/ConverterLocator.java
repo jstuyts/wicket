@@ -52,6 +52,7 @@ import org.apache.wicket.util.convert.converter.SqlTimestampConverter;
 import org.apache.wicket.util.convert.converter.ZonedDateTimeConverter;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Objects;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -257,7 +258,7 @@ public class ConverterLocator implements IConverterLocator
 	 * @return The previous registered converter for class c or null if none was registered yet for
 	 *         class c
 	 */
-	public final IConverter<?> set(final Class<?> c, final IConverter<?> converter)
+	public final IConverter<?> set(@NonNull final Class<?> c, @NonNull final IConverter<?> converter)
 	{
 		Args.notNull(c, "Class");
 		Args.notNull(converter, "converter");

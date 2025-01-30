@@ -28,6 +28,7 @@ import java.util.concurrent.ConcurrentMap;
 import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.collections.UrlExternalFormComparator;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An abstract implementation of a {@link IClassResolver} which uses a {@link ClassLoader} for
@@ -112,7 +113,7 @@ public abstract class AbstractClassResolver implements IClassResolver
 	}
 
 	@Override
-	public Iterator<URL> getResources(final String name)
+	public Iterator<URL> getResources(@NonNull final String name)
 	{
 		Set<URL> resultSet = new TreeSet<>(new UrlExternalFormComparator());
 

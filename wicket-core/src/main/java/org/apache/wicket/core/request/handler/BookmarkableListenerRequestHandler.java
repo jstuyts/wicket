@@ -22,6 +22,7 @@ import org.apache.wicket.request.component.IRequestableComponent;
 import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Request handler for bookmarkable pages with an {@link IRequestListener}. This handler is only used to
@@ -45,7 +46,7 @@ public class BookmarkableListenerRequestHandler
 	 * @param behaviorIndex
 	 */
 	public BookmarkableListenerRequestHandler(
-		IPageAndComponentProvider pageComponentProvider,
+		@NonNull IPageAndComponentProvider pageComponentProvider,
 		Integer behaviorIndex)
 	{
 		Args.notNull(pageComponentProvider, "pageComponentProvider");

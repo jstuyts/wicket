@@ -22,6 +22,7 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableBiConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A variant of the {@link AjaxLink} that displays a busy indicator while the ajax request is in
@@ -68,7 +69,7 @@ public abstract class IndicatingAjaxLink<T> extends AjaxLink<T> implements IAjax
 
 
 	public static <T> IndicatingAjaxLink<T> onClick(String id,
-		SerializableBiConsumer<AjaxLink<T>, AjaxRequestTarget> onClick)
+		@NonNull SerializableBiConsumer<AjaxLink<T>, AjaxRequestTarget> onClick)
 	{
 		Args.notNull(onClick, "onClick");
 

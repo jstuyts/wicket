@@ -21,6 +21,7 @@ module org.apache.wicket.velocity {
     requires org.apache.wicket.core;
     requires org.slf4j;
     requires velocity.engine.core;
+	requires static org.jspecify;
 
     exports org.apache.wicket.velocity;
 }

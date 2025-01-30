@@ -18,6 +18,7 @@ package org.apache.wicket.pageStore;
 
 import org.apache.wicket.page.IManageablePage;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An {@link IPageStore} that delegates to another storage.
@@ -26,7 +27,7 @@ public abstract class DelegatingPageStore implements IPageStore
 {
 	private final IPageStore delegate;
 	
-	protected DelegatingPageStore(IPageStore delegate)
+	protected DelegatingPageStore(@NonNull IPageStore delegate)
 	{
 		this.delegate = Args.notNull(delegate, "delegate");
 	}

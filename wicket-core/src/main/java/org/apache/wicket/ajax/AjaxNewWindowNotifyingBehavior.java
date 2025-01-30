@@ -27,6 +27,7 @@ import org.apache.wicket.markup.head.OnLoadHeaderItem;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An Ajax behavior that notifies when a new browser window/tab is opened with url to a page
@@ -154,7 +155,7 @@ public class AjaxNewWindowNotifyingBehavior extends AbstractDefaultAjaxBehavior
 	 *            the {@code SerializableConsumer} which accepts the {@link AjaxRequestTarget}
 	 * @return the {@link AjaxNewWindowNotifyingBehavior}
 	 */
-	public static AjaxNewWindowNotifyingBehavior onNewWindow(SerializableConsumer<AjaxRequestTarget> onNewWindow)
+	public static AjaxNewWindowNotifyingBehavior onNewWindow(@NonNull SerializableConsumer<AjaxRequestTarget> onNewWindow)
 	{
 		Args.notNull(onNewWindow, "onNewWindow");
 

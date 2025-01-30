@@ -23,11 +23,11 @@ import java.util.Collection;
 import java.util.Locale;
 
 import jakarta.servlet.http.HttpServletRequest;
-
 import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.util.lang.Checks;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,9 +63,9 @@ public class OriginResourceIsolationPolicy implements IResourceIsolationPolicy
 	 *            the acceptable origin
 	 * @return this
 	 */
-	public OriginResourceIsolationPolicy addAcceptedOrigin(String acceptedOrigin)
+	public OriginResourceIsolationPolicy addAcceptedOrigin(@NonNull String acceptedOrigin)
 	{
-		Checks.notNull("acceptedOrigin", acceptedOrigin);
+		Checks.notNull(acceptedOrigin, "acceptedOrigin");
 
 		// strip any leading dot characters
 		final int len = acceptedOrigin.length();

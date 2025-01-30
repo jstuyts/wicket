@@ -32,6 +32,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.internal.HtmlHeaderContainer;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Boilerplate for a markup sourcing strategy which retrieves the markup from associated markup
@@ -49,7 +50,7 @@ public abstract class AssociatedMarkupSourcingStrategy extends AbstractMarkupSou
 	 * @param tagName
 	 *            Either "panel" or "border"
 	 */
-	public AssociatedMarkupSourcingStrategy(final String tagName)
+	public AssociatedMarkupSourcingStrategy(@NonNull final String tagName)
 	{
 		this.tagName = Args.notNull(tagName, "tagName");
 	}

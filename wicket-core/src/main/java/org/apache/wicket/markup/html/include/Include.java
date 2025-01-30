@@ -21,7 +21,6 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 import jakarta.servlet.ServletContext;
-
 import org.apache.wicket.IGenericComponent;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.core.util.resource.UrlResourceStream;
@@ -33,6 +32,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.UrlUtils;
 import org.apache.wicket.resource.ResourceUtil;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -156,7 +156,7 @@ public class Include extends WebComponent implements IGenericComponent<String, I
 	 *            the url to import
 	 * @return the imported url's contents
 	 */
-	private String importRelativeUrl(String url)
+	private String importRelativeUrl(@NonNull String url)
 	{
 		Args.notEmpty(url, "url");
 

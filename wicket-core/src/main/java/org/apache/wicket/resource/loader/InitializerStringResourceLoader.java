@@ -16,12 +16,13 @@
  */
 package org.apache.wicket.resource.loader;
 
+import java.util.List;
+import java.util.Locale;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.IInitializer;
 import org.apache.wicket.util.lang.Args;
-
-import java.util.List;
-import java.util.Locale;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -48,7 +49,7 @@ public class InitializerStringResourceLoader extends ComponentStringResourceLoad
 	 * @param initializers
 	 *            initializers
 	 */
-	public InitializerStringResourceLoader(List<IInitializer> initializers)
+	public InitializerStringResourceLoader(@NonNull List<IInitializer> initializers)
 	{
 		this.initializers = Args.notNull(initializers, "initializers");
 	}

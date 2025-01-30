@@ -16,7 +16,6 @@
  */
 package org.apache.wicket.protocol.http.servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -26,7 +25,6 @@ import java.nio.file.Path;
 import java.util.Collection;
 
 import jakarta.servlet.http.Part;
-
 import org.apache.commons.fileupload2.core.FileItem;
 import org.apache.commons.fileupload2.core.FileItemFactory.AbstractFileItemBuilder;
 import org.apache.commons.fileupload2.core.FileItemHeaders;
@@ -35,6 +33,7 @@ import org.apache.wicket.request.resource.AbstractResource;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An adapter of Servlet 3.0 {@link Part} to Apache Commons FileUpload's {@link FileItem}
@@ -50,7 +49,7 @@ class ServletPartFileItem implements FileItem
 	/**
 	 * Constructor
 	 */
-	ServletPartFileItem(Part part)
+	ServletPartFileItem(@NonNull Part part)
 	{
 		Args.notNull(part, "part");
 		this.part = part;

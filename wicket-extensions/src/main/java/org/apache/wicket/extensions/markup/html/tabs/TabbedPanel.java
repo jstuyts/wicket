@@ -31,6 +31,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -116,7 +117,7 @@ public class TabbedPanel<T extends ITab> extends Panel
 	 * @param model
 	 *            model holding the index of the selected tab
 	 */
-	public TabbedPanel(final String id, final List<T> tabs, IModel<Integer> model)
+	public TabbedPanel(final String id, @NonNull final List<T> tabs, IModel<Integer> model)
 	{
 		super(id, model);
 

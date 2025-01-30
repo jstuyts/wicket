@@ -23,6 +23,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.ResourceReference.Key;
 import org.apache.wicket.request.resource.ResourceReferenceRegistry;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Class which holds shared resources. Resources can be shared by name. An optional scope can be
@@ -43,7 +44,7 @@ public class SharedResources
 	 * 
 	 * @param registry
 	 */
-	public SharedResources(ResourceReferenceRegistry registry)
+	public SharedResources(@NonNull ResourceReferenceRegistry registry)
 	{
 		this.registry = Args.notNull(registry, "registry");
 	}

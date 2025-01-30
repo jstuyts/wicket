@@ -28,6 +28,7 @@ import org.apache.wicket.markup.html.form.ValidationErrorFeedback;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A versatile implementation of {@link IValidationError} that supports message resolution from
@@ -115,7 +116,7 @@ public final class ValidationError implements IValidationError
 	 *            a message key to be added
 	 * @return this <code>ValidationError</code> for chaining purposes
 	 */
-	public ValidationError addKey(String key)
+	public ValidationError addKey(@NonNull String key)
 	{
 		Args.notEmpty(key, "key");
 
@@ -135,7 +136,7 @@ public final class ValidationError implements IValidationError
 	 *            validator
 	 * @return {@code this}
 	 */
-	public ValidationError addKey(IValidator<?> validator)
+	public ValidationError addKey(@NonNull IValidator<?> validator)
 	{
 		Args.notNull(validator, "validator");
 		addKey(Classes.simpleName(validator.getClass()));
@@ -155,7 +156,7 @@ public final class ValidationError implements IValidationError
 	 *            key variation
 	 * @return {@code this}
 	 */
-	public ValidationError addKey(IValidator<?> validator, String variation)
+	public ValidationError addKey(@NonNull IValidator<?> validator, String variation)
 	{
 		Args.notNull(validator, "validator");
 		String key = Classes.simpleName(validator.getClass());
@@ -176,7 +177,7 @@ public final class ValidationError implements IValidationError
 	 *            a variable value
 	 * @return this <code>ValidationError</code> for chaining purposes
 	 */
-	public ValidationError setVariable(String name, Object value)
+	public ValidationError setVariable(@NonNull String name, Object value)
 	{
 		Args.notEmpty(name, "name");
 
@@ -206,7 +207,7 @@ public final class ValidationError implements IValidationError
 	 *            a variables map
 	 * @return this <code>ValidationError</code> for chaining purposes
 	 */
-	public final ValidationError setVariables(Map<String, Object> vars)
+	public final ValidationError setVariables(@NonNull Map<String, Object> vars)
 	{
 		Args.notNull(vars, "vars");
 
@@ -264,7 +265,7 @@ public final class ValidationError implements IValidationError
 	 * 
 	 * @return this <code>ValidationError</code> for chaining purposes
 	 */
-	public final ValidationError setMessage(String message)
+	public final ValidationError setMessage(@NonNull String message)
 	{
 		Args.notNull(message, "message");
 

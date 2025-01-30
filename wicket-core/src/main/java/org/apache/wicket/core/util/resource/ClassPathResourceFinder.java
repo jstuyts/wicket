@@ -22,6 +22,7 @@ import org.apache.wicket.util.file.IResourceFinder;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An {@link IResourceFinder} that looks in a folder in the classpath.
@@ -53,7 +54,7 @@ public class ClassPathResourceFinder implements IResourceFinder
 	}
 
 	@Override
-	public IResourceStream find(Class<?> clazz, String path)
+	public IResourceStream find(Class<?> clazz, @NonNull String path)
 	{
 		Args.notEmpty(path, "path");
 		String fullPath = prefix + (path.startsWith("/") ? path.substring(1) : path);

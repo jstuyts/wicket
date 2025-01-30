@@ -17,6 +17,7 @@
 package org.apache.wicket.markup.html.link;
 
 import java.io.File;
+import java.time.Duration;
 
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
@@ -28,7 +29,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.FileResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.string.Strings;
-import java.time.Duration;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A link that streams a file to the client. When clicked this link will prompt the save as dialog
@@ -79,7 +80,7 @@ public class DownloadLink extends Link<File>
 	 * @param file
 	 *            file to stream to client
 	 */
-	public DownloadLink(String id, File file)
+	public DownloadLink(String id, @NonNull File file)
 	{
 		this(id, new Model<File>(Args.notNull(file, "file")));
 	}
@@ -122,7 +123,7 @@ public class DownloadLink extends Link<File>
 	 * @param fileName
 	 *            name of the file
 	 */
-	public DownloadLink(String id, File file, String fileName)
+	public DownloadLink(String id, @NonNull File file, String fileName)
 	{
 		this(id, Model.of(Args.notNull(file, "file")), Model.of(fileName));
 	}

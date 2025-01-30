@@ -20,6 +20,7 @@ import org.apache.wicket.DefaultMarkupIdGenerator;
 import org.apache.wicket.IMarkupIdGenerator;
 import org.apache.wicket.markup.MarkupFactory;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Class for markup related settings.
@@ -213,7 +214,7 @@ public class MarkupSettings
 	 * @param factory
 	 * @return {@code this} object for chaining
 	 */
-	public MarkupSettings setMarkupFactory(final MarkupFactory factory)
+	public MarkupSettings setMarkupFactory(@NonNull final MarkupFactory factory)
 	{
 		Args.notNull(factory, "markup factory");
 		markupFactory = factory;
@@ -274,7 +275,7 @@ public class MarkupSettings
 	 *          The generator of markup ids for the components
 	 * @return {@code this} object for chaining
 	 */
-	public MarkupSettings setMarkupIdGenerator(IMarkupIdGenerator markupIdGenerator)
+	public MarkupSettings setMarkupIdGenerator(@NonNull IMarkupIdGenerator markupIdGenerator)
 	{
 		this.markupIdGenerator = Args.notNull(markupIdGenerator, "markupIdGenerator");
 		return this;

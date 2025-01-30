@@ -30,6 +30,7 @@ import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -113,7 +114,7 @@ public class MessageDigestResourceVersion implements IResourceVersion
 	 * @param bufferSize
 	 *            maximum size for internal buffer            
 	 */
-	public MessageDigestResourceVersion(String algorithm, Bytes bufferSize)
+	public MessageDigestResourceVersion(@NonNull String algorithm, @NonNull Bytes bufferSize)
 	{
 		this.algorithm = Args.notEmpty(algorithm, "algorithm");
 		this.bufferSize = Args.notNull(bufferSize, "bufferSize");

@@ -19,6 +19,7 @@ package org.apache.wicket.util.lang;
 import java.util.Collection;
 
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Class with methods for asserting conditions on arguments. 
@@ -135,8 +136,8 @@ public class Args
 	 * @return the {code value}
 	 * @throws IllegalArgumentException
 	 */
-	public static <T extends Comparable<? super T>> T withinRange(final T min, final T max,
-		final T value, final String name)
+	public static <T extends Comparable<? super T>> T withinRange(@NonNull final T min, @NonNull final T max,
+		@NonNull final T value, final String name)
 	{
 		notNull(min, name);
 		notNull(max, name);

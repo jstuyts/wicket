@@ -21,6 +21,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.MarkupResourceStream;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An IBehavior which can be added to any component except ListView. It allows to post-process
@@ -85,7 +86,7 @@ public class XsltTransformerBehavior extends AbstractTransformerBehavior
 	}
 
 	@Override
-	public void bind(final Component component)
+	public void bind(@NonNull final Component component)
 	{
 		if (component instanceof Page)
 		{

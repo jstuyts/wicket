@@ -26,6 +26,7 @@ import org.apache.wicket.request.mapper.AbstractMapper;
 import org.apache.wicket.request.mapper.info.PageComponentInfo;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Convenience class for implementing page/components related encoders.
@@ -66,7 +67,7 @@ public abstract class AbstractComponentMapper extends AbstractMapper implements 
 	 * @param url
 	 * @param info
 	 */
-	protected void encodePageComponentInfo(Url url, PageComponentInfo info)
+	protected void encodePageComponentInfo(@NonNull Url url, PageComponentInfo info)
 	{
 		Args.notNull(url, "url");
 
@@ -100,7 +101,7 @@ public abstract class AbstractComponentMapper extends AbstractMapper implements 
 	 *              The raw class name parsed from the url
 	 * @return The cleaned class name
 	 */
-	protected String cleanClassName(String className)
+	protected String cleanClassName(@NonNull String className)
 	{
 		Args.notEmpty(className, "className");
 

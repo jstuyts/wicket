@@ -30,6 +30,7 @@ import org.apache.wicket.request.component.IRequestablePage;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +60,7 @@ public class ListenerRequestHandler
 	 * @param pageComponentProvider
 	 * @param behaviorIndex
 	 */
-	public ListenerRequestHandler(IPageAndComponentProvider pageComponentProvider, Integer behaviorIndex)
+	public ListenerRequestHandler(@NonNull IPageAndComponentProvider pageComponentProvider, Integer behaviorIndex)
 	{
 		Args.notNull(pageComponentProvider, "pageComponentProvider");
 

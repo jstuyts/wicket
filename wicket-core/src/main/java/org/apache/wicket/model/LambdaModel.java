@@ -21,6 +21,7 @@ import org.danekja.java.util.function.serializable.SerializableBiConsumer;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
 import org.danekja.java.util.function.serializable.SerializableFunction;
 import org.danekja.java.util.function.serializable.SerializableSupplier;
+import org.jspecify.annotations.NonNull;
 
 /**
  * <code>LambdaModel</code> is a basic implementation of an <code>IModel</code> that uses a
@@ -89,7 +90,7 @@ public abstract class LambdaModel<T> implements IModel<T>
 	 * @param <R>
 	 *            model object type
 	 */
-	public static <R> IModel<R> of(SerializableSupplier<R> getter, SerializableConsumer<R> setter)
+	public static <R> IModel<R> of(@NonNull SerializableSupplier<R> getter, @NonNull SerializableConsumer<R> setter)
 	{
 		Args.notNull(getter, "getter");
 		Args.notNull(setter, "setter");
@@ -138,8 +139,8 @@ public abstract class LambdaModel<T> implements IModel<T>
 	 * @return model
 	 * @see IModel#flatMap(SerializableFunction)
 	 */
-	public static <X, R> IModel<R> of(IModel<X> target, SerializableFunction<X, R> getter,
-		SerializableBiConsumer<X, R> setter)
+	public static <X, R> IModel<R> of(@NonNull IModel<X> target, @NonNull SerializableFunction<X, R> getter,
+		@NonNull SerializableBiConsumer<X, R> setter)
 	{
 		Args.notNull(target, "target");
 		Args.notNull(getter, "getter");

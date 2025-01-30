@@ -22,9 +22,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLConnection;
 import java.time.Instant;
+
 import org.apache.wicket.util.file.File;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Bytes;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -52,7 +54,7 @@ public class FileResourceStream extends AbstractResourceStream
 	 * @param file
 	 *            {@link File} containing resource
 	 */
-	public FileResourceStream(final File file)
+	public FileResourceStream(@NonNull final File file)
 	{
 		Args.notNull(file, "file");
 		this.file = file;

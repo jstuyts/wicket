@@ -23,6 +23,7 @@ import org.apache.wicket.markup.repeater.AbstractPageableView;
 import org.apache.wicket.markup.repeater.RefreshingView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -52,7 +53,7 @@ public abstract class DataViewBase<T> extends AbstractPageableView<T>
 	 * @param dataProvider
 	 *            data provider
 	 */
-	public DataViewBase(String id, IDataProvider<T> dataProvider)
+	public DataViewBase(String id, @NonNull IDataProvider<T> dataProvider)
 	{
 		super(id);
 

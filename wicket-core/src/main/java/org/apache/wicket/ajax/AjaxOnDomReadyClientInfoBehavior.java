@@ -27,6 +27,7 @@ import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableBiConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A behavior that collects the information to populate
@@ -96,7 +97,7 @@ public class AjaxOnDomReadyClientInfoBehavior extends AbstractDefaultAjaxBehavio
 	 *            {@link WebClientInfo}
 	 * @return the {@link AjaxOnDomReadyClientInfoBehavior}
 	 */
-	public static AjaxOnDomReadyClientInfoBehavior onClientInfo(SerializableBiConsumer<AjaxRequestTarget, WebClientInfo> onClientInfo)
+	public static AjaxOnDomReadyClientInfoBehavior onClientInfo(@NonNull SerializableBiConsumer<AjaxRequestTarget, WebClientInfo> onClientInfo)
 	{
 		Args.notNull(onClientInfo, "onClientInfo");
 

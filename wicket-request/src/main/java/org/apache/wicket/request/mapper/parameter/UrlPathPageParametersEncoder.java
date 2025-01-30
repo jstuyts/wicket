@@ -21,6 +21,7 @@ import java.util.Iterator;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -46,7 +47,7 @@ import org.apache.wicket.util.string.Strings;
 public class UrlPathPageParametersEncoder implements IPageParametersEncoder
 {
 	@Override
-	public Url encodePageParameters(PageParameters params)
+	public Url encodePageParameters(@NonNull PageParameters params)
 	{
 		Args.notNull(params, "params");
 		Args.isTrue(params.getIndexedCount() == 0,

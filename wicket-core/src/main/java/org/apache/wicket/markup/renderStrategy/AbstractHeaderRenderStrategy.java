@@ -30,6 +30,7 @@ import org.apache.wicket.markup.html.internal.InlineEnclosure;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An abstract implementation of a header render strategy which is only missing the code to traverse
@@ -96,8 +97,8 @@ public abstract class AbstractHeaderRenderStrategy implements IHeaderRenderStrat
 	}
 
 	@Override
-	public void renderHeader(final HtmlHeaderContainer headerContainer,
-		HeaderStreamState headerStreamState, final Component rootComponent)
+	public void renderHeader(@NonNull final HtmlHeaderContainer headerContainer,
+		HeaderStreamState headerStreamState, @NonNull final Component rootComponent)
 	{
 		Args.notNull(headerContainer, "headerContainer");
 		Args.notNull(rootComponent, "rootComponent");
@@ -173,15 +174,15 @@ public abstract class AbstractHeaderRenderStrategy implements IHeaderRenderStrat
 	 * @param headerContainer
 	 * @param rootComponent
 	 */
-	abstract protected void renderChildHeaders(final HtmlHeaderContainer headerContainer,
-		final Component rootComponent);
+	abstract protected void renderChildHeaders(@NonNull final HtmlHeaderContainer headerContainer,
+		@NonNull final Component rootComponent);
 
 	/**
 	 * Render the application level headers
 	 * 
 	 * @param headerContainer
 	 */
-	protected final void renderApplicationLevelHeaders(final HtmlHeaderContainer headerContainer)
+	protected final void renderApplicationLevelHeaders(@NonNull final HtmlHeaderContainer headerContainer)
 	{
 		Args.notNull(headerContainer, "headerContainer");
 

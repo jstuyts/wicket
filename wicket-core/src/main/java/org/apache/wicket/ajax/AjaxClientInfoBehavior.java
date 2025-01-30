@@ -17,6 +17,7 @@
 package org.apache.wicket.ajax;
 
 import java.time.Duration;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Session;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
@@ -28,6 +29,7 @@ import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableBiConsumer;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An behavior that collects the information to populate
@@ -115,7 +117,7 @@ public class AjaxClientInfoBehavior extends AbstractAjaxTimerBehavior
 	 *            {@link WebClientInfo}
 	 * @return the {@link AjaxClientInfoBehavior}
 	 */
-	public static AjaxClientInfoBehavior onClientInfo(SerializableBiConsumer<AjaxRequestTarget, WebClientInfo> onClientInfo)
+	public static AjaxClientInfoBehavior onClientInfo(@NonNull SerializableBiConsumer<AjaxRequestTarget, WebClientInfo> onClientInfo)
 	{
 		Args.notNull(onClientInfo, "onClientInfo");
 

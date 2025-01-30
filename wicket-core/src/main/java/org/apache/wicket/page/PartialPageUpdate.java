@@ -23,8 +23,8 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import jakarta.servlet.http.Cookie;
 
+import jakarta.servlet.http.Cookie;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -52,6 +52,7 @@ import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Classes;
 import org.apache.wicket.util.lang.Generics;
 import org.apache.wicket.util.string.AppendingStringBuffer;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -503,7 +504,7 @@ public abstract class PartialPageUpdate
 	 * @param javascript
 	 *      the javascript to execute
 	 */
-	public final void appendJavaScript(final CharSequence javascript)
+	public final void appendJavaScript(@NonNull final CharSequence javascript)
 	{
 		Args.notNull(javascript, "javascript");
 
@@ -521,7 +522,7 @@ public abstract class PartialPageUpdate
 	 * @param javascript
 	 *      the javascript to execute
 	 */
-	public final void prependJavaScript(CharSequence javascript)
+	public final void prependJavaScript(@NonNull CharSequence javascript)
 	{
 		Args.notNull(javascript, "javascript");
 		
@@ -545,7 +546,7 @@ public abstract class PartialPageUpdate
 	 * @throws IllegalStateException
 	 *      thrown when components no more can be added for replacement.
 	 */
-	public final void add(final Component component, final String markupId)
+	public final void add(@NonNull final Component component, @NonNull final String markupId)
 	{
 		Args.notEmpty(markupId, "markupId");
 		Args.notNull(component, "component");
@@ -925,7 +926,7 @@ public abstract class PartialPageUpdate
 		}
 
 		@Override
-		public void setDateHeader(String name, Instant date)
+		public void setDateHeader(String name, @NonNull Instant date)
 		{
 			originalResponse.setDateHeader(name, date);
 		}

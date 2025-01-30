@@ -21,6 +21,7 @@ import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.parser.XmlTag.TagType;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A component that represents HTML &lt;label&gt; tag. This component will automatically make the
@@ -52,7 +53,7 @@ public class FormComponentLabel extends WebMarkupContainer
 	 * @param component
 	 *            component that this label is linked to
 	 */
-	public FormComponentLabel(String id, LabeledWebMarkupContainer component)
+	public FormComponentLabel(String id, @NonNull LabeledWebMarkupContainer component)
 	{
 		super(id);
 

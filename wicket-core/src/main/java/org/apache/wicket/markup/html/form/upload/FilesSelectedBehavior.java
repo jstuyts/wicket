@@ -18,6 +18,9 @@ package org.apache.wicket.markup.html.form.upload;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONObject;
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -34,8 +37,7 @@ import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.StringValue;
 import org.danekja.java.util.function.serializable.SerializableBiConsumer;
-import com.github.openjson.JSONArray;
-import com.github.openjson.JSONObject;
+import org.jspecify.annotations.NonNull;
 
 /**
  * {@link org.apache.wicket.ajax.form.OnChangeAjaxBehavior} that streams back to server properties
@@ -113,7 +115,7 @@ public abstract class FilesSelectedBehavior extends OnChangeAjaxBehavior {
      * @return the {@link FilesSelectedBehavior} behavior
      */
     public static FilesSelectedBehavior onSelected(
-            SerializableBiConsumer<AjaxRequestTarget, List<FileDescription>> select)
+			@NonNull SerializableBiConsumer<AjaxRequestTarget, List<FileDescription>> select)
     {
         Args.notNull(select, "select");
 

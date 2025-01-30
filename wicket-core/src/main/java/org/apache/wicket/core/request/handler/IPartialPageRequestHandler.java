@@ -21,6 +21,7 @@ import java.util.Collection;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.head.IHeaderResponse;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Request handler that allows partial updates of the current page instance.
@@ -61,7 +62,7 @@ public interface IPartialPageRequestHandler extends IPageRequestHandler
 	 *            Must not be null. If you want to traverse all components use ` Component.class as
 	 *            the value for this argument.
 	 */
-	void addChildren(MarkupContainer parent, Class<?> childCriteria);
+	void addChildren(@NonNull MarkupContainer parent, @NonNull Class<?> childCriteria);
 
 	/**
 	 * Add JavasSript that will be evaluated on the client side after components are replaced

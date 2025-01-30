@@ -18,7 +18,6 @@ package org.apache.wicket.protocol.ws.api;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.Page;
@@ -64,6 +63,7 @@ import org.apache.wicket.util.lang.Checks;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.apache.wicket.util.resource.StringResourceStream;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -103,7 +103,7 @@ public abstract class AbstractWebSocketProcessor implements IWebSocketProcessor
 	 * @param application
 	 *      the current Wicket Application
 	 */
-	public AbstractWebSocketProcessor(final HttpServletRequest request, final WebApplication application)
+	public AbstractWebSocketProcessor(final HttpServletRequest request, @NonNull final WebApplication application)
 	{
 		final HttpSession httpSession = request.getSession(true);
 		if (httpSession == null)

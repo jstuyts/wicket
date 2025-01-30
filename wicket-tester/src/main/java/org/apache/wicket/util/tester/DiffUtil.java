@@ -34,6 +34,7 @@ import org.apache.wicket.util.io.Streams;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.resource.ResourceStreamNotFoundException;
 import org.apache.wicket.util.string.StringList;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -100,7 +101,7 @@ public final class DiffUtil
 	 * @return true, if equal
 	 * @throws IOException
 	 */
-	public static boolean validatePage(String document, final Class<?> clazz,
+	public static boolean validatePage(@NonNull String document, final Class<?> clazz,
 		final String file, boolean failWithAssert) throws IOException
 	{
 		Args.notNull(document, "document");

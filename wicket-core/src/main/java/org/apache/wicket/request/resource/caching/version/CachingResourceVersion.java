@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 import org.apache.wicket.request.resource.caching.IStaticCacheableResource;
 import org.apache.wicket.util.collections.MostRecentlyUsedMap;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Caches the results of a delegating {@link IResourceVersion} instance
@@ -82,7 +83,7 @@ public class CachingResourceVersion implements IResourceVersion
 	 * @param maxEntries
 	 *          maximum number of cache entries
 	 */        
-	public CachingResourceVersion(IResourceVersion delegate, int maxEntries)
+	public CachingResourceVersion(@NonNull IResourceVersion delegate, int maxEntries)
 	{
 		if (maxEntries < 1)
 		{
@@ -146,7 +147,7 @@ public class CachingResourceVersion implements IResourceVersion
 	 * @param resource 
 	 *           cacheable resource
 	 */
-	public void invalidate(IStaticCacheableResource resource)
+	public void invalidate(@NonNull IStaticCacheableResource resource)
 	{   
 		// get cache key for resource reference
 		final Serializable key = Args.notNull(resource, "resource").getCacheKey();

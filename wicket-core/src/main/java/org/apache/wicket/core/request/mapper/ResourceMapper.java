@@ -19,7 +19,6 @@ package org.apache.wicket.core.request.mapper;
 import java.util.List;
 
 import jakarta.servlet.http.HttpServletResponse;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.IRequestMapper;
@@ -39,6 +38,7 @@ import org.apache.wicket.request.resource.caching.ResourceUrl;
 import org.apache.wicket.resource.ResourceUtil;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A {@link IRequestMapper} to mount resources to a custom mount path
@@ -108,7 +108,7 @@ public class ResourceMapper extends AbstractBookmarkableMapper
 	 * @param encoder
 	 *            encoder for url parameters
 	 */
-	public ResourceMapper(String path, ResourceReference resourceReference,
+	public ResourceMapper(String path, @NonNull ResourceReference resourceReference,
 		IPageParametersEncoder encoder)
 	{
 		super(path, encoder);

@@ -37,6 +37,7 @@ import org.apache.wicket.markup.parser.XmlTag.TagType;
 import org.apache.wicket.markup.resolver.IComponentResolver;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A border component has associated markup which is drawn and determines placement of markup and/or
@@ -244,7 +245,7 @@ public abstract class Border extends WebMarkupContainer implements IComponentRes
 	}
 
 	@Override
-	public Border remove(final Component component)
+	public Border remove(final @NonNull Component component)
 	{
 		if (component == body)
 		{
@@ -262,7 +263,7 @@ public abstract class Border extends WebMarkupContainer implements IComponentRes
 	
 	
 	@Override
-	public Border remove(final String id)
+	public Border remove(final @NonNull String id)
 	{
 		if (body.getId().equals(id))
 		{
@@ -285,7 +286,7 @@ public abstract class Border extends WebMarkupContainer implements IComponentRes
 	}
 
 	@Override
-	public Border replace(final Component replacement)
+	public Border replace(final @NonNull Component replacement)
 	{
 		if (body.getId().equals(replacement.getId()))
 		{
@@ -544,7 +545,7 @@ public abstract class Border extends WebMarkupContainer implements IComponentRes
 		 * @param name
 		 * @return null, if not found
 		 */
-		private IMarkupFragment findByName(final IMarkupFragment markup, final String name)
+		private IMarkupFragment findByName(final IMarkupFragment markup, @NonNull final String name)
 		{
 			Args.notEmpty(name, "name");
 

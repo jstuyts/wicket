@@ -60,6 +60,7 @@ import org.apache.wicket.util.visit.ClassVisitFilter;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
 import org.apache.wicket.util.visit.Visits;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -293,7 +294,7 @@ public abstract class MarkupContainer extends Component implements Iterable<Comp
 	 *            stream to be used to render the component.
 	 * @return True, if component has been added
 	 */
-	public final boolean autoAdd(final Component component, MarkupStream markupStream)
+	public final boolean autoAdd(@NonNull final Component component, MarkupStream markupStream)
 	{
 		Args.notNull(component, "component");
 
@@ -324,7 +325,7 @@ public abstract class MarkupContainer extends Component implements Iterable<Comp
 	 *            True if all descendents should be considered
 	 * @return True if the component is contained in this container
 	 */
-	public boolean contains(final Component component, final boolean recurse)
+	public boolean contains(@NonNull final Component component, final boolean recurse)
 	{
 		Args.notNull(component, "component");
 
@@ -689,7 +690,7 @@ public abstract class MarkupContainer extends Component implements Iterable<Comp
 	 *            Component to remove from this container
 	 * @return {@code this} for chaining
 	 */
-	public MarkupContainer remove(final Component component)
+	public MarkupContainer remove(@NonNull final Component component)
 	{
 		checkHierarchyChange(component);
 
@@ -708,7 +709,7 @@ public abstract class MarkupContainer extends Component implements Iterable<Comp
 	 *            The id of the component to remove
 	 * @return {@code this} for chaining
 	 */
-	public MarkupContainer remove(final String id)
+	public MarkupContainer remove(@NonNull final String id)
 	{
 		Args.notNull(id, "id");
 
@@ -833,7 +834,7 @@ public abstract class MarkupContainer extends Component implements Iterable<Comp
 	 *             Thrown if there was no child with the same id.
 	 * @return This
 	 */
-	public MarkupContainer replace(final Component child)
+	public MarkupContainer replace(@NonNull final Component child)
 	{
 		Args.notNull(child, "child");
 
@@ -992,7 +993,7 @@ public abstract class MarkupContainer extends Component implements Iterable<Comp
 	 * @param child
 	 *            Component being added
 	 */
-	private void addedComponent(final Component child)
+	private void addedComponent(@NonNull final Component child)
 	{
 		// Check for degenerate case
 		Args.notNull(child, "child");

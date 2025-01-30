@@ -30,6 +30,7 @@ import org.apache.wicket.settings.JavaScriptLibrarySettings;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.value.AttributeMap;
+import org.jspecify.annotations.NonNull;
 
 /**
  * {@link HeaderItem} for event triggered scripts.
@@ -122,7 +123,7 @@ public class OnEventHeaderItem extends AbstractCspHeaderItem
 	 * @param event
 	 * @param javaScript
 	 */
-	public OnEventHeaderItem(String target, String event, CharSequence javaScript)
+	public OnEventHeaderItem(@NonNull String target, @NonNull String event, CharSequence javaScript)
 	{
 		this.target = Args.notEmpty(target, "target");
 

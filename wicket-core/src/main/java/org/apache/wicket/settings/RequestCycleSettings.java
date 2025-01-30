@@ -20,8 +20,10 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.apache.wicket.response.filter.IResponseFilter;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Class for request related settings
@@ -375,7 +377,7 @@ public class RequestCycleSettings
 	 *            The request and response encoding to be used.
 	 * @return {@code this} object for chaining
 	 */
-	public RequestCycleSettings setResponseRequestEncoding(final String encoding)
+	public RequestCycleSettings setResponseRequestEncoding(@NonNull final String encoding)
 	{
 		Args.notNull(encoding, "encoding");
 		this.responseRequestEncoding = encoding;
@@ -389,7 +391,7 @@ public class RequestCycleSettings
 	 * @param timeout
 	 * @return {@code this} object for chaining
 	 */
-	public RequestCycleSettings setTimeout(Duration timeout)
+	public RequestCycleSettings setTimeout(@NonNull Duration timeout)
 	{
 		Args.notNull(timeout, "timeout");
 		this.timeout = timeout;

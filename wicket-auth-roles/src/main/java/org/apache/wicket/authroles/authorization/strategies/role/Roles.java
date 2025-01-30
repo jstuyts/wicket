@@ -22,6 +22,7 @@ import java.util.HashSet;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.StringList;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -53,7 +54,7 @@ public class Roles extends HashSet<String> implements IClusterable
 	 * @param roles
 	 *            Roles as a comma separated list, like "ADMIN, USER"
 	 */
-	public Roles(final String roles)
+	public Roles(@NonNull final String roles)
 	{
 		Args.notNull(roles, "roles");
 		for (final String role : roles.split("\\s*,\\s*"))
@@ -68,7 +69,7 @@ public class Roles extends HashSet<String> implements IClusterable
 	 * @param roles
 	 *            Roles
 	 */
-	public Roles(final String[] roles)
+	public Roles(final String @NonNull [] roles)
 	{
 		Args.notNull(roles, "roles");
 		for (final String role : roles)
@@ -77,7 +78,7 @@ public class Roles extends HashSet<String> implements IClusterable
 		}
 	}
 
-	public Roles(final Collection<String> roles) {
+	public Roles(@NonNull final Collection<String> roles) {
 		Args.notNull(roles, "roles");
 		addAll(roles);
 	}

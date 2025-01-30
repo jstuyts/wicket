@@ -19,6 +19,7 @@ package org.apache.wicket.validation;
 import java.io.Serializable;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An IValidationError implementation that just keeps a Serializable
@@ -40,7 +41,7 @@ public class RawValidationError implements IValidationError
 	 * @param errorMessage
 	 *      the custom error message that will be rendered by a custom FeedbackPanel
 	 */
-	public RawValidationError(final Serializable errorMessage)
+	public RawValidationError(@NonNull final Serializable errorMessage)
 	{
 		this.errorMessage = Args.notNull(errorMessage, "errorMessage");
 	}

@@ -29,6 +29,7 @@ import org.apache.wicket.util.LazyInitializer;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.lang.Threads;
 import org.apache.wicket.util.time.Durations;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,7 +63,7 @@ public class DefaultPageLockManager implements IPageLockManager {
 	 * @param timeout
 	 *            timeout value for acquiring a page lock
 	 */
-	public DefaultPageLockManager(Duration timeout)
+	public DefaultPageLockManager(@NonNull Duration timeout)
 	{
 		this.timeout = Args.notNull(timeout, "timeout");
 	}

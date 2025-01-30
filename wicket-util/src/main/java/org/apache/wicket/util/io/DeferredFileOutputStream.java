@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 
 /**
@@ -67,7 +68,7 @@ public class DeferredFileOutputStream extends ThresholdingOutputStream
 	 * @param outputFile
 	 *            The file to which data is saved beyond the threshold.
 	 */
-	public DeferredFileOutputStream(final int threshold, final File outputFile)
+	public DeferredFileOutputStream(final int threshold, @NonNull final File outputFile)
 	{
 		super(threshold);
 
@@ -87,7 +88,7 @@ public class DeferredFileOutputStream extends ThresholdingOutputStream
 	 * @param fileFactory
 	 *            The FileFactory to create the file.
 	 */
-	public DeferredFileOutputStream(final int threshold, final FileFactory fileFactory)
+	public DeferredFileOutputStream(final int threshold, @NonNull final FileFactory fileFactory)
 	{
 		super(threshold);
 		this.fileFactory = Args.notNull(fileFactory, "fileFactory");

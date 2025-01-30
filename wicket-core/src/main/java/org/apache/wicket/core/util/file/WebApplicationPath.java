@@ -19,10 +19,10 @@ package org.apache.wicket.core.util.file;
 import java.net.URL;
 
 import jakarta.servlet.ServletContext;
-
 import org.apache.wicket.core.util.resource.UrlResourceStream;
 import org.apache.wicket.util.file.IResourceFinder;
 import org.apache.wicket.util.resource.IResourceStream;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,7 +73,7 @@ public final class WebApplicationPath implements IResourceFinder
 	 * @see org.apache.wicket.util.file.IResourceFinder#find(Class, String)
 	 */
 	@Override
-	public IResourceStream find(final Class<?> clazz, final String pathname)
+	public IResourceStream find(final Class<?> clazz, @NonNull final String pathname)
 	{
 		IResourceStream resourceStream = null;
 		if (pathname.startsWith(WEB_INF) == false)

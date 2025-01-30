@@ -53,6 +53,10 @@
 			<artifactId>wicket-cdi</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.jspecify</groupId>
+			<artifactId>jspecify</artifactId>
+		</dependency>
+		<dependency>
 		  <groupId>io.github.cdi-unit</groupId>
 		  <artifactId>cdi-unit</artifactId>
 		</dependency>
@@ -76,8 +80,8 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-        		<executions>
-          			<execution>
+				<executions>
+					<execution>
 						<id>test-compile</id>
 						<goals>
 							<goal>testCompile</goal>
@@ -85,8 +89,8 @@
 						<configuration>
 							<useModulePath>false</useModulePath>
 						</configuration>
-          			</execution>
-       			</executions>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

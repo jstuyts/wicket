@@ -29,6 +29,7 @@ import org.apache.wicket.markup.head.StringHeaderItem;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * An IHeaderContributor implementation that renders a velocity template and writes it to the
@@ -56,7 +57,7 @@ public class VelocityContributor extends Behavior
 	 * @param templateName
 	 * @param model
 	 */
-	public VelocityContributor(final String templateName, final IModel<? extends Map<String, Object>> model)
+	public VelocityContributor(final String templateName, @NonNull final IModel<? extends Map<String, Object>> model)
 	{
 		Args.notNull(model, "model");
 

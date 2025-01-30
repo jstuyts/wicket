@@ -71,7 +71,7 @@ org.apache.wicket.extensions.util.encoding;-noimport:=true,
 org.apache.wicket.extensions.validation.validator;-noimport:=true,
 org.apache.wicket.extensions.wizard;-noimport:=true,
 org.apache.wicket.extensions.wizard.dynamic;-noimport:=true
-                </osgi.export.package>
+		</osgi.export.package>
 		<osgi.import.package>!java*,!kotlin*,!sun.nio.ch,org.slf4j*;version="[1.7,3)",*</osgi.import.package>
 	</properties>
 	<dependencies>
@@ -83,6 +83,10 @@ org.apache.wicket.extensions.wizard.dynamic;-noimport:=true
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jspecify</groupId>
+			<artifactId>jspecify</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.wicket</groupId>

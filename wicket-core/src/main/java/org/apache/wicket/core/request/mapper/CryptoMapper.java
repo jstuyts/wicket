@@ -30,9 +30,9 @@ import org.apache.wicket.request.Url;
 import org.apache.wicket.request.mapper.IRequestMapperDelegate;
 import org.apache.wicket.request.mapper.info.PageComponentInfo;
 import org.apache.wicket.util.crypt.ICrypt;
-import org.apache.wicket.util.crypt.ICryptFactory;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -138,7 +138,7 @@ public class CryptoMapper implements IRequestMapperDelegate
 	 * @param cryptProvider
 	 *            the custom crypt provider
 	 */
-	public CryptoMapper(final IRequestMapper wrappedMapper, final Supplier<ICrypt> cryptProvider)
+	public CryptoMapper(@NonNull final IRequestMapper wrappedMapper, @NonNull final Supplier<ICrypt> cryptProvider)
 	{
 		this.wrappedMapper = Args.notNull(wrappedMapper, "wrappedMapper");
 		this.cryptProvider = Args.notNull(cryptProvider, "cryptProvider");

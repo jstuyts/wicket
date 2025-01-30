@@ -25,6 +25,7 @@ import java.util.Set;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.StringValue;
+import org.jspecify.annotations.NonNull;
 
 /**
  * {@link IRequestParameters} implementation that combines other {@link IRequestParameters}s.
@@ -40,7 +41,7 @@ public class CombinedRequestParametersAdapter implements IRequestParameters
 	 * 
 	 * @param parameters
 	 */
-	public CombinedRequestParametersAdapter(final IRequestParameters... parameters)
+	public CombinedRequestParametersAdapter(@NonNull final IRequestParameters... parameters)
 	{
 		this.parameters = Args.notNull(parameters, "parameters");
 	}

@@ -27,6 +27,7 @@ import org.apache.wicket.protocol.ws.api.message.IWebSocketPushMessage;
 import org.apache.wicket.protocol.ws.api.registry.IKey;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.tester.WicketTester;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A helper class to test WebSocket related operations.
@@ -45,7 +46,7 @@ public class WebSocketTester
 	 * @param page
 	 *      the page that may have registered {@link org.apache.wicket.protocol.ws.api.WebSocketBehavior}
 	 */
-	public WebSocketTester(final WicketTester wicketTester, final Page page)
+	public WebSocketTester(@NonNull final WicketTester wicketTester, @NonNull final Page page)
 	{
 		Args.notNull(wicketTester, "wicketTester");
 		Args.notNull(page, "page");
@@ -85,7 +86,7 @@ public class WebSocketTester
 	 * @param resourceName
 	 *      the name of the shared WebSocketResource that will handle the web socket messages
 	 */
-	public WebSocketTester(final WicketTester wicketTester, final String resourceName)
+	public WebSocketTester(@NonNull final WicketTester wicketTester, @NonNull final String resourceName)
 	{
 		Args.notNull(wicketTester, "wicketTester");
 		Args.notNull(resourceName, "resourceName");

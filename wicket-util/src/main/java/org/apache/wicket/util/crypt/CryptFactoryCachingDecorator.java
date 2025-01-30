@@ -18,6 +18,7 @@ package org.apache.wicket.util.crypt;
 
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * {@link ICryptFactory} decorator that caches the call to {@link ICryptFactory#newCrypt()}
@@ -35,7 +36,7 @@ public class CryptFactoryCachingDecorator implements ICryptFactory
 	 * @param delegate
 	 *            the crypt factory whose {@link ICryptFactory#newCrypt()} call will be cached
 	 */
-	public CryptFactoryCachingDecorator(final ICryptFactory delegate)
+	public CryptFactoryCachingDecorator(@NonNull final ICryptFactory delegate)
 	{
 		Args.notNull(delegate, "delegate");
 		this.delegate = delegate;

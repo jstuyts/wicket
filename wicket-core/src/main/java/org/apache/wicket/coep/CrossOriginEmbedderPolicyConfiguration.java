@@ -16,13 +16,14 @@
  */
 package org.apache.wicket.coep;
 
-import org.apache.wicket.Application;
-import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.util.lang.Args;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.apache.wicket.Application;
+import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Specifies the configuration for Cross-Origin Embedder Policy to be used for
@@ -70,13 +71,13 @@ public class CrossOriginEmbedderPolicyConfiguration
 	private final Set<String> exemptions = new HashSet<>();
 	private final CoepMode mode;
 
-	public CrossOriginEmbedderPolicyConfiguration(CoepMode mode, String... exemptions)
+	public CrossOriginEmbedderPolicyConfiguration(@NonNull CoepMode mode, String... exemptions)
 	{
 		this.exemptions.addAll(Arrays.asList(exemptions));
 		this.mode = Args.notNull(mode, "mode");
 	}
 
-	public CrossOriginEmbedderPolicyConfiguration(CoepMode mode)
+	public CrossOriginEmbedderPolicyConfiguration(@NonNull CoepMode mode)
 	{
 		this.mode = Args.notNull(mode, "mode");
 	}

@@ -18,6 +18,7 @@ package org.apache.wicket.extensions.markup.html.repeater.data.sort;
 
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A component that represents a sort header. When the link is clicked it will toggle the state of a
@@ -52,7 +53,7 @@ public class OrderByLink<S> extends Link<Void>
 	 *            sorted properties
 	 *
 	 */
-	public OrderByLink(final String id, final S property, final ISortStateLocator<S> stateLocator)
+	public OrderByLink(final String id, @NonNull final S property, final ISortStateLocator<S> stateLocator)
 	{
 		super(id);
 

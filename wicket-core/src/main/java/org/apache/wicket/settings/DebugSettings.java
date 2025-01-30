@@ -17,6 +17,7 @@
 package org.apache.wicket.settings;
 
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Settings class for various debug settings
@@ -202,7 +203,7 @@ public class DebugSettings
 	 * @param strategy
 	 * @return {@code this} object for chaining
 	 */
-	public DebugSettings setOutputMarkupContainerClassNameStrategy(ClassOutputStrategy strategy) 
+	public DebugSettings setOutputMarkupContainerClassNameStrategy(@NonNull ClassOutputStrategy strategy)
 	{
 		outputMarkupContainerClassNameStrategy = Args.notNull(strategy, "strategy");
 		return this;

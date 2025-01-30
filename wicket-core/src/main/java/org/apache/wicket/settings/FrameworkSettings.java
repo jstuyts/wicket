@@ -30,6 +30,7 @@ import org.apache.wicket.serialize.ISerializer;
 import org.apache.wicket.serialize.java.JavaSerializer;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 
 /**
  * Framework settings for retrieving and configuring framework settings.
@@ -138,7 +139,7 @@ public class FrameworkSettings implements IEventDispatcher
 	 * @param dispatcher {@link IEventDispatcher}
 	 * @return {@code this} object for chaining
 	 */
-	public FrameworkSettings add(IEventDispatcher dispatcher)
+	public FrameworkSettings add(@NonNull IEventDispatcher dispatcher)
 	{
 		Args.notNull(dispatcher, "dispatcher");
 		if (eventDispatchers == null)
@@ -209,7 +210,7 @@ public class FrameworkSettings implements IEventDispatcher
 	 *            the {@link ISerializer} to use
 	 * @return {@code this} object for chaining
 	 */
-	public FrameworkSettings setSerializer(ISerializer serializer)
+	public FrameworkSettings setSerializer(@NonNull ISerializer serializer)
 	{
 		this.serializer = Args.notNull(serializer, "serializer");
 		return this;

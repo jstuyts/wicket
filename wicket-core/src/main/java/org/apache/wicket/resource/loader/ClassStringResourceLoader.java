@@ -21,6 +21,7 @@ import java.util.Locale;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.util.lang.Args;
+import org.jspecify.annotations.NonNull;
 
 /**
  * This string resource loader attempts to find a single resource bundle that has the same name and
@@ -44,7 +45,7 @@ public class ClassStringResourceLoader extends ComponentStringResourceLoader
 	 * @param clazz
 	 *            The class that this resource loader is associated with
 	 */
-	public ClassStringResourceLoader(final Class<?> clazz)
+	public ClassStringResourceLoader(@NonNull final Class<?> clazz)
 	{
 		Args.notNull(clazz, "clazz");
 		clazzRef = new WeakReference<>(clazz);

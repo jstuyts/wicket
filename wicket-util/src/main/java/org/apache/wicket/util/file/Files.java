@@ -26,11 +26,13 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
+
 import org.apache.wicket.util.encoding.UrlDecoder;
 import org.apache.wicket.util.io.IOUtils;
 import org.apache.wicket.util.io.Streams;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.string.Strings;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -191,7 +193,7 @@ public class Files
 	 * @return {@code false} if the {@code file} is <em>null</em> or a folder, {@code true} -
 	 *         otherwise (i.e. if it is scheduled)
 	 */
-	public static boolean removeAsync(final File file, final IFileCleaner fileCleaner)
+	public static boolean removeAsync(final File file, @NonNull final IFileCleaner fileCleaner)
 	{
 		if (file == null || file.isDirectory())
 		{
@@ -216,7 +218,7 @@ public class Files
 	 * @return {@code false} if the {@code folder} is <em>null</em> or a normal file, {@code true} -
 	 *         otherwise (i.e. if it is scheduled)
 	 */
-	public static boolean removeFolderAsync(final File folder, final IFileCleaner fileCleaner)
+	public static boolean removeFolderAsync(final File folder, @NonNull final IFileCleaner fileCleaner)
 	{
 		if (folder == null || folder.isFile())
 		{
@@ -361,7 +363,7 @@ public class Files
 	 * 
 	 * @see #getLocalFileFromUrl(String)
 	 */
-	public static File getLocalFileFromUrl(URL url)
+	public static File getLocalFileFromUrl(@NonNull URL url)
 	{
 		final URL location = Args.notNull(url, "url");
 		return getLocalFileFromUrl(UrlDecoder.PATH_INSTANCE.decode(location.toExternalForm(), StandardCharsets.UTF_8));
@@ -378,7 +380,7 @@ public class Files
 	 * 
 	 * @see #getLocalFileFromUrl(URL)
 	 */
-	public static File getLocalFileFromUrl(String url)
+	public static File getLocalFileFromUrl(@NonNull String url)
 	{
 		final String location = Args.notNull(url, "url");
 

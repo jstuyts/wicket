@@ -25,11 +25,11 @@ import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes.Method;
-import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.validation.IFormValidator;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -226,7 +226,7 @@ public abstract class AjaxFormComponentUpdatingBehavior extends AjaxEventBehavio
 	 * @return the {@link AjaxFormComponentUpdatingBehavior}
 	 */
 	public static AjaxFormComponentUpdatingBehavior onUpdate(String eventName,
-		SerializableConsumer<AjaxRequestTarget> onUpdate)
+		@NonNull SerializableConsumer<AjaxRequestTarget> onUpdate)
 	{
 		Args.notNull(onUpdate, "onUpdate");
 

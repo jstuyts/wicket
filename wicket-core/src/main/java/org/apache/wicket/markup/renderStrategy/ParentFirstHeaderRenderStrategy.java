@@ -22,6 +22,7 @@ import org.apache.wicket.markup.html.internal.HtmlHeaderContainer;
 import org.apache.wicket.util.lang.Args;
 import org.apache.wicket.util.visit.IVisit;
 import org.apache.wicket.util.visit.IVisitor;
+import org.jspecify.annotations.NonNull;
 
 /**
  * This has been Wicket's default header render strategy before WICKET 1.5 which uses
@@ -44,8 +45,8 @@ public class ParentFirstHeaderRenderStrategy extends AbstractHeaderRenderStrateg
 	}
 
 	@Override
-	protected void renderChildHeaders(final HtmlHeaderContainer headerContainer,
-		final Component rootComponent)
+	protected void renderChildHeaders(@NonNull final HtmlHeaderContainer headerContainer,
+		@NonNull final Component rootComponent)
 	{
 		Args.notNull(headerContainer, "headerContainer");
 		Args.notNull(rootComponent, "rootComponent");
