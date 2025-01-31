@@ -21,6 +21,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.extensions.markup.html.repeater.tree.ITreeProvider;
 import org.apache.wicket.model.IDetachable;
 import org.apache.wicket.model.IModel;
@@ -136,6 +138,7 @@ public class ProviderSubset<T> implements Set<T>, IDetachable
 		return removed;
 	}
 
+	@Nonnull
 	@Override
 	public Iterator<T> iterator()
 	{
@@ -211,19 +214,21 @@ public class ProviderSubset<T> implements Set<T>, IDetachable
 	}
 
 	@Override
-	public boolean retainAll(Collection<?> c)
+	public boolean retainAll(@Nonnull Collection<?> c)
 	{
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
 	public Object[] toArray()
 	{
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
-	public <S> S[] toArray(S[] a)
+	public <S> S[] toArray(@Nonnull S[] a)
 	{
 		throw new UnsupportedOperationException();
 	}

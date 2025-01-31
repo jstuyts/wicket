@@ -19,6 +19,8 @@ package org.apache.wicket.util.io;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import jakarta.annotation.Nonnull;
+
 /**
  * Output stream that counts bytes written to it (but discards them).
  * 
@@ -41,7 +43,7 @@ public final class ByteCountingOutputStream extends OutputStream
 	 * @see java.io.OutputStream#write(byte[], int, int)
 	 */
 	@Override
-	public void write(final byte b[], final int off, final int len) throws IOException
+	public void write(@Nonnull final byte b[], final int off, final int len) throws IOException
 	{
 		size += len;
 	}

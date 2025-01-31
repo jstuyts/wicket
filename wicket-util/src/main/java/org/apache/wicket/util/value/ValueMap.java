@@ -26,6 +26,8 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.util.parse.metapattern.MetaPattern;
 import org.apache.wicket.util.parse.metapattern.parsers.VariableAssignmentParser;
 import org.apache.wicket.util.string.AppendingStringBuffer;
@@ -447,7 +449,7 @@ public class ValueMap extends LinkedHashMap<String, Object> implements IValueMap
 	}
 
 	@Override
-	public void putAll(final Map<? extends String, ?> map)
+	public void putAll(@Nonnull final Map<? extends String, ?> map)
 	{
 		checkMutability();
 		super.putAll(map);

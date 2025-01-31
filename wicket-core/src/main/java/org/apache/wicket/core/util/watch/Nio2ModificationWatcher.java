@@ -42,6 +42,9 @@ import org.apache.wicket.util.string.Strings;
 import org.apache.wicket.util.thread.ICode;
 import org.apache.wicket.util.thread.Task;
 import java.time.Duration;
+
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.util.watch.ModificationWatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -245,8 +248,9 @@ public class Nio2ModificationWatcher extends ModificationWatcher
 					register(folder, watchService);
 
 					Files.walkFileTree(folder, new SimpleFileVisitor<Path>() {
+						@Nonnull
 						@Override
-						public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException
+						public FileVisitResult preVisitDirectory(Path dir, @Nonnull BasicFileAttributes attrs) throws IOException
 						{
 							register(dir, watchService);
 							return FileVisitResult.CONTINUE;

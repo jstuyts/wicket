@@ -25,6 +25,8 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import jakarta.annotation.Nonnull;
+
 /**
  * A fixed size map implementation. Holds an array of keys and array of values which correspond by
  * index. Null key entries are available for use. This means that null is not a valid key.
@@ -231,11 +233,13 @@ public class MiniMap<K, V> implements Map<K, V>, Serializable
 	/**
 	 * @see java.util.Map#keySet()
 	 */
+	@Nonnull
 	@Override
 	public Set<K> keySet()
 	{
 		return new AbstractSet<K>()
 		{
+			@Nonnull
 			@Override
 			public Iterator<K> iterator()
 			{
@@ -286,6 +290,7 @@ public class MiniMap<K, V> implements Map<K, V>, Serializable
 	/**
 	 * @see java.util.Map#values()
 	 */
+	@Nonnull
 	@Override
 	public Collection<V> values()
 	{
@@ -319,11 +324,13 @@ public class MiniMap<K, V> implements Map<K, V>, Serializable
 	/**
 	 * @see java.util.Map#entrySet()
 	 */
+	@Nonnull
 	@Override
 	public Set<Entry<K, V>> entrySet()
 	{
 		return new AbstractSet<Entry<K, V>>()
 		{
+			@Nonnull
 			@Override
 			public Iterator<Entry<K, V>> iterator()
 			{

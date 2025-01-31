@@ -452,7 +452,7 @@ public class MultipartServletWebRequestImpl extends MultipartServletWebRequest
 		}
 
 		@Override
-		public int read(byte[] b) throws IOException
+		public int read(@Nonnull byte[] b) throws IOException
 		{
 			int read = in.read(b);
 			bytesUploaded += (read < 0) ? 0 : read;
@@ -461,7 +461,7 @@ public class MultipartServletWebRequestImpl extends MultipartServletWebRequest
 		}
 
 		@Override
-		public int read(byte[] b, int off, int len) throws IOException
+		public int read(@Nonnull byte[] b, int off, int len) throws IOException
 		{
 			int read = in.read(b, off, len);
 			bytesUploaded += (read < 0) ? 0 : read;

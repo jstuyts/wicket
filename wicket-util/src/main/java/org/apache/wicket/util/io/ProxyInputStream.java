@@ -20,6 +20,8 @@ import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import jakarta.annotation.Nonnull;
+
 /**
  * A Proxy stream which acts as expected, that is it passes the method
  * calls on to the proxied stream and doesn't change which methods are
@@ -71,7 +73,7 @@ public abstract class ProxyInputStream extends FilterInputStream {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    public int read(final byte[] bts) throws IOException {
+    public int read(@Nonnull final byte[] bts) throws IOException {
         try {
             beforeRead(bts != null ? bts.length : 0);
             final int n = in.read(bts);
@@ -92,7 +94,7 @@ public abstract class ProxyInputStream extends FilterInputStream {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    public int read(final byte[] bts, final int off, final int len) throws IOException {
+    public int read(@Nonnull final byte[] bts, final int off, final int len) throws IOException {
         try {
             beforeRead(len);
             final int n = in.read(bts, off, len);

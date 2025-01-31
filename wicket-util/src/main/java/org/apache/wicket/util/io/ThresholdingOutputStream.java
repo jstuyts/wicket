@@ -19,6 +19,8 @@ package org.apache.wicket.util.io;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import jakarta.annotation.Nonnull;
+
 
 /**
  * An output stream which triggers an event when a specified number of bytes of data have been
@@ -125,7 +127,7 @@ public abstract class ThresholdingOutputStream extends OutputStream
 	 *                if an error occurs.
 	 */
 	@Override
-	public void write(final byte b[], final int off, final int len) throws IOException
+	public void write(@Nonnull final byte b[], final int off, final int len) throws IOException
 	{
 		checkThreshold(len);
 		getStream().write(b, off, len);

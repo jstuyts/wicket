@@ -21,6 +21,8 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import jakarta.annotation.Nonnull;
+
 /**
  * This class implements an output stream in which the data is written into a byte array. The buffer
  * automatically grows as data is written to it.
@@ -160,7 +162,7 @@ public class ByteArrayOutputStream extends OutputStream
 	 * @see java.io.OutputStream#write(byte[], int, int)
 	 */
 	@Override
-	public synchronized void write(final byte[] b, final int off, final int len)
+	public synchronized void write(@Nonnull final byte[] b, final int off, final int len)
 	{
 		if ((off < 0) || (off > b.length) || (len < 0) || ((off + len) > b.length) ||
 			((off + len) < 0))

@@ -27,6 +27,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.Page;
@@ -746,44 +748,47 @@ public final class EnhancedPageView extends GenericPanel<Page>
 			throw new UnsupportedOperationException();
 		}
 
+		@Nonnull
 		@Override
 		public Iterator<TreeNode> iterator()
 		{
 			throw new UnsupportedOperationException();
 		}
 
+		@Nonnull
 		@Override
 		public Object[] toArray()
 		{
 			throw new UnsupportedOperationException();
 		}
 
+		@Nonnull
 		@Override
-		public <T> T[] toArray(T[] a_a)
+		public <T> T[] toArray(@Nonnull T[] a_a)
 		{
 			throw new UnsupportedOperationException();
 		}
 
 		@Override
-		public boolean containsAll(Collection<?> a_c)
+		public boolean containsAll(@Nonnull Collection<?> a_c)
 		{
 			throw new UnsupportedOperationException();
 		}
 
 		@Override
-		public boolean addAll(Collection<? extends TreeNode> a_c)
+		public boolean addAll(@Nonnull Collection<? extends TreeNode> a_c)
 		{
 			throw new UnsupportedOperationException();
 		}
 
 		@Override
-		public boolean retainAll(Collection<?> a_c)
+		public boolean retainAll(@Nonnull Collection<?> a_c)
 		{
 			throw new UnsupportedOperationException();
 		}
 
 		@Override
-		public boolean removeAll(Collection<?> a_c)
+		public boolean removeAll(@Nonnull Collection<?> a_c)
 		{
 			throw new UnsupportedOperationException();
 		}

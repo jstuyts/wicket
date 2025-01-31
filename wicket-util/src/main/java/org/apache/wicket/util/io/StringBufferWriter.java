@@ -18,6 +18,8 @@ package org.apache.wicket.util.io;
 
 import java.io.Writer;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.util.string.AppendingStringBuffer;
 
 
@@ -67,7 +69,7 @@ public class StringBufferWriter extends Writer
 	 * @see java.io.Writer#write(char[])
 	 */
 	@Override
-	public void write(final char charArray[])
+	public void write(@Nonnull final char charArray[])
 	{
 		buffer.append(charArray);
 	}
@@ -76,7 +78,7 @@ public class StringBufferWriter extends Writer
 	 * @see java.io.Writer#write(char[], int, int)
 	 */
 	@Override
-	public void write(final char charArray[], final int offset, final int length)
+	public void write(@Nonnull final char charArray[], final int offset, final int length)
 	{
 		buffer.append(charArray, offset, length);
 	}
@@ -85,7 +87,7 @@ public class StringBufferWriter extends Writer
 	 * @see java.io.Writer#write(java.lang.String)
 	 */
 	@Override
-	public void write(final String string)
+	public void write(@Nonnull final String string)
 	{
 		buffer.append(string);
 	}

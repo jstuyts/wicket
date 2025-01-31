@@ -21,6 +21,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.util.collections.ReverseListIterator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -194,6 +196,7 @@ public abstract class ListenerCollection<T> implements Serializable, Iterable<T>
 	 * 
 	 * @return an iterator that can iterate the listeners.
 	 */
+	@Nonnull
 	@Override
 	public Iterator<T> iterator()
 	{

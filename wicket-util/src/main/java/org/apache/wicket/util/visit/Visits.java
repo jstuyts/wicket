@@ -42,6 +42,7 @@ public class Visits
 			this.singleton = singleton;
 		}
 
+		@Nonnull
 		@Override
 		public Iterator<T> iterator()
 		{

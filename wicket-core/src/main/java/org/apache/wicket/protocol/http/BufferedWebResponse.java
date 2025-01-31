@@ -384,7 +384,7 @@ public class BufferedWebResponse extends WebResponse implements IMetaDataBufferi
 				}
 
 				@Override
-				public void write(byte[] b, int off, int len) throws IOException
+				public void write(@Nonnull byte[] b, int off, int len) throws IOException
 				{
 					if (off == 0 && len == b.length)
 					{

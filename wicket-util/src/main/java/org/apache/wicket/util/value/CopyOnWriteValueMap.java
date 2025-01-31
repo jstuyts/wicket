@@ -24,6 +24,8 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.util.string.StringValue;
 import org.apache.wicket.util.string.StringValueConversionException;
 
@@ -87,6 +89,7 @@ public class CopyOnWriteValueMap implements IValueMap, Serializable
 		return wrapped.containsValue(value);
 	}
 
+	@Nonnull
 	@Override
 	public Set<Entry<String, Object>> entrySet()
 	{
@@ -214,6 +217,7 @@ public class CopyOnWriteValueMap implements IValueMap, Serializable
 		return false;
 	}
 
+	@Nonnull
 	@Override
 	public Set<String> keySet()
 	{
@@ -235,7 +239,7 @@ public class CopyOnWriteValueMap implements IValueMap, Serializable
 	}
 
 	@Override
-	public void putAll(final Map<? extends String, ?> map)
+	public void putAll(@Nonnull final Map<? extends String, ?> map)
 	{
 		checkAndCopy();
 		wrapped.putAll(map);
@@ -254,6 +258,7 @@ public class CopyOnWriteValueMap implements IValueMap, Serializable
 		return wrapped.size();
 	}
 
+	@Nonnull
 	@Override
 	public Collection<Object> values()
 	{

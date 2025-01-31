@@ -18,6 +18,8 @@ package org.apache.wicket.util.string;
 
 import java.io.IOException;
 
+import jakarta.annotation.Nonnull;
+
 /**
  * This is a copy or combination of <code>java.lang.StringBuffer</code> and
  * <code>java.lang.String</code> It has a special method getValue() which returns the internal char
@@ -833,6 +835,7 @@ public final class AppendingStringBuffer implements java.io.Serializable, CharSe
 	 * @since 1.4
 	 * Specification: JSR-51
 	 */
+	@Nonnull
 	@Override
 	public CharSequence subSequence(final int start, final int end)
 	{
@@ -1625,6 +1628,7 @@ public final class AppendingStringBuffer implements java.io.Serializable, CharSe
 	 * 
 	 * @return a string representation of the string buffer.
 	 */
+	@Nonnull
 	@Override
 	public String toString()
 	{

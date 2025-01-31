@@ -526,7 +526,7 @@ public class WebSocketSettings
 		private final AtomicInteger counter = new AtomicInteger();
 
 		@Override
-		public Thread newThread(final Runnable r)
+		public Thread newThread(@Nonnull final Runnable r)
 		{
 			return new Thread(r, "Wicket-WebSocket-HttpRequest-Thread-" + counter.getAndIncrement());
 		}

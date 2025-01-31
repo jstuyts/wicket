@@ -206,6 +206,7 @@ public class MarkupFragment extends AbstractMarkupFragment
 		return buf.toString();
 	}
 
+	@Nonnull
 	@Override
 	public Iterator<MarkupElement> iterator()
 	{

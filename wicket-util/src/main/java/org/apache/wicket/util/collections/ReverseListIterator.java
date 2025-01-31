@@ -20,6 +20,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import jakarta.annotation.Nonnull;
+
 /**
  * An iterator over {@link List} which goes from the end to the start
  * 
@@ -59,6 +61,7 @@ public class ReverseListIterator<E> implements Iterator<E>, Iterable<E>
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
 	public Iterator<E> iterator()
 	{

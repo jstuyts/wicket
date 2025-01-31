@@ -23,6 +23,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.util.collections.ReverseListIterator;
 import org.apache.wicket.util.string.Strings;
 import org.slf4j.Logger;
@@ -431,7 +433,7 @@ public class SecurePackageResourceGuard extends PackageResourceGuard
 		 * @see java.util.concurrent.ConcurrentHashMap#put(java.lang.Object, java.lang.Object)
 		 */
 		@Override
-		public Boolean put(String key, Boolean value)
+		public Boolean put(@Nonnull String key, @Nonnull Boolean value)
 		{
 			// add the key to the hash map. Do not replace existing once
 			Boolean rtn = super.putIfAbsent(key, value);

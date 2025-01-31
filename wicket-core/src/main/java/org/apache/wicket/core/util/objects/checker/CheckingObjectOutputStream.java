@@ -48,6 +48,8 @@ import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.util.lang.Classes;
@@ -98,12 +100,12 @@ public class CheckingObjectOutputStream extends ObjectOutputStream
 		}
 
 		@Override
-		public void write(byte[] b)
+		public void write(@Nonnull byte[] b)
 		{
 		}
 
 		@Override
-		public void write(byte[] b, int i, int l)
+		public void write(@Nonnull byte[] b, int i, int l)
 		{
 		}
 
@@ -152,7 +154,7 @@ public class CheckingObjectOutputStream extends ObjectOutputStream
 		}
 
 		@Override
-		public void writeBytes(String s) throws IOException
+		public void writeBytes(@Nonnull String s) throws IOException
 		{
 		}
 
@@ -162,7 +164,7 @@ public class CheckingObjectOutputStream extends ObjectOutputStream
 		}
 
 		@Override
-		public void writeChars(String s) throws IOException
+		public void writeChars(@Nonnull String s) throws IOException
 		{
 		}
 
@@ -192,7 +194,7 @@ public class CheckingObjectOutputStream extends ObjectOutputStream
 		}
 
 		@Override
-		public void writeUTF(String str) throws IOException
+		public void writeUTF(@Nonnull String str) throws IOException
 		{
 		}
 	}

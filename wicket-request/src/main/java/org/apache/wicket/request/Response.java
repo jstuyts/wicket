@@ -139,13 +139,13 @@ public abstract class Response
 		}
 
 		@Override
-		public void write(byte[] b) throws IOException
+		public void write(@Nonnull byte[] b) throws IOException
 		{
 			response.write(b);
 		}
 
 		@Override
-		public void write(byte[] b, int off, int len) throws IOException
+		public void write(@Nonnull byte[] b, int off, int len) throws IOException
 		{
 			response.write(b, off, len);
 		}

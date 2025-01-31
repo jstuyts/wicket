@@ -252,6 +252,7 @@ public class Markup extends AbstractMarkupFragment
 	/**
 	 * @see java.lang.Iterable#iterator()
 	 */
+	@Nonnull
 	@Override
 	public final Iterator<MarkupElement> iterator()
 	{

@@ -22,6 +22,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.Session;
 
@@ -123,18 +125,21 @@ public class FooExpansion implements Set<Foo>, Serializable
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
-	public <A> A[] toArray(A[] a)
+	public <A> A[] toArray(@Nonnull A[] a)
 	{
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
 	public Iterator<Foo> iterator()
 	{
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
 	public Object[] toArray()
 	{
@@ -142,25 +147,25 @@ public class FooExpansion implements Set<Foo>, Serializable
 	}
 
 	@Override
-	public boolean containsAll(Collection<?> c)
+	public boolean containsAll(@Nonnull Collection<?> c)
 	{
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public boolean addAll(Collection<? extends Foo> c)
+	public boolean addAll(@Nonnull Collection<? extends Foo> c)
 	{
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public boolean retainAll(Collection<?> c)
+	public boolean retainAll(@Nonnull Collection<?> c)
 	{
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public boolean removeAll(Collection<?> c)
+	public boolean removeAll(@Nonnull Collection<?> c)
 	{
 		throw new UnsupportedOperationException();
 	}

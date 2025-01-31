@@ -255,6 +255,7 @@ public class InMemoryPageStore extends AbstractPersistentPageStore implements IP
 		 */
 		List<IManageablePage> pages = new LinkedList<>();
 		
+		@Nonnull
 		@Override
 		public Iterator<IManageablePage> iterator()
 		{

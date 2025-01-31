@@ -22,6 +22,8 @@ import java.lang.annotation.Annotation;
 import java.util.Locale;
 import java.util.Map;
 
+import jakarta.annotation.Nonnull;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -79,25 +81,29 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 		putBean(bean.getClass().getName(), bean);
 	}
 
+	@Nonnull
 	@Override
-	public Object getBean(final String name) throws BeansException
+	public Object getBean(@Nonnull final String name) throws BeansException
 	{
 		return beanFactory.getBean(name);
 	}
 
+	@Nonnull
 	@Override
-	public Object getBean(final String name, final Object... args) throws BeansException
+	public Object getBean(@Nonnull final String name, @Nonnull final Object... args) throws BeansException
 	{
 		return beanFactory.getBean(name, args);
 	}
 
+	@Nonnull
 	@Override
 	@SuppressWarnings({ "unchecked" })
-	public <T> T getBean(String name, Class<T> requiredType) throws BeansException
+	public <T> T getBean(@Nonnull String name, @Nonnull Class<T> requiredType) throws BeansException
 	{
 		return beanFactory.getBean(name, requiredType);
 	}
 
+	@Nonnull
 	@Override
 	@SuppressWarnings({ "unchecked" })
 	public <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException
@@ -105,39 +111,44 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 		return beanFactory.getBeansOfType(type);
 	}
 
+	@Nonnull
 	@Override
-	public <T> T getBean(Class<T> requiredType) throws BeansException
+	public <T> T getBean(@Nonnull Class<T> requiredType) throws BeansException
 	{
 		return beanFactory.getBean(requiredType);
 	}
 
+	@Nonnull
 	@Override
-	public <T> T getBean(Class<T> requiredType, Object... objects) throws BeansException
+	public <T> T getBean(@Nonnull Class<T> requiredType, @Nonnull Object... objects) throws BeansException
 	{
 		return beanFactory.getBean(requiredType, objects);
 	}
 
+	@Nonnull
 	@Override
-	public <T> ObjectProvider<T> getBeanProvider(Class<T> aClass)
+	public <T> ObjectProvider<T> getBeanProvider(@Nonnull Class<T> aClass)
 	{
 		return beanFactory.getBeanProvider(aClass);
 	}
 
+	@Nonnull
 	@Override
-	public <T> ObjectProvider<T> getBeanProvider(ResolvableType resolvableType)
+	public <T> ObjectProvider<T> getBeanProvider(@Nonnull ResolvableType resolvableType)
 	{
 		return beanFactory.getBeanProvider(resolvableType);
 	}
 
+	@Nonnull
 	@Override
-	public Map<String, Object> getBeansWithAnnotation(Class<? extends Annotation> annotationType)
+	public Map<String, Object> getBeansWithAnnotation(@Nonnull Class<? extends Annotation> annotationType)
 		throws BeansException
 	{
 		return beanFactory.getBeansWithAnnotation(annotationType);
 	}
 
 	@Override
-	public <A extends Annotation> A findAnnotationOnBean(String beanName, Class<A> annotationType)
+	public <A extends Annotation> A findAnnotationOnBean(@Nonnull String beanName, @Nonnull Class<A> annotationType)
 	{
 		return beanFactory.findAnnotationOnBean(beanName, annotationType);
 	}
@@ -148,6 +159,7 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 		return null;
 	}
 
+	@Nonnull
 	@Override
 	public String getDisplayName()
 	{
@@ -161,19 +173,19 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 	}
 
 	@Override
-	public void publishEvent(final ApplicationEvent event)
+	public void publishEvent(@Nonnull final ApplicationEvent event)
 	{
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public void publishEvent(Object o)
+	public void publishEvent(@Nonnull Object o)
 	{
 		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public boolean containsBeanDefinition(final String beanName)
+	public boolean containsBeanDefinition(@Nonnull final String beanName)
 	{
 		return beanFactory.containsBean(beanName);
 	}
@@ -184,40 +196,47 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 		return beanFactory.getBeanDefinitionCount();
 	}
 
+	@Nonnull
 	@Override
 	public String[] getBeanDefinitionNames()
 	{
 		return beanFactory.getBeanDefinitionNames();
 	}
 
+	@Nonnull
 	@Override
-	public <T> ObjectProvider<T> getBeanProvider(final Class<T> aClass, final boolean b) {
+	public <T> ObjectProvider<T> getBeanProvider(@Nonnull final Class<T> aClass, final boolean b) {
 		return beanFactory.getBeanProvider(aClass, b);
 	}
 
+	@Nonnull
 	@Override
-	public <T> ObjectProvider<T> getBeanProvider(final ResolvableType resolvableType, final boolean b) {
+	public <T> ObjectProvider<T> getBeanProvider(@Nonnull final ResolvableType resolvableType, final boolean b) {
 		return beanFactory.getBeanProvider(resolvableType, b);
 	}
 
+	@Nonnull
 	@Override
-	public String[] getBeanNamesForType(ResolvableType resolvableType)
+	public String[] getBeanNamesForType(@Nonnull ResolvableType resolvableType)
 	{
 		return beanFactory.getBeanNamesForType(resolvableType);
 	}
 
+	@Nonnull
 	@Override
-	public String[] getBeanNamesForType(ResolvableType resolvableType, boolean includeNonSingletons, boolean allowEagerInit)
+	public String[] getBeanNamesForType(@Nonnull ResolvableType resolvableType, boolean includeNonSingletons, boolean allowEagerInit)
 	{
 		return beanFactory.getBeanNamesForType(resolvableType, includeNonSingletons, allowEagerInit);
 	}
 
+	@Nonnull
 	@Override
 	public String[] getBeanNamesForType(final Class type)
 	{
 		return beanFactory.getBeanNamesForType(type);
 	}
 
+	@Nonnull
 	@Override
 	public String[] getBeanNamesForType(Class type, boolean includeNonSingletons,
 		boolean allowEagerInit)
@@ -225,6 +244,7 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 		return beanFactory.getBeanNamesForType(type, includeNonSingletons, allowEagerInit);
 	}
 
+	@Nonnull
 	@Override
 	public <T> Map<String, T> getBeansOfType(Class<T> type, boolean includeNonSingletons,
 		boolean allowEagerInit) throws BeansException
@@ -232,38 +252,40 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 		return beanFactory.getBeansOfType(type, includeNonSingletons, allowEagerInit);
 	}
 
+	@Nonnull
 	@Override
-	public String[] getBeanNamesForAnnotation(Class<? extends Annotation> aClass)
+	public String[] getBeanNamesForAnnotation(@Nonnull Class<? extends Annotation> aClass)
 	{
 		return beanFactory.getBeanNamesForAnnotation(aClass);
 	}
 
 	@Override
-	public boolean containsBean(final String name)
+	public boolean containsBean(@Nonnull final String name)
 	{
 		return beanFactory.containsBean(name);
 	}
 
 	@Override
-	public boolean isSingleton(final String name) throws NoSuchBeanDefinitionException
+	public boolean isSingleton(@Nonnull final String name) throws NoSuchBeanDefinitionException
 	{
 		return beanFactory.isSingleton(name);
 	}
 
 	@Override
-	public Class<?> getType(final String name) throws NoSuchBeanDefinitionException
+	public Class<?> getType(@Nonnull final String name) throws NoSuchBeanDefinitionException
 	{
 		return beanFactory.getType(name);
 	}
 
 	@Override
-	public Class<?> getType(String name, boolean allowFactoryBeanInit) throws NoSuchBeanDefinitionException
+	public Class<?> getType(@Nonnull String name, boolean allowFactoryBeanInit) throws NoSuchBeanDefinitionException
 	{
 		return beanFactory.getType(name, allowFactoryBeanInit);
 	}
 
+	@Nonnull
 	@Override
-	public String[] getAliases(final String name) throws NoSuchBeanDefinitionException
+	public String[] getAliases(@Nonnull final String name) throws NoSuchBeanDefinitionException
 	{
 		return beanFactory.getAliases(name);
 	}
@@ -275,28 +297,31 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 	}
 
 	@Override
-	public String getMessage(final String code, final Object[] args, final String defaultMessage,
-		final Locale locale)
+	public String getMessage(@Nonnull final String code, final Object[] args, final String defaultMessage,
+		@Nonnull final Locale locale)
 	{
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
-	public String getMessage(final String code, final Object[] args, final Locale locale)
+	public String getMessage(@Nonnull final String code, final Object[] args, @Nonnull final Locale locale)
 		throws NoSuchMessageException
 	{
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
-	public String getMessage(final MessageSourceResolvable resolvable, final Locale locale)
+	public String getMessage(@Nonnull final MessageSourceResolvable resolvable, @Nonnull final Locale locale)
 		throws NoSuchMessageException
 	{
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
-	public Resource[] getResources(final String locationPattern) throws IOException
+	public Resource[] getResources(@Nonnull final String locationPattern) throws IOException
 	{
 		throw new UnsupportedOperationException();
 	}
@@ -309,17 +334,20 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 	protected void closeBeanFactory() {
 	}
 
+	@Nonnull
 	@Override
 	public ConfigurableListableBeanFactory getBeanFactory() throws IllegalStateException {
 		return beanFactory;
 	}
 
+	@Nonnull
 	@Override
-	public Resource getResource(final String location)
+	public Resource getResource(@Nonnull final String location)
 	{
 		throw new UnsupportedOperationException();
 	}
 
+	@Nonnull
 	@Override
 	public AutowireCapableBeanFactory getAutowireCapableBeanFactory() throws IllegalStateException
 	{
@@ -327,25 +355,25 @@ public class ApplicationContextMock extends AbstractApplicationContext implement
 	}
 
 	@Override
-	public boolean containsLocalBean(final String name)
+	public boolean containsLocalBean(@Nonnull final String name)
 	{
 		return beanFactory.containsLocalBean(name);
 	}
 
 	@Override
-	public boolean isPrototype(final String name) throws NoSuchBeanDefinitionException
+	public boolean isPrototype(@Nonnull final String name) throws NoSuchBeanDefinitionException
 	{
 		return beanFactory.isPrototype(name);
 	}
 
 	@Override
-	public boolean isTypeMatch(String s, ResolvableType resolvableType) throws NoSuchBeanDefinitionException
+	public boolean isTypeMatch(@Nonnull String s, @Nonnull ResolvableType resolvableType) throws NoSuchBeanDefinitionException
 	{
 		return beanFactory.isTypeMatch(s, resolvableType);
 	}
 
 	@Override
-	public boolean isTypeMatch(final String name, final Class targetType)
+	public boolean isTypeMatch(@Nonnull final String name, @Nonnull final Class targetType)
 		throws NoSuchBeanDefinitionException
 	{
 		return beanFactory.isTypeMatch(name, targetType);

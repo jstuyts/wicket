@@ -22,6 +22,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+import jakarta.annotation.Nonnull;
+
 /**
  * This class is used to wrap a stream that includes an encoded {@link ByteOrderMark} as its first bytes.
  * 
@@ -327,7 +329,7 @@ public class BOMInputStream extends ProxyInputStream
      *             if an I/O error occurs
      */
     @Override
-    public int read(final byte[] buf, int off, int len) throws IOException {
+    public int read(@Nonnull final byte[] buf, int off, int len) throws IOException {
         int firstCount = 0;
         int b = 0;
         while (len > 0 && b >= 0) {
@@ -352,7 +354,7 @@ public class BOMInputStream extends ProxyInputStream
      *             if an I/O error occurs
      */
     @Override
-    public int read(final byte[] buf) throws IOException {
+    public int read(@Nonnull final byte[] buf) throws IOException {
         return read(buf, 0, buf.length);
     }
 

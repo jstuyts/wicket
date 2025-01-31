@@ -23,6 +23,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.util.io.IClusterable;
 import org.apache.wicket.util.string.StringList;
@@ -276,6 +278,7 @@ public final class FeedbackMessages implements IClusterable, Iterable<FeedbackMe
 	 * 
 	 * @return iterator over stored messages
 	 */
+	@Nonnull
 	@Override
 	public final Iterator<FeedbackMessage> iterator()
 	{

@@ -22,6 +22,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.request.IRequestHandler;
 import org.apache.wicket.request.IRequestMapper;
 import org.apache.wicket.request.Request;
@@ -232,6 +234,7 @@ public class CompoundRequestMapper implements ICompoundRequestMapper
 		return score;
 	}
 
+	@Nonnull
 	@Override
 	public Iterator<IRequestMapper> iterator()
 	{

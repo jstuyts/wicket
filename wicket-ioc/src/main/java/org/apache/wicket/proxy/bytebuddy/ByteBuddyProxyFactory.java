@@ -21,6 +21,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.function.Function;
 
+import jakarta.annotation.Nonnull;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.proxy.ILazyInitProxy;
@@ -170,6 +172,7 @@ public class ByteBuddyProxyFactory implements IProxyFactory
 			super();
 		}
 
+		@Nonnull
 		@Override
 		protected String name(TypeDescription superClass) {
 			String prefix = superClass.getName();
@@ -188,11 +191,13 @@ public class ByteBuddyProxyFactory implements IProxyFactory
 			return name;
 		}
 
+		@Nonnull
 		@Override
 		public String redefine(TypeDescription typeDescription) {
 			return typeDescription.getName();
 		}
 
+		@Nonnull
 		@Override
 		public String rebase(TypeDescription typeDescription) {
 			return typeDescription.getName();

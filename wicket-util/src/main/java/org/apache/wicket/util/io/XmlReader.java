@@ -227,7 +227,7 @@ public final class XmlReader extends Reader
 	 * @see java.io.Reader#read(char[], int, int)
 	 */
 	@Override
-	public int read(final char[] buf, final int from, final int to) throws IOException
+	public int read(@Nonnull final char[] buf, final int from, final int to) throws IOException
 	{
 		return reader.read(buf, from, to);
 	}

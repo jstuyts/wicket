@@ -556,6 +556,7 @@ public abstract class MarkupContainer extends Component implements Iterable<Comp
 	 * 
 	 * @return Iterator that iterates through children in the order they were added
 	 */
+	@Nonnull
 	@Override
 	public Iterator<Component> iterator()
 	{

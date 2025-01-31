@@ -27,6 +27,8 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import jakarta.annotation.Nonnull;
+
 /**
  * This is an integer hashmap that has the exact same features and interface as a normal Map except
  * that the key is directly an integer. So no hash is calculated or key object is stored.
@@ -920,6 +922,7 @@ public class IntHashMap<V> implements Cloneable, Serializable
 		/**
 		 * @see java.util.AbstractCollection#iterator()
 		 */
+		@Nonnull
 		@Override
 		public Iterator<Integer> iterator()
 		{
@@ -992,6 +995,7 @@ public class IntHashMap<V> implements Cloneable, Serializable
 		/**
 		 * @see java.util.AbstractCollection#iterator()
 		 */
+		@Nonnull
 		@Override
 		public Iterator<V> iterator()
 		{
@@ -1048,6 +1052,7 @@ public class IntHashMap<V> implements Cloneable, Serializable
 		/**
 		 * @see java.util.AbstractCollection#iterator()
 		 */
+		@Nonnull
 		@Override
 		public Iterator<Entry<V>> iterator()
 		{

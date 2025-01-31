@@ -40,6 +40,7 @@ public class JSONFunction implements JSONString, CharSequence, IClusterable
 		this.value = Args.notNull(value, "value");
 	}
 
+	@Nonnull
 	@Override
 	public String toString()
 	{
@@ -64,6 +65,7 @@ public class JSONFunction implements JSONString, CharSequence, IClusterable
 		return value.charAt(index);
 	}
 
+	@Nonnull
 	@Override
 	public CharSequence subSequence(int start, int end)
 	{

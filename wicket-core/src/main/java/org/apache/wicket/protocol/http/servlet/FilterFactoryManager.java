@@ -19,6 +19,7 @@ package org.apache.wicket.protocol.http.servlet;
 import java.util.Iterator;
 import java.util.List;
 
+import jakarta.annotation.Nonnull;
 import jakarta.servlet.FilterConfig;
 
 import org.apache.wicket.protocol.http.WebApplication;
@@ -107,6 +108,7 @@ public class FilterFactoryManager implements Iterable<AbstractRequestWrapperFact
 	/**
 	 * @see java.lang.Iterable#iterator()
 	 */
+	@Nonnull
 	@Override
 	public Iterator<AbstractRequestWrapperFactory> iterator()
 	{
