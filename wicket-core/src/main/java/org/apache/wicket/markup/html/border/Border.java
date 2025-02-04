@@ -245,7 +245,7 @@ public abstract class Border extends WebMarkupContainer implements IComponentRes
 	}
 
 	@Override
-	public Border remove(final @NonNull Component component)
+	public Border remove(@NonNull final Component component)
 	{
 		if (component == body)
 		{
@@ -263,7 +263,7 @@ public abstract class Border extends WebMarkupContainer implements IComponentRes
 	
 	
 	@Override
-	public Border remove(final @NonNull String id)
+	public Border remove(@NonNull final String id)
 	{
 		if (body.getId().equals(id))
 		{
@@ -286,7 +286,7 @@ public abstract class Border extends WebMarkupContainer implements IComponentRes
 	}
 
 	@Override
-	public Border replace(final @NonNull Component replacement)
+	public Border replace(@NonNull final Component replacement)
 	{
 		if (body.getId().equals(replacement.getId()))
 		{
