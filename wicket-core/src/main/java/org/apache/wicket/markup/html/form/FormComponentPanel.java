@@ -16,13 +16,17 @@
  */
 package org.apache.wicket.markup.html.form;
 
+import static java.lang.Boolean.TRUE;
+
 import org.apache.wicket.IQueueRegion;
+import org.apache.wicket.MetaDataKey;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.panel.IMarkupSourcingStrategy;
 import org.apache.wicket.markup.html.panel.PanelMarkupSourcingStrategy;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.visit.IVisitor;
 
+// TODO("WICKET-7144: write tests")
 /**
  * Panel (has it's own markup, defined between &lt;wicket:panel&gt; tags), that can act as a form
  * component. It typically wouldn't receive any input yourself, and often you can get by with
@@ -111,6 +115,32 @@ import org.apache.wicket.util.visit.IVisitor;
  */
 public abstract class FormComponentPanel<T> extends FormComponent<T> implements IQueueRegion
 {
+	/**
+	 * By setting this key to <code>true</code> (and implementing {@link #processInputOfChildren()}) it will be possible
+	 * to add a {@link org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior AjaxFormComponentUpdatingBehavior}
+	 * to this panel, and be able to access the updated model object of this panel in that behavior.
+	 * <p>
+	 * The panel must override {@link #processInputOfChildren()} and (should) call
+	 * {@link #processInputOfChild(FormComponent)} for each of its sub form components.
+	 * <p>
+	 * <code>AjaxFormComponentUpdatingBehavior</code> works for <code>FormComponentPanel</code>s that contain
+	 * {@link CheckBoxMultipleChoice}, {@link CheckGroup}, {@link RadioChoice} and/or {@link RadioGroup} fields. There
+	 * is no need to use
+	 * {@link org.apache.wicket.ajax.form.AjaxFormChoiceComponentUpdatingBehavior AjaxFormChoiceComponentUpdatingBehavior}.
+	 * <p>
+	 * The <code>AjaxFormComponentUpdatingBehavior</code> should use <code>"input change"</code> for the events in most
+	 * cases, so changes to all descendent form components will result in an Ajax update. <strong>Warning</strong>: some
+	 * form components will result in 2 events being emitted. For example, <code>&lt;input type="number"&gt;</code>.
+	 * </p>
+	 * <p>
+	 * Note that the values of all form components of the panel will be submitted on each event, so use with panels with
+	 * possibly large values should probably be avoided.
+	 * </p>
+	 */
+	public static final MetaDataKey<Boolean> WANT_CHILDREN_TO_PROCESS_INPUT_IN_AJAX_UPDATE = new MetaDataKey<>()
+	{
+		private static final long serialVersionUID = 1L;
+	};
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -165,11 +195,38 @@ public abstract class FormComponentPanel<T> extends FormComponent<T> implements 
 		super.clearInput();
 
 		// Visit all the (visible) form components and clear the input on each.
-		visitFormComponentsPostOrder(this, (IVisitor<FormComponent<?>, Void>) (formComponent, visit) -> {
+		visitFormComponentsPostOrder(this, (IVisitor<FormComponent<?>, Void>) (formComponent, visit) ->
+		{
 			if (formComponent != FormComponentPanel.this && formComponent.isVisibleInHierarchy())
 			{
 				formComponent.clearInput();
 			}
 		});
+	}
+
+	/**
+	 * Called by {@link org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior AjaxFormComponentUpdatingBehavior}
+	 * if {@link #WANT_CHILDREN_TO_PROCESS_INPUT_IN_AJAX_UPDATE} is set to <code>true</code>. Each nested form component
+	 * must be asked to process its input. You should use {@link #processInputOfChild(FormComponent)} as this method
+	 * takes nested <code>FormComponentPanel</code>s that also want their children to process the input into account.
+	 */
+	public void processInputOfChildren()
+	{
+	}
+
+	/**
+	 * Tell the given child component to process its input. If the child component is a <code>FormComponentPanel</code>
+	 * that wants its children to process their input, it will be told to do so.
+	 *
+	 * @param child the component that must be told to process its children.
+	 */
+	protected final void processInputOfChild(FormComponent<?> child)
+	{
+		if (child instanceof FormComponentPanel<?> formComponentPanel
+				&& formComponentPanel.getMetaData(WANT_CHILDREN_TO_PROCESS_INPUT_IN_AJAX_UPDATE) == TRUE)
+		{
+			formComponentPanel.processInputOfChildren();
+		}
+		child.processInput();
 	}
 }
