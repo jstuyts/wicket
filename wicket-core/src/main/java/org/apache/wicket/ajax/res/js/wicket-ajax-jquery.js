@@ -942,11 +942,11 @@
 					Wicket.Log.error("Wicket.Ajax.Call.processComponent: Component with id '%s' was not found while trying to perform markup update. " +
 						"Make sure you called component.setOutputMarkupId(true) on the component whose markup you are trying to update.", compId);
 				} else {
-					var replacmentType = node.getAttribute("replacement");
+					var replacementMethod = node.getAttribute("replacement");
 					var text = Wicket.DOM.text(node);
 
 					// replace the component
-					Wicket.DOM.replace(element, text, replacmentType);
+					Wicket.DOM.replace(element, text, replacementMethod);
 				}
 				// continue to next step
 				return FunctionsExecuter.DONE;
@@ -1316,10 +1316,10 @@
 		 * of the DOM tree.
 		 */
 		DOM: {
-			replacementTypes: {},
+			replacementMethods: {},
 
-			registerReplacementType: function (code, replacementFunction) {
-				this.replacementTypes[code] = replacementFunction;
+			registerReplacementMethod: function (code, replacementFunction) {
+				this.replacementMethods[code] = replacementFunction;
 			},
 
 			/**
@@ -1450,7 +1450,7 @@
 			 *
 			 * Note: the 'to be replaced' element must have an 'id' attribute
 			 */
-			replace: function (element, text, replacementType) {
+			replace: function (element, text, replacementMethod) {
 
 				var we = Wicket.Event;
 				var topic = we.Topic;
@@ -1463,12 +1463,12 @@
 					document.title = titleText;
 					return;
 				} else {
-					if (replacementType) {
-						var replacementFunction = this.replacementTypes[replacementType];
+					if (replacementMethod) {
+						var replacementFunction = this.replacementMethods[replacementMethod];
 						if (replacementFunction) {
 							replacementFunction(element, text);
 						} else {
-							console.error("No replacment registerd for type: " + replacementType);
+							console.error("No replacment registerd for type: " + replacementMethod);
 						}
 					} else {
 						// jQuery 1.9+ expects '<' as the very first character in text

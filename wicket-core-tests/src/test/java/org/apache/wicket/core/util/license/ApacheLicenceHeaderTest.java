@@ -104,6 +104,7 @@ class ApacheLicenceHeaderTest extends ApacheLicenseHeaderTestCase
 		 */
 		javaScriptIgnore.add("src/main/java/org/apache/wicket/markup/html/form/upload/MultiFileUploadField.js");
 		javaScriptIgnore.add("src/main/java/org/apache/wicket/resource/jquery");
+		javaScriptIgnore.add("src/main/java/org/apache/wicket/resource/preact");
 		javaScriptIgnore.add("src/test/js/qunit/qunit.js");
 		javaScriptIgnore.add("src/test/js/qunit/jquery.mockjax.js");
 		javaScriptIgnore.add("src/test/js/qunit/blanket.min.js");

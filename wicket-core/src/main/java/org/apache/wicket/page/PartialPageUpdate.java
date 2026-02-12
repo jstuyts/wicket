@@ -101,7 +101,11 @@ public abstract class PartialPageUpdate
 	 * The component instances that will be rendered/replaced.
 	 */
 	protected final Map<String, Component> markupIdToComponent = new LinkedHashMap<>();
-	protected final Map<String, String> markupIdToReplacementType = new HashMap<>();
+
+	/**
+	 * The alternative replacement methods to use for components of which the markup needs to be replaced differently.
+	 */
+	protected final Map<String, String> markupIdToReplacementMethod = new HashMap<>();
 
 	/**
 	 * A flag that indicates that components cannot be added anymore.
@@ -362,7 +366,7 @@ public abstract class PartialPageUpdate
 		{
 			throw new IllegalStateException(
 					"A partial update is not possible for a component that has renderBodyOnly enabled. Component: " +
-							component.toString());
+                            component);
 		}
 
 		component.setOutputMarkupId(true);
@@ -457,8 +461,17 @@ public abstract class PartialPageUpdate
 	 */
 	protected abstract void writeComponent(Response response, String markupId, CharSequence contents);
 
-	protected final String getReplacementType(String markupId) {
-		return markupIdToReplacementType.get(markupId);
+	/**
+	 * Get the replacement method to use for the component with the given markup ID.
+	 *
+	 * @param markupId
+	 *      the markup ID of the component to get the replacement method for
+	 * @return
+	 *      the code for the replacement method, or <code>null</code> if the component markup must be replaced with the
+	 *      standard method
+	 */
+	protected final String getReplacementMethod(String markupId) {
+		return markupIdToReplacementMethod.get(markupId);
 	}
 
 	/**
@@ -556,7 +569,23 @@ public abstract class PartialPageUpdate
 		add(null, component, markupId);
 	}
 
-	public final void add(final String replacementType, final Component component, final String markupId)
+	/**
+	 * Adds a component to be updated at the client side with its current markup, specifying the method to use the
+	 * replace the markup.
+	 *
+	 * @param replacementMethod
+	 *            the code of the method to use for replacing the markup. If <code>null</code>, the standard method is
+	 *            used
+	 * @param component
+	 *      the component to update
+	 * @param markupId
+	 *      the markup id to use to find the component in the page's markup
+	 * @throws IllegalArgumentException
+	 *      thrown when a Page or an AbstractRepeater is added
+	 * @throws IllegalStateException
+	 *      thrown when components no more can be added for replacement.
+	 */
+	public final void add(final String replacementMethod, final Component component, final String markupId)
 	{
 		Args.notEmpty(markupId, "markupId");
 		Args.notNull(component, "component");
@@ -581,7 +610,7 @@ public abstract class PartialPageUpdate
 			else if (pageOfComponent != page)
 			{
 				// on another page
-				throw new IllegalArgumentException("Component " + component.toString() + " cannot be updated because it is on another page.");
+				throw new IllegalArgumentException("Component " + component + " cannot be updated because it is on another page.");
 			}
 
 			if (component instanceof AbstractRepeater)
@@ -596,13 +625,13 @@ public abstract class PartialPageUpdate
 
 		if (componentsFrozen)
 		{
-			throw new IllegalStateException("A partial update of the page is being rendered, component " + component.toString() + " can no longer be added");
+			throw new IllegalStateException("A partial update of the page is being rendered, component " + component + " can no longer be added");
 		}
 
 		component.setMarkupId(markupId);
 		markupIdToComponent.put(markupId, component);
-		if (replacementType != null) {
-			markupIdToReplacementType.put(markupId, replacementType);
+		if (replacementMethod != null) {
+			markupIdToReplacementMethod.put(markupId, replacementMethod);
 		}
 	}
 

@@ -26,9 +26,7 @@ import java.util.Map;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.JavaScriptReferenceType;
+import org.apache.wicket.core.request.handler.PreactReplacementEnablingBehavior;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -92,7 +90,8 @@ public class ChoicePage extends BasePage
 
 		final DropDownChoice<String> models = new DropDownChoice<>("models",
 			new Model<>(), modelChoices);
-		models.setOutputMarkupId(true);
+		models.setOutputMarkupId(true)
+				.add(PreactReplacementEnablingBehavior.INSTANCE);
 
 		form.add(makes);
 		form.add(models);
@@ -116,17 +115,9 @@ public class ChoicePage extends BasePage
 			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
-				target.add("preact", models);
+				target.add(PreactReplacementEnablingBehavior.PREACT, models);
 			}
 		});
 	}
 
-	@Override
-	public void renderHead(IHeaderResponse response)
-	{
-		super.renderHead(response);
-
-		response.render(JavaScriptHeaderItem.forReference(PreactReplacementTypeResourceReference.get())
-				.setType(JavaScriptReferenceType.MODULE));
-	}
 }
