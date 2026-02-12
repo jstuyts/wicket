@@ -26,6 +26,9 @@ import java.util.Map;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.JavaScriptReferenceType;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -113,8 +116,19 @@ public class ChoicePage extends BasePage
 			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
-				target.add(models);
+				target.add("preact", models);
 			}
 		});
+	}
+
+	@Override
+	public void renderHead(IHeaderResponse response)
+	{
+		super.renderHead(response);
+
+		response.render(JavaScriptHeaderItem.forReference(PreactResourceReference.get())
+				.setType(JavaScriptReferenceType.MODULE));
+		response.render(JavaScriptHeaderItem.forReference(PreactReplacementTypeResourceReference.get())
+				.setType(JavaScriptReferenceType.MODULE));
 	}
 }

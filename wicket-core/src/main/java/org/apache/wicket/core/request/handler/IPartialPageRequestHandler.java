@@ -42,6 +42,8 @@ public interface IPartialPageRequestHandler extends IPageRequestHandler
 	 */
 	void add(final Component component, final String markupId);
 
+	void add(String replacementType, Component component, String markupId);
+
 	/**
 	 * Adds components to the list of components to be rendered.
 	 *
@@ -49,6 +51,8 @@ public interface IPartialPageRequestHandler extends IPageRequestHandler
 	 *            components to be rendered
 	 */
 	void add(Component... components);
+
+	void add(String replacementType, Component... components);
 
 
 	/**

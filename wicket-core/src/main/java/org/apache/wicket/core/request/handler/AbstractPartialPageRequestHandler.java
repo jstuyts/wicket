@@ -60,6 +60,12 @@ public abstract class AbstractPartialPageRequestHandler implements IPartialPageR
     @Override
     public void add(Component... components)
     {
+        add(null, components);
+    }
+
+    @Override
+    public void add(String replacementType, Component... components)
+    {
         for (final Component component : components)
         {
             Args.notNull(component, "component");
@@ -68,10 +74,10 @@ public abstract class AbstractPartialPageRequestHandler implements IPartialPageR
             {
                 throw new IllegalArgumentException(
                         "cannot update component that does not have setOutputMarkupId property set to true. Component: " +
-                                component.toString());
+                                component);
             }
 
-            add(component, component.getMarkupId());
+            add(replacementType, component, component.getMarkupId());
         }
     }
 
@@ -97,6 +103,12 @@ public abstract class AbstractPartialPageRequestHandler implements IPartialPageR
     public final void add(Component component, String markupId)
     {
         getUpdate().add(component, markupId);
+    }
+
+    @Override
+    public void add(String replacementType, Component component, String markupId)
+    {
+        getUpdate().add(replacementType, component, markupId);
     }
 
     @Override
