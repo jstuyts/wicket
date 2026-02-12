@@ -31,9 +31,9 @@ function createVirtualDOM(htmlString) {
 }
 
 Wicket.DOM.registerReplacementType("preact", function (element, text) {
-    if (element.parentElement.hasAttribute("data-pcn")) {
+    if (element.parentElement.childElementCount === 1) {
         render(createVirtualDOM(text), element.parentElement);
     } else {
-        console.error("Element with ID: " + element.id + ", must have a parent with attribute: data-pcn");
+        console.error("Preact replacement: element with ID: " + element.id + ", is not the only element in its parent.");
     }
 });
