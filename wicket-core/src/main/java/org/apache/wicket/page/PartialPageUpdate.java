@@ -20,11 +20,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import jakarta.servlet.http.Cookie;
 
+import jakarta.servlet.http.Cookie;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -100,6 +101,7 @@ public abstract class PartialPageUpdate
 	 * The component instances that will be rendered/replaced.
 	 */
 	protected final Map<String, Component> markupIdToComponent = new LinkedHashMap<>();
+	protected final Map<String, String> markupIdToReplacementType = new HashMap<>();
 
 	/**
 	 * A flag that indicates that components cannot be added anymore.
@@ -455,6 +457,10 @@ public abstract class PartialPageUpdate
 	 */
 	protected abstract void writeComponent(Response response, String markupId, CharSequence contents);
 
+	protected final String getReplacementType(String markupId) {
+		return markupIdToReplacementType.get(markupId);
+	}
+
 	/**
 	 * Write priority-evaluation.
 	 */
@@ -547,6 +553,11 @@ public abstract class PartialPageUpdate
 	 */
 	public final void add(final Component component, final String markupId)
 	{
+		add(null, component, markupId);
+	}
+
+	public final void add(final String replacementType, final Component component, final String markupId)
+	{
 		Args.notEmpty(markupId, "markupId");
 		Args.notNull(component, "component");
 
@@ -560,14 +571,14 @@ public abstract class PartialPageUpdate
 		else
 		{
 			Page pageOfComponent = component.findParent(Page.class);
-			if (pageOfComponent == null) 
+			if (pageOfComponent == null)
 			{
 				// no longer on page - log the error but don't block the user of the application
 				// (which was the behavior in Wicket <= 7).
 				LOG.warn("Component '{}' not cannot be updated because it was already removed from page", component);
 				return;
 			}
-			else if (pageOfComponent != page) 
+			else if (pageOfComponent != page)
 			{
 				// on another page
 				throw new IllegalArgumentException("Component " + component.toString() + " cannot be updated because it is on another page.");
@@ -590,6 +601,9 @@ public abstract class PartialPageUpdate
 
 		component.setMarkupId(markupId);
 		markupIdToComponent.put(markupId, component);
+		if (replacementType != null) {
+			markupIdToReplacementType.put(markupId, replacementType);
+		}
 	}
 
 	/**
