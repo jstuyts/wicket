@@ -119,3 +119,41 @@ Since our component does not directly receive the user input, convertInput() mus
 
 Method onBeforeRender() is responsible for synchronizing the model of the inner text field with the model of our custom component. To do this we retrieve the model object of the custom component with the getDefaultModelObject() method, then we convert it to the temperature scale adopted by the user and finally we use this value to set the model object of the text field.
 
+=== FormComponentPanel and Ajax
+
+TODO("WICKET-7144: documentation: extend, check, etc.")
+
+There are 2 ways to use FormComponentPanel with Ajax:
+
+* Add Ajax behaviors to 1 or more of the child components. This allows fine-grained updates, but during an Ajax request only the updated value of the child component is available.
+* Indicate that the panel wants its children to be processed in an Ajax update, and add an Ajax behavior to the panel. This makes all values of the child components available during an Ajax request. Do not use this method if the panel contains 1 or more inputs that can have large values (e.g. large text areas).
+
+==== Ajax on child components
+
+==== Ajax on panel with processing of children
+
+[source,java]
+----
+new LocalDateTimeField("someId")
+{
+    @Override
+    protected TimeField newTimeField(String id, IModel<LocalTime> timeFieldModel)
+    {
+        @Override
+        protected void onInitialize()
+        {
+            super.onInitialize();
+
+            setMetaData(WANT_CHILDREN_TO_PROCESS_INPUT_IN_AJAX_UPDATE, true);
+        }
+
+        @Override
+        protected TimeField newTimeField(String id, IModel<LocalTime> timeFieldModel)
+        {
+            var timeField = super.newTimeField(id, timeFieldModel);
+            timeField.setMetaData(FormComponentPanel.WANT_CHILDREN_TO_PROCESS_INPUT_IN_AJAX_UPDATE, true);
+            return timeField;
+        }
+    }
+}
+----

@@ -16,6 +16,9 @@
  */
 package org.apache.wicket.ajax.form;
 
+import static java.lang.Boolean.TRUE;
+import static org.apache.wicket.markup.html.form.FormComponentPanel.WANT_CHILDREN_TO_PROCESS_INPUT_IN_AJAX_UPDATE;
+
 import java.util.Locale;
 
 import org.apache.wicket.Application;
@@ -25,14 +28,15 @@ import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.ajax.attributes.AjaxRequestAttributes.Method;
-import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.markup.html.form.FormComponent;
+import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.markup.html.form.validation.IFormValidator;
 import org.apache.wicket.util.lang.Args;
 import org.danekja.java.util.function.serializable.SerializableConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// TODO("WICKET-7144: write tests")
 /**
  * A behavior that updates the hosting FormComponent via ajax when an event it is attached to is
  * triggered. This behavior encapsulates the entire form-processing workflow as relevant only to
@@ -121,6 +125,12 @@ public abstract class AjaxFormComponentUpdatingBehavior extends AjaxEventBehavio
 		super.updateAjaxAttributes(attributes);
 
 		attributes.setMethod(Method.POST);
+
+		if (getComponent() instanceof FormComponentPanel<?> formComponentPanel
+				&& formComponentPanel.getMetaData(WANT_CHILDREN_TO_PROCESS_INPUT_IN_AJAX_UPDATE) == TRUE)
+		{
+			attributes.setSerializeRecursively(true);
+		}
 	}
 
 	@Override
@@ -135,6 +145,14 @@ public abstract class AjaxFormComponentUpdatingBehavior extends AjaxEventBehavio
 
 		try
 		{
+			if (formComponent instanceof FormComponentPanel<?> formComponentPanel)
+			{
+				if (formComponentPanel.getMetaData(WANT_CHILDREN_TO_PROCESS_INPUT_IN_AJAX_UPDATE) == TRUE)
+				{
+					((FormComponentPanel<?>)formComponent).processInputOfChildren();
+				}
+			}
+
 			formComponent.inputChanged();
 			formComponent.validate();
 			if (formComponent.isValid())
@@ -199,7 +217,7 @@ public abstract class AjaxFormComponentUpdatingBehavior extends AjaxEventBehavio
 	/**
 	 * Called to handle any error resulting from updating form component. Errors thrown from
 	 * {@link #onUpdate(org.apache.wicket.ajax.AjaxRequestTarget)} will not be caught here.
-	 *
+	 * <p>
 	 * The RuntimeException will be null if it was just a validation or conversion error of the
 	 * FormComponent
 	 *
