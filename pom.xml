@@ -1264,6 +1264,7 @@
 							<resourcesSet>
 								<excludes>
 									<exclude>**/jquery*.js</exclude>
+									<exclude>**/preact*.umd.js</exclude>
 								</excludes>
 							</resourcesSet>
 						</resourcesSets>

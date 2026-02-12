@@ -57,7 +57,7 @@ public class XmlPartialPageUpdate extends PartialPageUpdate
 	{
 		response.write("<component id=\"");
 		response.write(markupId);
-		String replacementType = getReplacementType(markupId);
+		String replacementType = getReplacementMethod(markupId);
 		if (replacementType != null) {
 			response.write("\" replacement=\"");
 			response.write(replacementType);

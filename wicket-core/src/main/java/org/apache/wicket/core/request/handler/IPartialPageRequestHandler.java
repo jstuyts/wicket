@@ -42,7 +42,35 @@ public interface IPartialPageRequestHandler extends IPageRequestHandler
 	 */
 	void add(final Component component, final String markupId);
 
-	void add(String replacementType, Component component, String markupId);
+	/**
+	 * Adds a component to the list of components to be rendered, specifying the method to use the replace the markup.
+	 * <p>
+	 * <strong>Warning</strong>: not all replacement methods may support all features of or be fully compatible with the
+	 * default replacement method that uses jQuery. A replacement method may also have additional markup requirements.
+	 * Check the document of the replacment method, and test it to see if it works as desired for your situation.
+	 * <p>
+	 * The replacement method must be registered in the broweser using `Wicket.DOM.registerReplacementMethod(...)`. By
+	 * adding the behavior that enables the replacement method, to the component of which the markup must be replaced
+	 * differently, the registration is taken care of for you. If the method has not been registered, an error will be
+	 * logged in the browser console.
+	 * <p>
+	 * These replacement methods are provided by Wicket:
+	 * <ul>
+	 *     <li>{@link PreactReplacementEnablingBehavior Preact}</li>
+	 * </ul>
+	 *
+	 * @param replacementMethod
+	 *            the code of the method to use for replacing the markup
+	 * @param markupId
+	 *            id of client-side dom element that will be updated
+	 * @param component
+	 *            component to be rendered
+	 * @throws IllegalArgumentException
+	 *             if the component is a {@link org.apache.wicket.Page} or an {@link org.apache.wicket.markup.repeater.AbstractRepeater}
+	 * @throws IllegalStateException
+	 *             if the components are currently being rendered, or have already been rendered
+	 */
+	void add(String replacementMethod, Component component, String markupId);
 
 	/**
 	 * Adds components to the list of components to be rendered.
@@ -52,7 +80,29 @@ public interface IPartialPageRequestHandler extends IPageRequestHandler
 	 */
 	void add(Component... components);
 
-	void add(String replacementType, Component... components);
+	/**
+	 * Adds components to the list of components to be rendered, specifying the method to use the replace the markup.
+	 * <p>
+	 * <strong>Warning</strong>: not all replacement methods may support all features of or be fully compatible with the
+	 * default replacement method that uses jQuery. A replacement method may also have additional markup requirements.
+	 * Check the document of the replacment method, and test it to see if it works as desired for your situation.
+	 * <p>
+	 * The replacement method must be registered in the broweser using `Wicket.DOM.registerReplacementMethod(...)`. By
+	 * adding the behavior that enables the replacement method, to the component of which the markup must be replaced
+	 * differently, the registration is taken care of for you. If the method has not been registered, an error will be
+	 * logged in the browser console.
+	 * <p>
+	 * These replacement methods are provided by Wicket:
+	 * <ul>
+	 *     <li>{@link PreactReplacementEnablingBehavior Preact}</li>
+	 * </ul>
+	 *
+	 * @param replacementMethod
+	 *            the code of the method to use for replacing the markup
+	 * @param components
+	 *            components to be rendered
+	 */
+	void add(String replacementMethod, Component... components);
 
 
 	/**
