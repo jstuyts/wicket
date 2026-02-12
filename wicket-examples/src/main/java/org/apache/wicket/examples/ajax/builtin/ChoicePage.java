@@ -126,8 +126,6 @@ public class ChoicePage extends BasePage
 	{
 		super.renderHead(response);
 
-		response.render(JavaScriptHeaderItem.forReference(PreactResourceReference.get())
-				.setType(JavaScriptReferenceType.MODULE));
 		response.render(JavaScriptHeaderItem.forReference(PreactReplacementTypeResourceReference.get())
 				.setType(JavaScriptReferenceType.MODULE));
 	}
