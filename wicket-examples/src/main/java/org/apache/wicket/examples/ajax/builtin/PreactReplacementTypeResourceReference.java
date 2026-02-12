@@ -59,7 +59,6 @@ public class PreactReplacementTypeResourceReference extends JavaScriptResourceRe
 		}
 		List<HeaderItem> dependencies = super.getDependencies();
 		dependencies.add(JavaScriptHeaderItem.forReference(wicketAjaxJqueryReference));
-		dependencies.add(JavaScriptHeaderItem.forReference(PreactResourceReference.get()));
 		return dependencies;
 	}
 }
