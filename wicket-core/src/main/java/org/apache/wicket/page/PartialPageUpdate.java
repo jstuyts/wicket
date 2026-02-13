@@ -468,8 +468,8 @@ public abstract class PartialPageUpdate
 	 * @param markupId
 	 *      the markup ID of the component to get the replacement method for
 	 * @return
-	 *      the code for the replacement method, or <code>null</code> if the component markup must be replaced with the
-	 *      standard method
+	 *      the identifier for the replacement method, or <code>null</code> if the component markup must be replaced
+	 *      with the standard method
 	 */
 	protected final String getReplacementMethod(String markupId) {
 		return markupIdToReplacementMethod.get(markupId);
@@ -575,8 +575,8 @@ public abstract class PartialPageUpdate
 	 * replace the markup.
 	 *
 	 * @param replacementMethod
-	 *            the code of the method to use for replacing the markup. If <code>null</code>, the standard method is
-	 *            used
+	 *            the identifier of the method to use for replacing the markup. If <code>null</code>, the standard
+	 *            method is used
 	 * @param component
 	 *      the component to update
 	 * @param markupId

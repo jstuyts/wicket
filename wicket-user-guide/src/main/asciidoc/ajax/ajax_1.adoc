@@ -99,3 +99,37 @@ NOTE: During request handling _AjaxRequestHandler_ sends an event to its applica
 
 The payload of the event is the _AjaxRequestHandler_ itself.
 
+=== Alternative markup replacement methods
+
+The replacement of markup can be extended with alternative methods. This is useful for when the jQuery markup replacement does not work properly, is too slow, and/or is missing features.
+
+Using another replacement method consists of 2 steps:
+
+* Register the replacement method with Wicket AJAX. This is usually handled by a behavior added to the component for which to use the alternative method. If the method has not been registered when the AJAX response is processed, an error will be logged.
+* When adding the component to the _AjaxRequestTarget_, specify the replacement method identifier. The identifier to use usually is a constant of the behavior registering the replacement method.
+
+*Warning*: not all replacement methods may support all features of or be fully compatible with the default replacement method that uses jQuery. A replacement method may also have additional markup requirements. Check the documentation of the replacement method, and test it to see if it works as desired for your situation.
+
+Wicket includes the following alternative replacement methods:
+
+* https://preactjs.com/[Preact]. See _PreactReplacementEnablingBehavior_.
+
+The example with the _Label_ above would become the following, if the Preact replacement method is to be used. Note that the Preact replacement method requires that the element to be replaced is the only element of its parent, so wrap the element if needed:
+
+[source,java]
+----
+final Label label = new Label("labelComponent", "Initial value.");
+//autogenerate a markup id
+label.setOutputMarkupId(true);
+label.add(PreactReplacementEnablingBehavior.INSTANCE);
+add(label);
+//...
+new AjaxLink<Void>("ajaxLink"){
+	@Override
+	public void onClick(AjaxRequestTarget target) {
+	    //modify the model of a label and refresh it on client side
+	    label.setDefaultModelObject("Another value 4 label.");
+	    target.add(PreactReplacementEnablingBehavior.PREACT, label);
+	}
+};
+----
