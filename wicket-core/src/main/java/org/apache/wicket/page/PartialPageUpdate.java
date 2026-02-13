@@ -452,7 +452,8 @@ public abstract class PartialPageUpdate
 	protected abstract void writeHeader(Response response, String encoding);
 
 	/**
-	 * Writes a component to the response.
+	 * Writes a component to the response. Implementations should call {@link #getReplacementMethod(String)} and modify
+	 * the response accordingly.
 	 *
 	 * @param response
 	 *      the response to write to

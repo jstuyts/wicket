@@ -19,7 +19,7 @@ package org.apache.wicket.resource;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
 /**
- * A resource reference for the JavaScript of (the UMD version of) <a href="https://preactjs.com/">Preact</a>. Its
+ * A resource reference for the JavaScript of (the UMD variant of) <a href="https://preactjs.com/">Preact</a>. Its
  * JavaScript file is only available in a minified version.
  */
 public class PreactResourceReference extends JavaScriptResourceReference

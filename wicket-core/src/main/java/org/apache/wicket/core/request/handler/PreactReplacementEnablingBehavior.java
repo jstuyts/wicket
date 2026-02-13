@@ -39,7 +39,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  *         to its style.
  *     </li>
  * </ul>
- * Make sure you test that markup changes are properly applied for your situation. There is not an exhaustive set of
+ * Make sure you test that markup changes are properly applied for your situation. There is not a comprehensive set of
  * tests to check if this replacement method works the same as the standard method using jQuery.
  */
 public class PreactReplacementEnablingBehavior extends Behavior
