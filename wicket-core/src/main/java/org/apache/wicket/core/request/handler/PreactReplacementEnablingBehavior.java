@@ -36,7 +36,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  *         The element of the component must be the only element of its parent. Other node types in the parent are fine.
  *         If you need to add an element for this requirement and it messes with your layout, you can add
  *         <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display#contents"><code>display: contents</code></a>
- *         to its style.
+ *         to its style. If the element is not the only element of its parent, an error will be logged.
  *     </li>
  * </ul>
  * Make sure you test that markup changes are properly applied for your situation. There is not a comprehensive set of
@@ -45,7 +45,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 public class PreactReplacementEnablingBehavior extends Behavior
 {
     /**
-     * The code to pass to {@link IPartialPageRequestHandler#add(String, Component, String)} or
+     * The identifier to pass to {@link IPartialPageRequestHandler#add(String, Component, String)} or
      * {@link IPartialPageRequestHandler#add(String, Component...)} to have the markup of the component replaced using
      * Preact.
      */

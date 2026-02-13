@@ -1318,8 +1318,8 @@
 		DOM: {
 			replacementMethods: {},
 
-			registerReplacementMethod: function (code, replacementFunction) {
-				this.replacementMethods[code] = replacementFunction;
+			registerReplacementMethod: function (identifier, replacementFunction) {
+				this.replacementMethods[identifier] = replacementFunction;
 			},
 
 			/**
