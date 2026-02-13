@@ -101,4 +101,21 @@ class XmlPartialPageUpdateTest extends WicketTestCase
 		
 		assertFalse(response.getTextResponse().toString().contains("notInPage"), "notInPage not written");
 	}
+
+	@Test
+	void addsReplacementMethodToComponentIfSet()
+	{
+		PageForPartialUpdate page = new PageForPartialUpdate();
+
+		XmlPartialPageUpdate update = new XmlPartialPageUpdate(page);
+
+		update.add("theReplacementMethod", page.alternativeReplacement, page.alternativeReplacement.getMarkupId());
+
+		MockWebResponse response = new MockWebResponse();
+
+		update.writeTo(response, "UTF-8");
+
+		String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ajax-response><component id=\"alternativeReplacement1\" replacement=\"theReplacementMethod\" ><![CDATA[<span wicket:id=\"alternativeReplacement\" id=\"alternativeReplacement1\">test</span>]]></component></ajax-response>";
+		assertEquals(expected, response.getTextResponse().toString());
+	}
 }

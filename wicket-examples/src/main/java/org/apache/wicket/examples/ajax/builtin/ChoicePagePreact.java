@@ -26,6 +26,7 @@ import java.util.Map;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.core.request.handler.PreactReplacementEnablingBehavior;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -38,7 +39,7 @@ import org.apache.wicket.model.PropertyModel;
  * 
  * @author Igor Vaynberg (ivaynberg)
  */
-public class ChoicePage extends BasePage
+public class ChoicePagePreact extends BasePage
 {
 	private String selectedMake;
 
@@ -64,7 +65,7 @@ public class ChoicePage extends BasePage
 	/**
 	 * Constructor.
 	 */
-	public ChoicePage()
+	public ChoicePagePreact()
 	{
 		modelsMap.put("AUDI", Arrays.asList("A4", "A6", "TT"));
 		modelsMap.put("CADILLAC", Arrays.asList("CTS", "DTS", "ESCALADE", "SRX", "DEVILLE"));
@@ -81,7 +82,7 @@ public class ChoicePage extends BasePage
 			return models;
 		};
 
-		Form<?> form = new Form("form");
+		Form<?> form = new Form<>("form");
 		add(form);
 
 		final DropDownChoice<String> makes = new DropDownChoice<>("makes",
@@ -89,7 +90,8 @@ public class ChoicePage extends BasePage
 
 		final DropDownChoice<String> models = new DropDownChoice<>("models",
 			new Model<>(), modelChoices);
-		models.setOutputMarkupId(true);
+		models.setOutputMarkupId(true)
+				.add(PreactReplacementEnablingBehavior.INSTANCE);
 
 		form.add(makes);
 		form.add(models);
@@ -104,7 +106,7 @@ public class ChoicePage extends BasePage
 			protected void onAfterSubmit(AjaxRequestTarget target)
 			{
 				info("You have selected: " + makes.getModelObject() + " " + models.getModelObject());
-				target.add(feedback);
+				target.add(PreactReplacementEnablingBehavior.PREACT, feedback);
 			}
 		});
 
@@ -113,8 +115,9 @@ public class ChoicePage extends BasePage
 			@Override
 			protected void onUpdate(AjaxRequestTarget target)
 			{
-				target.add(models);
+				target.add(PreactReplacementEnablingBehavior.PREACT, models);
 			}
 		});
 	}
+
 }

@@ -50,7 +50,7 @@
 		if (element.parentElement.childElementCount === 1) {
 			preact.render(createVirtualDOM(text), element.parentElement);
 		} else {
-			console.error("Preact replacement: element with ID: " + element.id + ", is not the only element in its parent.");
+			wicket.Log.error("Preact replacement: element with ID: " + element.id + ", is not the only element in its parent.");
 		}
 	});
 })(Wicket, preact);

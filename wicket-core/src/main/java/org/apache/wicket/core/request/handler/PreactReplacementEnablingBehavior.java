@@ -57,6 +57,9 @@ public class PreactReplacementEnablingBehavior extends Behavior
     private static final HeaderItem PREACT_REPLACEMENT_METHOD_HEADER_ITEM =
             JavaScriptHeaderItem.forReference(PreactReplacementMethodResourceReference.get());
 
+    private PreactReplacementEnablingBehavior()
+    {}
+
     @Override
     public void renderHead(Component component, IHeaderResponse response)
     {

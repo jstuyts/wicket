@@ -52,7 +52,7 @@ public interface IPartialPageRequestHandler extends IPageRequestHandler
 	 * The replacement method must be registered in the broweser using `Wicket.DOM.registerReplacementMethod(...)`. By
 	 * adding the behavior that enables the replacement method, to the component of which the markup must be replaced
 	 * differently, the registration is taken care of for you. If the method has not been registered, an error will be
-	 * logged in the browser console.
+	 * logged.
 	 * <p>
 	 * These replacement methods are provided by Wicket:
 	 * <ul>
@@ -90,7 +90,7 @@ public interface IPartialPageRequestHandler extends IPageRequestHandler
 	 * The replacement method must be registered in the broweser using `Wicket.DOM.registerReplacementMethod(...)`. By
 	 * adding the behavior that enables the replacement method, to the component of which the markup must be replaced
 	 * differently, the registration is taken care of for you. If the method has not been registered, an error will be
-	 * logged in the browser console.
+	 * logged.
 	 * <p>
 	 * These replacement methods are provided by Wicket:
 	 * <ul>
