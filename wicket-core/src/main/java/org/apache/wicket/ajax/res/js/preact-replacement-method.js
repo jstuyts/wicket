@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-;(function (wicket) {
+;(function (wicket, preact) {
 	function createNode(element) {
 		var props = {};
 		for (var attributeIndex = 0; attributeIndex < element.attributes.length; attributeIndex++) {
@@ -53,4 +53,4 @@
 			console.error("Preact replacement: element with ID: " + element.id + ", is not the only element in its parent.");
 		}
 	});
-})(Wicket);
+})(Wicket, preact);
