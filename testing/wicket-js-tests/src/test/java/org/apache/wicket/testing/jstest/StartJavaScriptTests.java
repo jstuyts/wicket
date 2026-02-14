@@ -130,7 +130,7 @@ public class StartJavaScriptTests
 	{
 		try
 		{
-			Desktop.getDesktop().browse(new URI("http://localhost:8080/ajax-tests/test/js/all.html?3.6.4"));
+			Desktop.getDesktop().browse(new URI("http://localhost:8080/ajax-tests/test/js/all.html?3.7.1"));
 		}
 		catch (Exception e)
 		{

@@ -45,6 +45,7 @@ class ApacheLicenceHeaderTest extends ApacheLicenseHeaderTestCase
 		// the licence header breaks the tests in IE
 		htmlIgnore.add("src/test/js/all.html");
 		htmlIgnore.add("src/test/js/amd.html");
+		htmlIgnore.add("src/test/js/preact.html");
 
 		/*
 		 * See NOTICE.txt
@@ -53,6 +54,7 @@ class ApacheLicenceHeaderTest extends ApacheLicenseHeaderTestCase
 		// the xml prolog breaks the tests in IE
 		xmlPrologIgnore.add("src/test/js/all.html");
 		xmlPrologIgnore.add("src/test/js/amd.html");
+		xmlPrologIgnore.add("src/test/js/preact.html");
 
 		/*
 		 * .css in test is very test specific and a license header would confuse and make it unclear

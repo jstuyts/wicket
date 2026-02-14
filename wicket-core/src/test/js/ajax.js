@@ -203,6 +203,31 @@ jQuery(document).ready(function() {
 			execute(attrs, assert, done);
 		});
 
+		test('processComponent() use alternative replacement method.', assert => {
+			const done = assert.async();
+			assert.expect(1);
+
+			var oldReplacmentMethods = Wicket.DOM.replacementMethods;
+
+			Wicket.DOM.registerReplacementMethod('alternativeReplacement', function() {
+				assert.ok(true, 'Alternative replacement method must be used!');
+
+				// restore the original replacement methods
+				Wicket.DOM.replacementMethods = oldReplacmentMethods;
+			});
+
+			var attrs = {
+				u: 'data/ajax/alternativeReplacementMethod.xml',
+				c: 'componentId',
+				sh: [
+					function() {
+						done();
+					}
+				]
+			};
+			execute(attrs, assert, done);
+		});
+
 		test('non-wicket response.', assert => {
 			const done = assert.async();
 			assert.expect(2);

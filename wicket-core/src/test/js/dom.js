@@ -190,6 +190,41 @@ jQuery(document).ready(function() {
 		assert.equal( Wicket.DOM.serializeNode(Wicket.$(toBeReplacedByDivWithChildrenId)).toLowerCase(), complexElMarkup.toLowerCase(), "Wicket.DOM.replace should replace the span with a complex element." );
 	});
 
+	test("replace() use alternative replacement method if given", assert => {
+		assert.expect(2);
+
+		var oldReplacmentMethods = Wicket.DOM.replacementMethods;
+
+		Wicket.DOM.registerReplacementMethod('alternativeReplacement', function(element, text) {
+			assert.equal(element, Wicket.$(existingId), 'Element passed to alternative replacement method must be correct.');
+			assert.equal(text, '<span id="testElement"></span>', 'Text passed to alternative replacement method must be new markup.');
+
+			// restore the original replacement methods
+			Wicket.DOM.replacementMethods = oldReplacmentMethods;
+		});
+
+		var el = Wicket.$(existingId);
+		var someMarkup = '<span id="'+existingId+'"></span>';
+		Wicket.DOM.replace(el, someMarkup, 'alternativeReplacement');
+	});
+
+	test("replace() log error if replacement method unknown", assert => {
+		assert.expect(1);
+
+		var oldWicketLogError = Wicket.Log.error;
+
+		Wicket.Log.error = function() {
+			assert.equal(arguments[0], "No replacment registerd for type: unknownMethod");
+
+			// restore the original method
+			Wicket.Log.error = oldWicketLogError;
+		};
+
+		var el = Wicket.$(existingId);
+		var someMarkup = '<span id="'+existingId+'"></span>';
+		Wicket.DOM.replace(el, someMarkup, 'unknownMethod');
+	});
+
 	test("replace - test event notifications", assert => {
 
 		Wicket.Event.subscribe('/dom/node/removing', function(jqEvent, elementToBeRemoved) {
