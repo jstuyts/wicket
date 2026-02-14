@@ -5,39 +5,76 @@
 	<title id="titleId">Preact replacement method tests</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="qunit/qunit.css" type="text/css" media="screen" />
-	<script type="text/javascript">
-        var require = {
-            paths: {
-                'jquery': '../../main/java/org/apache/wicket/resource/jquery/jquery-'+location.search.substring(1), // no .js extension
-                'Wicket': '../../main/java/org/apache/wicket/ajax/res/js/wicket-ajax-jquery',
-                "qunit": "qunit/qunit"
-            },
-            shim: {
-                'Wicket': {
-                	deps: ['jquery'],
-                    exports: 'Wicket'
-                }
-            }
-        };
-    </script>
-    <script src="amd/require.js" type="text/javascript"></script>
-
-    <!-- the module under test -->
-    <script>
-        require(["preact", "qunit"], function (preactModule, qunit) {
-                preactModule.runTests();
-                qunit.start();
-            }
-        );
-    </script>
 </head>
 
 <body>
-    <div id="qunit"></div>
+	<div id="qunit"></div>
 
-    <div id="qunit-fixture">
+	<div id="qunit-fixture">
 
-        <div id="preactElement"></div>
-    </div>
+		<div>
+			<div id="componentToReplace">old body</div>
+		</div>
+
+		<div id="componentToReplaceNotOnlyChild">old body</div>
+
+		<textarea id="componentIdPreact"><ajax-response><component id="componentToReplace" replacement="preact"><![CDATA[<span id="componentToReplace">new body</span>]]></component></ajax-response></textarea>
+
+		<textarea id="complexComponentIdPreact"><ajax-response><component id="componentToReplace" replacement="preact"><![CDATA[
+
+			<table id="componentToReplace">
+				<thead>
+					<tr>
+						<th><div><script>Wicket.assert.ok(true, 'script in thead > td has to be executed')</script></div>
+						</th>
+						<th>header 2</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>data 1
+		<script>Wicket.assert.ok(true, 'script in tbody > td has to be executed')</script>
+						</td>
+						<td>data 2</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>footer 1</td>
+						<td>footer 2
+							<script>Wicket.assert.ok(true, 'script in tfoot > td has to be executed')</script>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+
+		]]></component></ajax-response></textarea>
+
+		<textarea id="componentIdNotOnlyChildPreact"><ajax-response><component id="componentToReplaceNotOnlyChild" replacement="preact"><![CDATA[<span id="componentToReplaceNotOnlyChild">new body</span>]]></component></ajax-response></textarea>
+	</div>
+
+	<script>
+		// versions lies between question mark and first ampersand (or end)
+		var versions = location.search.match(/\?(.*?)(&|$)/)[1].split(',');
+		var jqueryVersion = versions[0];
+
+		document.write("<scr"+"ipt src='../../main/java/org/apache/wicket/resource/jquery/jquery-"+jqueryVersion+".js'></scr"+"ipt>");
+	</script>
+	<script src="../../main/java/org/apache/wicket/ajax/res/js/wicket-ajax-jquery.js"></script>
+	<script>
+		var preactVersion = versions[1];
+		document.write("<scr"+"ipt src='../../main/java/org/apache/wicket/resource/preact/preact-"+preactVersion+".umd.js'></scr"+"ipt>");
+	</script>
+	<script src="../../main/java/org/apache/wicket/ajax/res/js/preact-replacement-method.js"></script>
+	<script type="text/javascript" src="qunit/qunit.js"></script>
+	<script type="text/javascript" src="qunit/jquery.mockjax.js"></script>
+	<script type="text/javascript" src="qunit/blanket.min.js"></script>
+
+	<!-- the module under test -->
+	<script>
+		// uncomment for error reporting from the tests
+		// Wicket.Ajax.DebugWindow.enabled = true;
+	</script>
+	<script type="text/javascript" src="preact.js"></script>
 </body>
 </html>

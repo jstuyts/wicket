@@ -130,7 +130,7 @@ module.exports = function(grunt) {
 			preact: {
 				options: {
 					urls: [
-						'http://localhost:38887/test/js/preact.html?3.7.1'
+						'http://localhost:38887/test/js/preact.html?3.7.1,10.28.3'
 					]
 				}
 			}
