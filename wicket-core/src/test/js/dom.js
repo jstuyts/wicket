@@ -214,7 +214,7 @@ jQuery(document).ready(function() {
 		var oldWicketLogError = Wicket.Log.error;
 
 		Wicket.Log.error = function() {
-			assert.equal(arguments[0], "No replacment registerd for type: unknownMethod");
+			assert.equal(arguments[0], "No replacment registerd for type: unknownMethod", "Unknown replacement type is logged.");
 
 			// restore the original method
 			Wicket.Log.error = oldWicketLogError;
