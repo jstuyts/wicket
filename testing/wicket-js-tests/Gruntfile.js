@@ -8,7 +8,7 @@
  * 3) run: npm install (This will use package.json and install grunt and all dependencies)
  * 4.1) grunt jshint - checks all JavaScript files with JSHint
  * 4.2) grunt jshint:core - checks only the files in wicket-core
- * 4.3) grunt - starts the registered tasks: starting a web server and running all tests (Ajax, non-Ajax and AMD)
+ * 4.3) grunt - starts the registered tasks: starting a web server and running all tests (Ajax, non-Ajax, Preact and AMD)
  */
 
  /*global module: true */
@@ -44,7 +44,8 @@ module.exports = function(grunt) {
 			"../../wicket-core/src/test/js/channels.js",
 			"../../wicket-core/src/test/js/event.js",
 			"../../wicket-core/src/test/js/timer.js",
-			"../../wicket-core/src/test/js/amd.js"
+			"../../wicket-core/src/test/js/amd.js",
+			"../../wicket-core/src/test/js/preact.js"
 		],
 		gymTestsJs = [
 			"../../wicket-examples/src/main/webapp/js-test/tests/ajax/form.js",
@@ -119,6 +120,17 @@ module.exports = function(grunt) {
 				options: {
 					urls: [
 						'http://localhost:38887/test/js/amd.html?3.7.1'
+					]
+				}
+			},
+
+			/**
+			 * Run Preact reaplcement method tests
+			 */
+			preact: {
+				options: {
+					urls: [
+						'http://localhost:38887/test/js/preact.html?3.7.1'
 					]
 				}
 			}
