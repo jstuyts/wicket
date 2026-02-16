@@ -1685,14 +1685,6 @@
 				}
 
 				jQuery.each(attrs.e, function (idx, evt) {
-					var x;
-					if (attrs.bi) {
-						var currentBehaviorIdUrl = jquery(attrs.c).getAttribute("wbi-" + attrs.bi)
-						x = currentBehaviorIdUrl !== attrs.u;
-					} else {
-						x = true;
-					}
-					if (x)
 					Wicket.Event.add(attrs.c, evt, function (jqEvent, data) {
 						var call = new Wicket.Ajax.Call();
 						var attributes = jQuery.extend({}, attrs);
