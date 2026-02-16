@@ -121,7 +121,7 @@ The example with the _Label_ above would become the following, if the Preact rep
 final Label label = new Label("labelComponent", "Initial value.");
 //autogenerate a markup id
 label.setOutputMarkupId(true);
-label.add(PreactReplacementEnablingBehavior.INSTANCE);
+label.add(new PreactReplacementEnablingBehavior());
 add(label);
 //...
 new AjaxLink<Void>("ajaxLink"){

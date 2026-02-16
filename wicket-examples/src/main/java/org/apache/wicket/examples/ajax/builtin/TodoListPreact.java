@@ -402,7 +402,7 @@ public class TodoListPreact extends BasePage
 	{
 		// add the listview container for the todo items.
 		showItems = new TodoItemsContainer("showItems");
-		showItems.add(PreactReplacementEnablingBehavior.INSTANCE);
+		showItems.add(new PreactReplacementEnablingBehavior());
 		add(showItems);
 
 		add(new AjaxFallbackLink<Void>("ajaxback")
@@ -414,7 +414,7 @@ public class TodoListPreact extends BasePage
 			}
 		});
 		// add the add container for the todo items.
-		add(new AddItemsContainer("addItems").add(PreactReplacementEnablingBehavior.INSTANCE));
+		add(new AddItemsContainer("addItems").add(new PreactReplacementEnablingBehavior()));
 	}
 	
 	@Override

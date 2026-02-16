@@ -39,8 +39,22 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  *         to its style. If the element is not the only element of its parent, an error will be logged.
  *     </li>
  * </ul>
+ * Limitations:
+ * <ul>
+ *     <li>
+ *         If the markup IDs change on each Ajax request, using Preact won't help. In fact, it is probably slower than
+ *         the standard replacement using jQuery where the browser updates the DOM. This can happen if, for example, you
+ *         use {@link org.apache.wicket.markup.repeater.AbstractRepeater repeaters}. If you use Preact for markup
+ *         replacement, use stable markup IDs if possible.
+ *     </li>
+ *     <li>
+ *         Preact cannot insert Wicket tags into the DOM exactly the same as they are inserted when the browser
+ *         initially loads the markup. To prevent rendering problems Wicket tags are always stripped for components to
+ *         which this behavior is added.
+ *     </li>
+ * </ul>
  * Make sure you test that markup changes are properly applied for your situation. There is not a comprehensive set of
- * tests to check if this replacement method works the same as the standard method using jQuery.
+ * tests to check if this replacement method works exactly the same as the standard method using jQuery.
  */
 public class PreactReplacementEnablingBehavior extends Behavior
 {
@@ -51,18 +65,31 @@ public class PreactReplacementEnablingBehavior extends Behavior
      */
     public static final String PREACT = "preact";
 
-    /** Singleton instance. */
-    public static final PreactReplacementEnablingBehavior INSTANCE = new PreactReplacementEnablingBehavior();
-
     private static final HeaderItem PREACT_REPLACEMENT_METHOD_HEADER_ITEM =
             JavaScriptHeaderItem.forReference(PreactReplacementMethodResourceReference.get());
 
-    private PreactReplacementEnablingBehavior()
+    private transient boolean previousStripWicketTags;
+
+    public PreactReplacementEnablingBehavior()
     {}
 
     @Override
     public void renderHead(Component component, IHeaderResponse response)
     {
         response.render(PREACT_REPLACEMENT_METHOD_HEADER_ITEM);
+    }
+
+    @Override
+    public void beforeRender(Component component)
+    {
+        var markupSettings = component.getApplication().getMarkupSettings();
+        previousStripWicketTags = markupSettings.getStripWicketTags();
+        markupSettings.setStripWicketTags(true);
+    }
+
+    @Override
+    public void afterRender(Component component)
+    {
+        component.getApplication().getMarkupSettings().setStripWicketTags(previousStripWicketTags);
     }
 }

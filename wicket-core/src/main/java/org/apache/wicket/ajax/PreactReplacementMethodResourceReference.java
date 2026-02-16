@@ -23,6 +23,7 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.resource.PreactDebugResourceReference;
 import org.apache.wicket.resource.PreactResourceReference;
 
 /**
@@ -50,10 +51,12 @@ public class PreactReplacementMethodResourceReference extends JavaScriptResource
 	@Override
 	public List<HeaderItem> getDependencies()
 	{
+		Application application = Application.get();
+
 		final ResourceReference wicketAjaxJqueryReference;
 		if (Application.exists())
 		{
-			wicketAjaxJqueryReference = Application.get().getJavaScriptLibrarySettings().getWicketAjaxReference();
+			wicketAjaxJqueryReference = application.getJavaScriptLibrarySettings().getWicketAjaxReference();
 		}
 		else
 		{
@@ -61,6 +64,9 @@ public class PreactReplacementMethodResourceReference extends JavaScriptResource
 		}
 		List<HeaderItem> dependencies = super.getDependencies();
 		dependencies.add(JavaScriptHeaderItem.forReference(wicketAjaxJqueryReference));
+		if (application.getDebugSettings().isDevelopmentUtilitiesEnabled()) {
+			dependencies.add(JavaScriptHeaderItem.forReference(PreactDebugResourceReference.get()));
+		}
 		dependencies.add(JavaScriptHeaderItem.forReference(PreactResourceReference.get()));
 		return dependencies;
 	}

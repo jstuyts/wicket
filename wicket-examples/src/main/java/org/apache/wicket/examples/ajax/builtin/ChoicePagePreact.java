@@ -91,7 +91,7 @@ public class ChoicePagePreact extends BasePage
 		final DropDownChoice<String> models = new DropDownChoice<>("models",
 			new Model<>(), modelChoices);
 		models.setOutputMarkupId(true)
-				.add(PreactReplacementEnablingBehavior.INSTANCE);
+				.add(new PreactReplacementEnablingBehavior());
 
 		form.add(makes);
 		form.add(models);

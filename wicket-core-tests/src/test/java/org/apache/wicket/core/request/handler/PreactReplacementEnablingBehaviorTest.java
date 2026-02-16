@@ -46,7 +46,7 @@ class PreactReplacementEnablingBehaviorTest extends WicketTestCase
          */
         public TestPage()
         {
-            add(new WebComponent("component").add(PreactReplacementEnablingBehavior.INSTANCE));
+            add(new WebComponent("component").add(new PreactReplacementEnablingBehavior()));
         }
 
         @Override

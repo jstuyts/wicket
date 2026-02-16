@@ -23,14 +23,14 @@
 			props[attribute.name] = attribute.value;
 		}
 
-		var children = [];
-		if (element.childNodes.length > 0) {
+		var children = Array(element.childNodes.length);
+		if (children.length > 0) {
 			for (var childIndex = 0; childIndex < element.childNodes.length; childIndex++) {
 				var child = element.childNodes[childIndex];
 				if (child.nodeType === Node.ELEMENT_NODE) {
-					children.push(createNode(child));
+					children[childIndex] = createNode(child);
 				} else if (child.nodeType === Node.TEXT_NODE) {
-					children.push(child.textContent);
+					children[childIndex] = child.textContent;
 				}
 			}
 		}
@@ -38,17 +38,13 @@
 		return preact.h(element.tagName.toLowerCase(), props, children);
 	}
 
-	function createVirtualDOM(htmlString) {
-		var parser = new DOMParser();
-		var doc = parser.parseFromString(htmlString, "text/html");
-		var elementNode = doc.body.firstElementChild;
-
-		return createNode(elementNode);
+	function createVirtualDom(htmlString) {
+		return createNode(Document.parseHTMLUnsafe(htmlString).body.firstElementChild);
 	}
 
 	wicket.DOM.registerReplacementMethod("preact", function (element, text) {
 		if (element.parentElement.childElementCount === 1) {
-			preact.render(createVirtualDOM(text), element.parentElement);
+			preact.render(createVirtualDom(text), element.parentElement);
 		} else {
 			wicket.Log.error("Preact replacement: element with ID: " + element.id + ", is not the only element in its parent.");
 		}
