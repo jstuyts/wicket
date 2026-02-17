@@ -93,8 +93,7 @@ public class GuestBookPreact extends BasePage
 				target.add(PreactReplacementEnablingBehavior.PREACT, text);
 
 				// focus the textarea again
-				target.appendJavaScript("document.getElementById('" + text.getMarkupId() +
-					"').focus();");
+				target.focusComponent(text);
 			}
 
 			@Override

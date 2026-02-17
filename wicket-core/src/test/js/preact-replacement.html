@@ -54,7 +54,7 @@
 	</div>
 
 	<script>
-		// versions lies between question mark and first ampersand (or end)
+		// versions lie between question mark and first ampersand (or end)
 		var versions = location.search.match(/\?(.*?)(&|$)/)[1].split(',');
 		var jqueryVersion = versions[0];
 
@@ -71,10 +71,6 @@
 	<script type="text/javascript" src="qunit/blanket.min.js"></script>
 
 	<!-- the module under test -->
-	<script>
-		// uncomment for error reporting from the tests
-		// Wicket.Ajax.DebugWindow.enabled = true;
-	</script>
-	<script type="text/javascript" src="preact.js"></script>
+	<script type="text/javascript" src="preact-replacement.js"></script>
 </body>
 </html>

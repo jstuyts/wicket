@@ -14,30 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.wicket.resource;
 
-import org.apache.wicket.request.resource.JavaScriptResourceReference;
-
-/**
- * A resource reference for the JavaScript of (the UMD variant of) <a href="https://preactjs.com/">Preact</a> Debug. Its
- * JavaScript file is only available in a minified version.
- */
-public class PreactDebugResourceReference extends JavaScriptResourceReference
-{
-	private static final long serialVersionUID = 1L;
-
-	private static final PreactDebugResourceReference INSTANCE = new PreactDebugResourceReference();
-
-	/**
-	 * @return the singleton INSTANCE
-	 */
-	public static PreactDebugResourceReference get()
-	{
-		return INSTANCE;
-	}
-
-	private PreactDebugResourceReference()
-	{
-		super(PreactDebugResourceReference.class, "preact/preact-debug-10.28.3.umd.js");
-	}
-}
+;(function (wicket) {
+	wicket.DOM.registerReplacementMethod("xml", function (element, text) {
+		element.replaceWith(new DOMParser().parseFromString(text, "application/xml").firstElementChild);
+	});
+})(Wicket);

@@ -113,6 +113,7 @@ Using another replacement method consists of 2 steps:
 Wicket includes the following alternative replacement methods:
 
 * https://preactjs.com/[Preact]. See _PreactReplacementEnablingBehavior_.
+* XML. See _XmlReplacementEnablingBehavior_.
 
 The example with the _Label_ above would become the following, if the Preact replacement method is to be used. Note that the Preact replacement method requires that the element to be replaced is the only element of its parent, so wrap the element if needed:
 

@@ -1468,7 +1468,7 @@
 						if (replacementFunction) {
 							replacementFunction(element, text);
 						} else {
-							Wicket.Log.error("No replacment registerd for type: " + replacementMethod);
+							Wicket.Log.error("No replacement registerd for type: " + replacementMethod);
 						}
 					} else {
 						// jQuery 1.9+ expects '<' as the very first character in text

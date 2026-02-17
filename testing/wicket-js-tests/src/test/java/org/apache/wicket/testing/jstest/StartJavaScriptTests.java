@@ -131,7 +131,8 @@ public class StartJavaScriptTests
 		{
 			Desktop.getDesktop().browse(new URI("http://localhost:8080/ajax-tests/test/js/all.html?3.7.1"));
 //			Desktop.getDesktop().browse(new URI("http://localhost:8080/ajax-tests/test/js/amd.html"));
-//			Desktop.getDesktop().browse(new URI("http://localhost:8080/ajax-tests/test/js/preact.html?3.7.1,10.28.3"));
+//			Desktop.getDesktop().browse(new URI("http://localhost:8080/ajax-tests/test/js/preact-replacement.html?3.7.1,10.28.3"));
+//			Desktop.getDesktop().browse(new URI("http://localhost:8080/ajax-tests/test/js/xml-replacement.html?3.7.1"));
 		}
 		catch (Exception e)
 		{

@@ -52,6 +52,12 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  *         initially loads the markup. To prevent rendering problems Wicket tags are always stripped for components to
  *         which this behavior is added.
  *     </li>
+ *     <li>
+ *         <strong>DO NOT USE</strong> Preact for replacing markup if the Ajax response adds event listeners to the
+ *         elements being updated. As Preact tries to avoid replacing an element, the original listeners will still be
+ *         present if replacement is not necessary. The event listeners in the Ajax response will be
+ *         <strong>added</strong> to the still existing listeners, resulting in multiple events firing.
+ *     </li>
  * </ul>
  * Make sure you test that markup changes are properly applied for your situation. There is not a comprehensive set of
  * tests to check if this replacement method works exactly the same as the standard method using jQuery.
@@ -68,10 +74,24 @@ public class PreactReplacementEnablingBehavior extends Behavior
     private static final HeaderItem PREACT_REPLACEMENT_METHOD_HEADER_ITEM =
             JavaScriptHeaderItem.forReference(PreactReplacementMethodResourceReference.get());
 
+    private boolean hasBeenBound;
+
     private transient boolean previousStripWicketTags;
 
+    /**
+     * Create a new instance. Instances cannot be shared between components.
+     */
     public PreactReplacementEnablingBehavior()
     {}
+
+    @Override
+    public void bind(Component component)
+    {
+        if (hasBeenBound) {
+            throw new IllegalStateException("this kind of handler cannot be attached to multiple components");
+        }
+        hasBeenBound = true;
+    }
 
     @Override
     public void renderHead(Component component, IHeaderResponse response)

@@ -23,37 +23,38 @@ import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.resource.PreactResourceReference;
 
 /**
- * A resource reference for the JavaScript of the Preact replacement method for markup.
+ * A resource reference for the JavaScript of the XML replacement method for markup.
  */
-public class PreactReplacementMethodResourceReference extends JavaScriptResourceReference
+public class XmlReplacementMethodResourceReference extends JavaScriptResourceReference
 {
 	private static final long serialVersionUID = 1L;
 
-	private static final PreactReplacementMethodResourceReference INSTANCE = new PreactReplacementMethodResourceReference();
+	private static final XmlReplacementMethodResourceReference INSTANCE = new XmlReplacementMethodResourceReference();
 
 	/**
 	 * @return the singleton INSTANCE
 	 */
-	public static PreactReplacementMethodResourceReference get()
+	public static XmlReplacementMethodResourceReference get()
 	{
 		return INSTANCE;
 	}
 
-	private PreactReplacementMethodResourceReference()
+	private XmlReplacementMethodResourceReference()
 	{
-		super(PreactReplacementMethodResourceReference.class, "res/js/preact-replacement-method.js");
+		super(XmlReplacementMethodResourceReference.class, "res/js/xml-replacement-method.js");
 	}
 
 	@Override
 	public List<HeaderItem> getDependencies()
 	{
-        final ResourceReference wicketAjaxJqueryReference;
+		Application application = Application.get();
+
+		final ResourceReference wicketAjaxJqueryReference;
 		if (Application.exists())
 		{
-			wicketAjaxJqueryReference = Application.get().getJavaScriptLibrarySettings().getWicketAjaxReference();
+			wicketAjaxJqueryReference = application.getJavaScriptLibrarySettings().getWicketAjaxReference();
 		}
 		else
 		{
@@ -61,7 +62,6 @@ public class PreactReplacementMethodResourceReference extends JavaScriptResource
 		}
 		List<HeaderItem> dependencies = super.getDependencies();
 		dependencies.add(JavaScriptHeaderItem.forReference(wicketAjaxJqueryReference));
-		dependencies.add(JavaScriptHeaderItem.forReference(PreactResourceReference.get()));
 		return dependencies;
 	}
 }
