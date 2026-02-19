@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.IMarkupResourceStreamProvider;
-import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.util.resource.IResourceStream;
@@ -80,6 +79,14 @@ class XmlReplacementEnablingBehaviorTest extends WicketTestCase
         assertNull(tag.getAttribute("xmlns"));
     }
 
+    @Test
+    void disablesRenderingOfWicketTags()
+    {
+        tester.startPage(XmlReplacementEnablingBehaviorTest.TestPage.class);
+
+        tester.assertContainsNot("<wicket:panel>");
+    }
+
     public static class TestPage extends WebPage implements IMarkupResourceStreamProvider
     {
         /** */
@@ -90,7 +97,8 @@ class XmlReplacementEnablingBehaviorTest extends WicketTestCase
          */
         public TestPage()
         {
-            add(new WebComponent("component").add(new XmlReplacementEnablingBehavior(SOME_NAMESPACE_URI)));
+            add(new MathmlSubexpressionPanel("component")
+                    .add(new XmlReplacementEnablingBehavior(XmlReplacementEnablingBehavior.MATHML_NAMESPACE_URI)));
         }
 
         @Override
@@ -98,7 +106,7 @@ class XmlReplacementEnablingBehaviorTest extends WicketTestCase
                                                        Class<?> containerClass)
         {
             return new StringResourceStream(
-                    "<html><head></head><body><span wicket:id=\"component\"></span></body></html>");
+                    "<html><head></head><body><math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow wicket:id=\"component\"></mrow></math></body></html>");
         }
     }
 }

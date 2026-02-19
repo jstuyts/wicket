@@ -30,7 +30,14 @@ import org.apache.wicket.util.lang.Args;
  * on the component so it is correctly added to the DOM. This is usually used for components attached SVG or MathML
  * elements.
  * <p>
- * Make sure you test that markup changes are properly applied for your situation. There is not a comprehensive set of
+ * Limitations:
+ * <ul>
+ *     <li>
+ *         The replaced XML will not be rendered correctly if it contains Wicket tags. To prevent rendering problems
+ *         Wicket tags are always stripped for components to which this behavior is added.
+ *     </li>
+ * </ul>
+ *  Make sure you test that markup changes are properly applied for your situation. There is not a comprehensive set of
  * tests to check if this replacement method works exactly the same as the standard method using jQuery.
  */
 public class XmlReplacementEnablingBehavior extends Behavior
@@ -58,6 +65,8 @@ public class XmlReplacementEnablingBehavior extends Behavior
     private final String namepsaceUri;
 
     private boolean hasBeenBound;
+
+    private transient boolean previousStripWicketTags;
 
     /**
      * Create a new instance with the given namespace URI. Instances cannot be shared between components.
@@ -91,5 +100,19 @@ public class XmlReplacementEnablingBehavior extends Behavior
         if (!tag.isClose()) {
             tag.put("xmlns", namepsaceUri);
         }
+    }
+
+    @Override
+    public void beforeRender(Component component)
+    {
+        var markupSettings = component.getApplication().getMarkupSettings();
+        previousStripWicketTags = markupSettings.getStripWicketTags();
+        markupSettings.setStripWicketTags(true);
+    }
+
+    @Override
+    public void afterRender(Component component)
+    {
+        component.getApplication().getMarkupSettings().setStripWicketTags(previousStripWicketTags);
     }
 }

@@ -56,7 +56,7 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  *         <strong>DO NOT USE</strong> Preact for replacing markup if the Ajax response adds event listeners to the
  *         elements being updated. As Preact tries to avoid replacing an element, the original listeners will still be
  *         present if replacement is not necessary. The event listeners in the Ajax response will be
- *         <strong>added</strong> to the still existing listeners, resulting in multiple events firing.
+ *         added to the still existing listeners, resulting in events being processed multiple times.
  *     </li>
  * </ul>
  * Make sure you test that markup changes are properly applied for your situation. There is not a comprehensive set of
