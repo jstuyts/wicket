@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+  <title>Wicket Examples - Ajax - XML (SVG and MathML)</title>
+</head>
+<body>
+  <wicket:extend>
+	  <h2>SVG</h2>
+
+
+	  <h2>MathML</h2>
+	  <p>
+		  Click on the numbers and the operator, or select them from the drop-down menus below.
+	  </p>
+	  <div>
+		  <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:wicket="http://wicket.apache.org"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.w3.org/1998/Math/MathML https://www.w3.org/Math/XMLSchema/mathml3/mathml3.xsd">
+			  <mrow>
+				  <mn wicket:id="firstNumber">1</mn>
+				  <mo wicket:id="operator">+</mo>
+				  <mn wicket:id="secondNumber">1</mn>
+				  <mo>=</mo>
+				  <mn wicket:id="outcome">2</mn>
+			  </mrow>
+		  </math>
+	  </div>
+	  <form wicket:id="mathmlForm">
+		  <div>
+			  First number: <select wicket:id="firstNumberDropDown"></select>
+		  </div>
+		  <div>
+			  Operator: <select wicket:id="operatorDropDown"></select>
+		  </div>
+		  <div>
+			  Second number: <select wicket:id="secondNumberDropDown"></select>
+		  </div>
+	  </form>
+  </wicket:extend>
+</body>
+</html>
