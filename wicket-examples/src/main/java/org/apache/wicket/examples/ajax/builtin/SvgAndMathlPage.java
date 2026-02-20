@@ -48,7 +48,11 @@ public class SvgAndMathlPage extends BasePage
     protected void onInitialize()
     {
         super.onInitialize();
-        
+
+        var firstNumberDropDown = new DropDownChoice<>("firstNumberDropDown", firstNumberModel, ONE_TO_NINE);
+        var operatorDropDown = new DropDownChoice<>("operatorDropDown", operatorModel, OPERATORS);
+        var secondNumberDropDown = new DropDownChoice<>("secondNumberDropDown", secondNumberModel, ONE_TO_NINE);
+
         var outcome = new Label("outcome", outcomeModel)
                 .add(new XmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI))
                 .setOutputMarkupId(true);
@@ -61,7 +65,7 @@ public class SvgAndMathlPage extends BasePage
                 
                 add(new XmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
                 setOutputMarkupId(true);
-                var x = this;
+                var linkThis = this;
                 add(new AjaxEventBehavior("click")
                 {
                     @Override
@@ -70,7 +74,8 @@ public class SvgAndMathlPage extends BasePage
                         var currentValue = firstNumberModel.getObject();
                         var newValue = currentValue == 9 ? 1 : currentValue + 1;
                         firstNumberModel.setObject(newValue);
-                        target.add(XmlReplacementEnablingBehavior.XML, x, outcome);
+                        target.add(XmlReplacementEnablingBehavior.XML, linkThis, outcome);
+                        target.add(firstNumberDropDown);
                     }
                 });
             }
@@ -84,7 +89,7 @@ public class SvgAndMathlPage extends BasePage
                 
                 add(new XmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
                 setOutputMarkupId(true);
-                var x = this;
+                var linkThis = this;
                 add(new AjaxEventBehavior("click")
                 {
                     @Override
@@ -93,7 +98,8 @@ public class SvgAndMathlPage extends BasePage
                         var currentOrdinal = operatorModel.getObject().ordinal();
                         var newOrdinal = currentOrdinal == NUMBER_OF_OPERATORS - 1 ? 0 : currentOrdinal + 1;
                         operatorModel.setObject(Operator.values()[newOrdinal]);
-                        target.add(XmlReplacementEnablingBehavior.XML, x, outcome);
+                        target.add(XmlReplacementEnablingBehavior.XML, linkThis, outcome);
+                        target.add(operatorDropDown);
                     }
                 });
             }
@@ -107,7 +113,7 @@ public class SvgAndMathlPage extends BasePage
                 
                 add(new XmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
                 setOutputMarkupId(true);
-                var x = this;
+                var linkThis = this;
                 add(new AjaxEventBehavior("click")
                 {
                     @Override
@@ -116,7 +122,8 @@ public class SvgAndMathlPage extends BasePage
                         var currentValue = secondNumberModel.getObject();
                         var newValue = currentValue == 9 ? 1 : currentValue + 1;
                         secondNumberModel.setObject(newValue);
-                        target.add(XmlReplacementEnablingBehavior.XML, x, outcome);
+                        target.add(XmlReplacementEnablingBehavior.XML, linkThis, outcome);
+                        target.add(secondNumberDropDown);
                     }
                 });
             }
@@ -124,7 +131,7 @@ public class SvgAndMathlPage extends BasePage
         add(firstNumber, operator, secondNumber, outcome);
 
         var form = new Form<>("mathmlForm");
-        var firstNumberDropDown = new DropDownChoice<>("firstNumberDropDown", firstNumberModel, ONE_TO_NINE);
+        firstNumberDropDown.setOutputMarkupId(true);
         firstNumberDropDown.add(new AjaxFormComponentUpdatingBehavior("change") {
             @Override
             protected void onUpdate(AjaxRequestTarget target)
@@ -132,7 +139,7 @@ public class SvgAndMathlPage extends BasePage
                 target.add(XmlReplacementEnablingBehavior.XML, firstNumber, outcome);
             }
         });
-        var operatorDropDown = new DropDownChoice<>("operatorDropDown", operatorModel, OPERATORS);
+        operatorDropDown.setOutputMarkupId(true);
         operatorDropDown.add(new AjaxFormComponentUpdatingBehavior("change") {
             @Override
             protected void onUpdate(AjaxRequestTarget target)
@@ -140,7 +147,7 @@ public class SvgAndMathlPage extends BasePage
                 target.add(XmlReplacementEnablingBehavior.XML, operator, outcome);
             }
         });
-        var secondNumberDropDown = new DropDownChoice<>("secondNumberDropDown", secondNumberModel, ONE_TO_NINE);
+        secondNumberDropDown.setOutputMarkupId(true);
         secondNumberDropDown.add(new AjaxFormComponentUpdatingBehavior("change") {
             @Override
             protected void onUpdate(AjaxRequestTarget target)

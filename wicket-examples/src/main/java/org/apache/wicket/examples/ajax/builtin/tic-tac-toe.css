@@ -1,0 +1,18 @@
+circle.circle {
+    fill: none;
+    stroke: #303284;
+    stroke-width: 3.96875;
+}
+
+rect.cross {
+    fill: #d22128;
+}
+
+rect.grid {
+    fill: #ff9925;
+}
+
+rect.square {
+    fill: #ffffff;
+    fill-opacity: 0;
+}
