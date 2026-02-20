@@ -2,13 +2,13 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <head>
 	<wicket:head>
-		<title>Wicket Examples - Ajax - XML (SVG and MathML)</title>
+		<title>Wicket Examples - Ajax - XML using Preact (SVG and MathML)</title>
 	</wicket:head>
 </head>
 <body>
   <wicket:extend>
 	  <h2>SVG</h2>
-	  <p>Click the squares to place your piece, or use the buttons below. Click 'reset' to start over.</p>
+	  <p>Use the buttons below to select a square. Click 'reset' to start over.</p>
 
 	  <div>
 		  <svg
@@ -41,8 +41,8 @@
 						  height="3.96875"
 						  x="7.1054274e-15"
 						  y="23.8125" />
-				  <a wicket:id="squareA1">
-					  <g>
+				  <g>
+					  <g wicket:id="squareA1">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -71,11 +71,9 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
-				  <a
-						  transform="translate(0,27.78125)"
-						  wicket:id="squareA2">
-					  <g>
+				  </g>
+				  <g transform="translate(0,27.78125)">
+					  <g wicket:id="squareA2">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -104,11 +102,9 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
-				  <a
-						  transform="translate(0,55.562499)"
-						  wicket:id="squareA3">
-					  <g>
+				  </g>
+				  <g transform="translate(0,55.562499)">
+					  <g wicket:id="squareA3">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -137,11 +133,9 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
-				  <a
-						  transform="translate(27.78125)"
-						  wicket:id="squareB1">
-					  <g>
+				  </g>
+				  <g transform="translate(27.78125)">
+					  <g wicket:id="squareB1">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -170,11 +164,9 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
-				  <a
-						  transform="translate(27.78125,27.78125)"
-						  wicket:id="squareB2">
-					  <g>
+				  </g>
+				  <g transform="translate(27.78125,27.78125)">
+					  <g wicket:id="squareB2">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -203,11 +195,9 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
-				  <a
-						  transform="translate(27.78125,55.562499)"
-						  wicket:id="squareB3">
-					  <g>
+				  </g>
+				  <g transform="translate(27.78125,55.562499)">
+					  <g wicket:id="squareB3">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -236,11 +226,9 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
-				  <a
-						  transform="translate(55.562499)"
-						  wicket:id="squareC1">
-					  <g>
+				  </g>
+				  <g transform="translate(55.562499)">
+					  <g wicket:id="squareC1">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -269,11 +257,9 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
-				  <a
-						  transform="translate(55.562499,27.78125)"
-						  wicket:id="squareC2">
-					  <g>
+				  </g>
+				  <g transform="translate(55.562499,27.78125)">
+					  <g wicket:id="squareC2">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -302,11 +288,9 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
-				  <a
-						  transform="translate(55.562499,55.562499)"
-						  wicket:id="squareC3">
-					  <g>
+				  </g>
+				  <g transform="translate(55.562499,55.562499)">
+					  <g wicket:id="squareC3">
 						  <rect
 								  class="square"
 								  width="23.8125"
@@ -335,7 +319,7 @@
 									  y="7.6522398" />
 						  </g>
 					  </g>
-				  </a>
+				  </g>
 			  </g>
 		  </svg>
 	  </div>
@@ -362,18 +346,26 @@
 
 	  <h2>MathML</h2>
 	  <p>
-		  Click on the numbers and the operator, or select them from the drop-down menus below.
+		  Select the numbers and the operator from the drop-down menus below.
 	  </p>
 	  <p>
 		  <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:wicket="http://wicket.apache.org"
 				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 				xsi:schemaLocation="http://www.w3.org/1998/Math/MathML https://www.w3.org/Math/XMLSchema/mathml3/mathml3.xsd">
 			  <mrow>
-				  <mn wicket:id="firstNumber">1</mn>
-				  <mo wicket:id="operator">+</mo>
-				  <mn wicket:id="secondNumber">1</mn>
+				  <mrow>
+					  <mn wicket:id="firstNumber">1</mn>
+				  </mrow>
+				  <mrow>
+					  <mo wicket:id="operator">+</mo>
+				  </mrow>
+				  <mrow>
+					  <mn wicket:id="secondNumber">1</mn>
+				  </mrow>
 				  <mo>=</mo>
-				  <mn wicket:id="outcome">2</mn>
+				  <mrow>
+					  <mn wicket:id="outcome">2</mn>
+				  </mrow>
 			  </mrow>
 		  </math>
 	  </p>

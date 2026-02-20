@@ -45,6 +45,16 @@ class XmlReplacementEnablingBehaviorTest extends WicketTestCase
 
         Assertions.assertThrows(IllegalStateException.class, () -> behavior.bind(new WebMarkupContainer(SOME_ID)));
     }
+
+    @Test
+    void enablesOutputOfMarkupIdOnBindingToComponent()
+    {
+        var behavior = new XmlReplacementEnablingBehavior(SOME_NAMESPACE_URI);
+        var component = new WebMarkupContainer(SOME_ID);
+        behavior.bind(component);
+
+        Assertions.assertTrue(component.getOutputMarkupId());
+    }
     
     @Test
     void setsNamespaceUriOnComponentOpenTag()

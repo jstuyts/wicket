@@ -36,7 +36,8 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  *         The element of the component must be the only element of its parent. Other node types in the parent are fine.
  *         If you need to add an element for this requirement and it messes with your layout, you can add
  *         <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display#contents"><code>display: contents</code></a>
- *         to its style. If the element is not the only element of its parent, an error will be logged.
+ *         to its style. If the element is not the only element of its parent (and Ajax debug mode is enabled in the
+ *         application), an error will be logged.
  *     </li>
  * </ul>
  * Limitations:
@@ -91,6 +92,7 @@ public class PreactReplacementEnablingBehavior extends Behavior
             throw new IllegalStateException("this kind of handler cannot be attached to multiple components");
         }
         hasBeenBound = true;
+        component.setOutputMarkupId(true);
     }
 
     @Override

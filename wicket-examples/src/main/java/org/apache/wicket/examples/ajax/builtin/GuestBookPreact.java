@@ -65,7 +65,7 @@ public class GuestBookPreact extends BasePage
 		// the WebMarkupContainer is used to update the listview in an ajax call
 		comments = new WebMarkupContainer("comments");
 		comments.add(new PreactReplacementEnablingBehavior());
-		add(comments.setOutputMarkupId(true));
+		add(comments);
 
 		// Add commentListView of existing comments
         comments.add(new ListView<Comment>("comments",
@@ -76,7 +76,7 @@ public class GuestBookPreact extends BasePage
             {
                 final Comment comment = listItem.getModelObject();
                 listItem.add(new Label("date", comment::getDate));
-                listItem.add(new MultiLineLabel("text", comment.getText()).add(new PreactReplacementEnablingBehavior()));
+                listItem.add(new MultiLineLabel("text", comment.getText()));
             }
         });
 

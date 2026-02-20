@@ -1,18 +1,13 @@
 package org.apache.wicket.examples.ajax.builtin;
 
-import static org.apache.wicket.core.request.handler.XmlReplacementEnablingBehavior.MATHML_NAMESPACE_URI;
-import static org.apache.wicket.core.request.handler.XmlReplacementEnablingBehavior.SVG_NAMESPACE_URI;
-
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
-import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.behavior.AttributeAppender;
-import org.apache.wicket.core.request.handler.XmlReplacementEnablingBehavior;
+import org.apache.wicket.core.request.handler.PreactReplacementEnablingBehavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -25,9 +20,9 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.request.resource.CssResourceReference;
 
 /**
- * Demo page for XML, showing manipulation of SVG and MathML.
+ * Demo page for Preact, showing manipulation of SVG and MathML.
  */
-public class SvgAndMathlPage extends BasePage
+public class SvgAndMathlPagePreact extends BasePage
 {
     private static final List<Integer> ONE_TO_NINE = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
 
@@ -59,7 +54,7 @@ public class SvgAndMathlPage extends BasePage
         super.onInitialize();
 
         var ticTacToe = new WebMarkupContainer("ticTacToe");
-        ticTacToe.add(new XmlReplacementEnablingBehavior(SVG_NAMESPACE_URI));
+        ticTacToe.add(new PreactReplacementEnablingBehavior());
         add(ticTacToe);
 
         var boardStateModel = Model.of(new SquareState[] {
@@ -79,8 +74,7 @@ public class SvgAndMathlPage extends BasePage
         svgButtonsForm.setOutputMarkupId(true);
         add(svgButtonsForm);
 
-        var squareLinks = new AjaxLink[9];
-        var buttons = new AjaxButton[9];
+        var squares = new WebMarkupContainer[9];
         for (var column = 'A'; column < 'D'; column += 1) {
             for (var row = 1; row < 4; row += 1) {
                 var squareId = String.valueOf(column) + row;
@@ -88,39 +82,20 @@ public class SvgAndMathlPage extends BasePage
                 var squareStateModel = LambdaModel.of(boardStateModel,
                         boardState -> boardState[index],
                         (boardState, squareState) -> boardState[index] = squareState);
-                var squareLink = new AjaxLink<>("square" + squareId, squareStateModel)
-                {
-                    @Override
-                    protected void onConfigure()
-                    {
-                        super.onConfigure();
-
-                        setEnabled(getModelObject() == SquareState.EMPTY);
-                    }
-
-                    @Override
-                    public void onClick(AjaxRequestTarget target)
-                    {
-                        setModelObject(nextTurnModel.getObject());
-                        nextTurnModel.setObject(nextTurnModel.getObject() == SquareState.CROSS ? SquareState.CIRCLE : SquareState.CROSS);
-
-                        target.add(XmlReplacementEnablingBehavior.XML, this);
-                        target.add(buttons[index]);
-                    }
-                };
-                squareLink.add(new XmlReplacementEnablingBehavior(SVG_NAMESPACE_URI));
-                ticTacToe.add(squareLink);
-                squareLinks[index] = squareLink;
+                var square = new WebMarkupContainer("square" + squareId, squareStateModel);
+                square.add(new PreactReplacementEnablingBehavior());
+                ticTacToe.add(square);
+                squares[index] = square;
                 
                 var circle = new WebMarkupContainer("circle" + squareId);
-                circle.add(new XmlReplacementEnablingBehavior(SVG_NAMESPACE_URI));
+                circle.add(new PreactReplacementEnablingBehavior());
                 circle.add(AttributeAppender.replace("class", boardStateModel.map(boardState -> boardState[index] == SquareState.CIRCLE ? "circle" : "hidden")));
-                squareLink.add(circle);
+                square.add(circle);
 
                 var cross = new WebMarkupContainer("cross" + squareId);
-                cross.add(new XmlReplacementEnablingBehavior(SVG_NAMESPACE_URI));
+                cross.add(new PreactReplacementEnablingBehavior());
                 cross.add(AttributeAppender.replace("class", boardStateModel.map(boardState -> boardState[index] == SquareState.CROSS ? "cross" : "hidden")));
-                squareLink.add(cross);
+                square.add(cross);
 
                 var button = new AjaxButton("button" + squareId) {
                     @Override
@@ -137,13 +112,12 @@ public class SvgAndMathlPage extends BasePage
                         boardStateModel.getObject()[index] = nextTurnModel.getObject();
                         nextTurnModel.setObject(nextTurnModel.getObject() == SquareState.CROSS ? SquareState.CIRCLE : SquareState.CROSS);
 
-                        target.add(XmlReplacementEnablingBehavior.XML, squareLinks[index]);
+                        target.add(PreactReplacementEnablingBehavior.PREACT, squares[index]);
                         target.add(this);
                     }
                 };
                 button.setOutputMarkupId(true);
                 svgButtonsForm.add(button);
-                buttons[index] = button;
             }
         }
 
@@ -164,7 +138,7 @@ public class SvgAndMathlPage extends BasePage
                 });
                 nextTurnModel.setObject(SquareState.CROSS);
 
-                target.add(XmlReplacementEnablingBehavior.XML, ticTacToe);
+                target.add(PreactReplacementEnablingBehavior.PREACT, ticTacToe);
                 target.add(svgButtonsForm);
             }
         };
@@ -175,7 +149,7 @@ public class SvgAndMathlPage extends BasePage
         var secondNumberDropDown = new DropDownChoice<>("secondNumberDropDown", secondNumberModel, ONE_TO_NINE);
 
         var outcome = new Label("outcome", outcomeModel)
-                .add(new XmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
+                .add(new PreactReplacementEnablingBehavior());
         var firstNumber = new Label("firstNumber", firstNumberModel)
         {
             @Override
@@ -183,20 +157,7 @@ public class SvgAndMathlPage extends BasePage
             {
                 super.onInitialize();
                 
-                add(new XmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
-                var labelThis = this;
-                add(new AjaxEventBehavior("click")
-                {
-                    @Override
-                    protected void onEvent(AjaxRequestTarget target)
-                    {
-                        var currentValue = firstNumberModel.getObject();
-                        var newValue = currentValue == 9 ? 1 : currentValue + 1;
-                        firstNumberModel.setObject(newValue);
-                        target.add(XmlReplacementEnablingBehavior.XML, labelThis, outcome);
-                        target.add(firstNumberDropDown);
-                    }
-                });
+                add(new PreactReplacementEnablingBehavior());
             }
         };
         var operator = new Label("operator", operatorModel)
@@ -206,20 +167,7 @@ public class SvgAndMathlPage extends BasePage
             {
                 super.onInitialize();
                 
-                add(new XmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
-                var labelThis = this;
-                add(new AjaxEventBehavior("click")
-                {
-                    @Override
-                    protected void onEvent(AjaxRequestTarget target)
-                    {
-                        var currentOrdinal = operatorModel.getObject().ordinal();
-                        var newOrdinal = currentOrdinal == NUMBER_OF_OPERATORS - 1 ? 0 : currentOrdinal + 1;
-                        operatorModel.setObject(Operator.values()[newOrdinal]);
-                        target.add(XmlReplacementEnablingBehavior.XML, labelThis, outcome);
-                        target.add(operatorDropDown);
-                    }
-                });
+                add(new PreactReplacementEnablingBehavior());
             }
         };
         var secondNumber = new Label("secondNumber", secondNumberModel)
@@ -229,20 +177,7 @@ public class SvgAndMathlPage extends BasePage
             {
                 super.onInitialize();
                 
-                add(new XmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
-                var labelThis = this;
-                add(new AjaxEventBehavior("click")
-                {
-                    @Override
-                    protected void onEvent(AjaxRequestTarget target)
-                    {
-                        var currentValue = secondNumberModel.getObject();
-                        var newValue = currentValue == 9 ? 1 : currentValue + 1;
-                        secondNumberModel.setObject(newValue);
-                        target.add(XmlReplacementEnablingBehavior.XML, labelThis, outcome);
-                        target.add(secondNumberDropDown);
-                    }
-                });
+                add(new PreactReplacementEnablingBehavior());
             }
         };
         add(firstNumber, operator, secondNumber, outcome);
@@ -253,7 +188,7 @@ public class SvgAndMathlPage extends BasePage
             @Override
             protected void onUpdate(AjaxRequestTarget target)
             {
-                target.add(XmlReplacementEnablingBehavior.XML, firstNumber, outcome);
+                target.add(PreactReplacementEnablingBehavior.PREACT, firstNumber, outcome);
             }
         });
         operatorDropDown.setOutputMarkupId(true);
@@ -261,7 +196,7 @@ public class SvgAndMathlPage extends BasePage
             @Override
             protected void onUpdate(AjaxRequestTarget target)
             {
-                target.add(XmlReplacementEnablingBehavior.XML, operator, outcome);
+                target.add(PreactReplacementEnablingBehavior.PREACT, operator, outcome);
             }
         });
         secondNumberDropDown.setOutputMarkupId(true);
@@ -269,7 +204,7 @@ public class SvgAndMathlPage extends BasePage
             @Override
             protected void onUpdate(AjaxRequestTarget target)
             {
-                target.add(XmlReplacementEnablingBehavior.XML, secondNumber, outcome);
+                target.add(PreactReplacementEnablingBehavior.PREACT, secondNumber, outcome);
             }
         });
 
@@ -287,7 +222,7 @@ public class SvgAndMathlPage extends BasePage
     {
         super.renderHead(response);
         
-        response.render(CssHeaderItem.forReference(new CssResourceReference(SvgAndMathlPage.class, "tic-tac-toe.css")));
+        response.render(CssHeaderItem.forReference(new CssResourceReference(SvgAndMathlPagePreact.class, "tic-tac-toe.css")));
     }
 
     private enum SquareState {
@@ -342,5 +277,4 @@ public class SvgAndMathlPage extends BasePage
     }
     
     private static final List<Operator> OPERATORS = Arrays.asList(Operator.values());
-    private static final int NUMBER_OF_OPERATORS = OPERATORS.size();
 }

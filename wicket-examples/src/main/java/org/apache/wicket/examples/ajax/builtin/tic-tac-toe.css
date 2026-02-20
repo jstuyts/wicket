@@ -4,8 +4,12 @@ circle.circle {
     stroke-width: 3.96875;
 }
 
-rect.cross {
+g.cross {
     fill: #d22128;
+}
+
+circle.hidden, g.hidden {
+    display: none;
 }
 
 rect.grid {

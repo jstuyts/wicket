@@ -86,6 +86,7 @@ public class XmlReplacementEnablingBehavior extends Behavior
             throw new IllegalStateException("this kind of handler cannot be attached to multiple components");
         }
         hasBeenBound = true;
+        component.setOutputMarkupId(true);
     }
 
     @Override

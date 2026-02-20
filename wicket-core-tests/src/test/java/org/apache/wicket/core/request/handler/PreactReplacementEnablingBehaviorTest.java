@@ -50,6 +50,16 @@ class PreactReplacementEnablingBehaviorTest extends WicketTestCase
     }
 
     @Test
+    void enablesOutputOfMarkupIdOnBindingToComponent()
+    {
+        var behavior = new PreactReplacementEnablingBehavior();
+        var component = new WebMarkupContainer(SOME_ID);
+        behavior.bind(component);
+
+        Assertions.assertTrue(component.getOutputMarkupId());
+    }
+
+    @Test
     void disablesRenderingOfWicketTags()
     {
         tester.startPage(TestPage.class);
