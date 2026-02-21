@@ -113,12 +113,10 @@ public class SvgAndMathlPage extends BasePage
                 squareLinks[index] = squareLink;
                 
                 var circle = new WebMarkupContainer("circle" + squareId);
-                circle.add(new XmlReplacementEnablingBehavior(SVG_NAMESPACE_URI));
                 circle.add(AttributeAppender.replace("class", boardStateModel.map(boardState -> boardState[index] == SquareState.CIRCLE ? "circle" : "hidden")));
                 squareLink.add(circle);
 
                 var cross = new WebMarkupContainer("cross" + squareId);
-                cross.add(new XmlReplacementEnablingBehavior(SVG_NAMESPACE_URI));
                 cross.add(AttributeAppender.replace("class", boardStateModel.map(boardState -> boardState[index] == SquareState.CROSS ? "cross" : "hidden")));
                 squareLink.add(cross);
 

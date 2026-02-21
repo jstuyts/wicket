@@ -26,13 +26,13 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.util.lang.Args;
 
 /**
- * Add his behavior to components that are attached to XML markup in the page. The behavior will set the given namespace
- * on the component so it is correctly added to the DOM. This is usually used for components attached SVG or MathML
- * elements.
+ * Add this behavior to components that are attached to XML markup in the page. The behavior will set the given
+ * namespace on the component so it is correctly added to the DOM. This is usually used for components attached SVG or
+ * MathML elements.
  * <p>
  * As this behavior implies that the component will be added to a
  * {@link org.apache.wicket.page.PartialPageUpdate PartialPageUpdate}, this behavior will enable outputting of the
- * markup ID on the component. Calling {@link Component#setOutputMarkupId(boolean) setOutputMarkupId(...)} yourself is
+ * markup ID of the component. Calling {@link Component#setOutputMarkupId(boolean) setOutputMarkupId(...)} yourself is
  * not needed.
  * <p>
  * Limitations:
@@ -50,11 +50,13 @@ public class XmlReplacementEnablingBehavior extends Behavior
     /**
      * The namespace URI of MathML.
      */
+    // TODO("Share with PreactXml...")
     public static final String MATHML_NAMESPACE_URI = "http://www.w3.org/1998/Math/MathML";
 
     /**
      * The namespace URI of SVG.
      */
+    // TODO("Share with PreactXml...")
     public static final String SVG_NAMESPACE_URI = "http://www.w3.org/2000/svg";
 
     /**
@@ -88,7 +90,7 @@ public class XmlReplacementEnablingBehavior extends Behavior
     public void bind(Component component)
     {
         if (hasBeenBound) {
-            throw new IllegalStateException("this kind of handler cannot be attached to multiple components");
+            throw new IllegalStateException("this kind of behavior cannot be attached to multiple components");
         }
         hasBeenBound = true;
         component.setOutputMarkupId(true);

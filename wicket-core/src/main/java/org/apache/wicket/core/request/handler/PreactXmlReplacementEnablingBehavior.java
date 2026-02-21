@@ -19,9 +19,11 @@ package org.apache.wicket.core.request.handler;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.PreactReplacementMethodResourceReference;
 import org.apache.wicket.behavior.Behavior;
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.util.lang.Args;
 
 /**
  * Add this behavior to components of which the markup must be replaced with <a href="https://preactjs.com/">Preact</a>
@@ -68,17 +70,20 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  * Make sure you test that markup changes are properly applied for your situation. There is not a comprehensive set of
  * tests to check if this replacement method works exactly the same as the standard method using jQuery.
  */
-public class PreactReplacementEnablingBehavior extends Behavior
+public class PreactXmlReplacementEnablingBehavior extends Behavior
 {
     /**
      * The identifier to pass to {@link IPartialPageRequestHandler#add(String, Component, String)} or
      * {@link IPartialPageRequestHandler#add(String, Component...)} to have the markup of the component replaced using
      * Preact.
      */
-    public static final String PREACT = "preact";
+    public static final String PREACT_XML = "preact-xml";
 
+     // TODO("Share with Preact...")
     private static final HeaderItem PREACT_REPLACEMENT_METHOD_HEADER_ITEM =
             JavaScriptHeaderItem.forReference(PreactReplacementMethodResourceReference.get());
+
+    private final String namepsaceUri;
 
     private boolean hasBeenBound;
 
@@ -87,8 +92,11 @@ public class PreactReplacementEnablingBehavior extends Behavior
     /**
      * Create a new instance. Instances cannot be shared between components.
      */
-    public PreactReplacementEnablingBehavior()
-    {}
+    public PreactXmlReplacementEnablingBehavior(String namepsaceUri)
+    {
+        Args.notNull(namepsaceUri, "namepsaceUri");
+        this.namepsaceUri = namepsaceUri;
+    }
 
     @Override
     public void bind(Component component)
@@ -104,6 +112,14 @@ public class PreactReplacementEnablingBehavior extends Behavior
     public void renderHead(Component component, IHeaderResponse response)
     {
         response.render(PREACT_REPLACEMENT_METHOD_HEADER_ITEM);
+    }
+
+    @Override
+    public void onComponentTag(Component component, ComponentTag tag)
+    {
+        if (!tag.isClose()) {
+            tag.put("xmlns", namepsaceUri);
+        }
     }
 
     @Override

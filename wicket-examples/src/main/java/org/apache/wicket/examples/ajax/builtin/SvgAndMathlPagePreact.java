@@ -1,5 +1,8 @@
 package org.apache.wicket.examples.ajax.builtin;
 
+import static org.apache.wicket.core.request.handler.XmlReplacementEnablingBehavior.MATHML_NAMESPACE_URI;
+import static org.apache.wicket.core.request.handler.XmlReplacementEnablingBehavior.SVG_NAMESPACE_URI;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,7 +10,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.behavior.AttributeAppender;
-import org.apache.wicket.core.request.handler.PreactReplacementEnablingBehavior;
+import org.apache.wicket.core.request.handler.PreactXmlReplacementEnablingBehavior;
 import org.apache.wicket.markup.head.CssHeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -54,7 +57,7 @@ public class SvgAndMathlPagePreact extends BasePage
         super.onInitialize();
 
         var ticTacToe = new WebMarkupContainer("ticTacToe");
-        ticTacToe.add(new PreactReplacementEnablingBehavior());
+        ticTacToe.add(new PreactXmlReplacementEnablingBehavior(SVG_NAMESPACE_URI));
         add(ticTacToe);
 
         var boardStateModel = Model.of(new SquareState[] {
@@ -83,17 +86,15 @@ public class SvgAndMathlPagePreact extends BasePage
                         boardState -> boardState[index],
                         (boardState, squareState) -> boardState[index] = squareState);
                 var square = new WebMarkupContainer("square" + squareId, squareStateModel);
-                square.add(new PreactReplacementEnablingBehavior());
+                square.add(new PreactXmlReplacementEnablingBehavior(SVG_NAMESPACE_URI));
                 ticTacToe.add(square);
                 squares[index] = square;
                 
                 var circle = new WebMarkupContainer("circle" + squareId);
-                circle.add(new PreactReplacementEnablingBehavior());
                 circle.add(AttributeAppender.replace("class", boardStateModel.map(boardState -> boardState[index] == SquareState.CIRCLE ? "circle" : "hidden")));
                 square.add(circle);
 
                 var cross = new WebMarkupContainer("cross" + squareId);
-                cross.add(new PreactReplacementEnablingBehavior());
                 cross.add(AttributeAppender.replace("class", boardStateModel.map(boardState -> boardState[index] == SquareState.CROSS ? "cross" : "hidden")));
                 square.add(cross);
 
@@ -112,7 +113,7 @@ public class SvgAndMathlPagePreact extends BasePage
                         boardStateModel.getObject()[index] = nextTurnModel.getObject();
                         nextTurnModel.setObject(nextTurnModel.getObject() == SquareState.CROSS ? SquareState.CIRCLE : SquareState.CROSS);
 
-                        target.add(PreactReplacementEnablingBehavior.PREACT, squares[index]);
+                        target.add(PreactXmlReplacementEnablingBehavior.PREACT_XML, squares[index]);
                         target.add(this);
                     }
                 };
@@ -138,7 +139,7 @@ public class SvgAndMathlPagePreact extends BasePage
                 });
                 nextTurnModel.setObject(SquareState.CROSS);
 
-                target.add(PreactReplacementEnablingBehavior.PREACT, ticTacToe);
+                target.add(PreactXmlReplacementEnablingBehavior.PREACT_XML, ticTacToe);
                 target.add(svgButtonsForm);
             }
         };
@@ -149,7 +150,7 @@ public class SvgAndMathlPagePreact extends BasePage
         var secondNumberDropDown = new DropDownChoice<>("secondNumberDropDown", secondNumberModel, ONE_TO_NINE);
 
         var outcome = new Label("outcome", outcomeModel)
-                .add(new PreactReplacementEnablingBehavior());
+                .add(new PreactXmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
         var firstNumber = new Label("firstNumber", firstNumberModel)
         {
             @Override
@@ -157,7 +158,7 @@ public class SvgAndMathlPagePreact extends BasePage
             {
                 super.onInitialize();
                 
-                add(new PreactReplacementEnablingBehavior());
+                add(new PreactXmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
             }
         };
         var operator = new Label("operator", operatorModel)
@@ -167,7 +168,7 @@ public class SvgAndMathlPagePreact extends BasePage
             {
                 super.onInitialize();
                 
-                add(new PreactReplacementEnablingBehavior());
+                add(new PreactXmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
             }
         };
         var secondNumber = new Label("secondNumber", secondNumberModel)
@@ -177,7 +178,7 @@ public class SvgAndMathlPagePreact extends BasePage
             {
                 super.onInitialize();
                 
-                add(new PreactReplacementEnablingBehavior());
+                add(new PreactXmlReplacementEnablingBehavior(MATHML_NAMESPACE_URI));
             }
         };
         add(firstNumber, operator, secondNumber, outcome);
@@ -188,7 +189,7 @@ public class SvgAndMathlPagePreact extends BasePage
             @Override
             protected void onUpdate(AjaxRequestTarget target)
             {
-                target.add(PreactReplacementEnablingBehavior.PREACT, firstNumber, outcome);
+                target.add(PreactXmlReplacementEnablingBehavior.PREACT_XML, firstNumber, outcome);
             }
         });
         operatorDropDown.setOutputMarkupId(true);
@@ -196,7 +197,7 @@ public class SvgAndMathlPagePreact extends BasePage
             @Override
             protected void onUpdate(AjaxRequestTarget target)
             {
-                target.add(PreactReplacementEnablingBehavior.PREACT, operator, outcome);
+                target.add(PreactXmlReplacementEnablingBehavior.PREACT_XML, operator, outcome);
             }
         });
         secondNumberDropDown.setOutputMarkupId(true);
@@ -204,7 +205,7 @@ public class SvgAndMathlPagePreact extends BasePage
             @Override
             protected void onUpdate(AjaxRequestTarget target)
             {
-                target.add(PreactReplacementEnablingBehavior.PREACT, secondNumber, outcome);
+                target.add(PreactXmlReplacementEnablingBehavior.PREACT_XML, secondNumber, outcome);
             }
         });
 

@@ -16,8 +16,9 @@
  */
 
 ;(function (wicket, preact) {
-	function createNode(element) {
+	function createNode(element, optionalNamespaceUri) {
 		var props = {};
+		if (optionalNamespaceUri) props.xmlns = optionalNamespaceUri;
 		for (var attributeIndex = 0; attributeIndex < element.attributes.length; attributeIndex++) {
 			var attribute = element.attributes[attributeIndex];
 			props[attribute.name] = attribute.value;
@@ -28,7 +29,7 @@
 			for (var childIndex = 0; childIndex < element.childNodes.length; childIndex++) {
 				var child = element.childNodes[childIndex];
 				if (child.nodeType === Node.ELEMENT_NODE) {
-					children[childIndex] = createNode(child);
+					children[childIndex] = createNode(child, optionalNamespaceUri);
 				} else if (child.nodeType === Node.TEXT_NODE) {
 					children[childIndex] = child.textContent;
 				}
@@ -42,9 +43,22 @@
 		return createNode(Document.parseHTMLUnsafe(htmlString).body.firstElementChild);
 	}
 
+	function createVirtualXmlDom(xmlString) {
+		var dom = new DOMParser().parseFromString(xmlString, "application/xml");
+		return createNode(dom.firstElementChild, dom.firstElementChild.namespaceURI);
+	}
+
 	wicket.DOM.registerReplacementMethod("preact", function (element, text) {
 		if (element.parentElement.childElementCount === 1) {
 			preact.render(createVirtualDom(text), element.parentElement);
+		} else {
+			wicket.Log.error("Preact replacement: element with ID: " + element.id + ", is not the only element in its parent.");
+		}
+	});
+
+	wicket.DOM.registerReplacementMethod("preact-xml", function (element, text) {
+		if (element.parentElement.childElementCount === 1) {
+			preact.render(createVirtualXmlDom(text), element.parentElement);
 		} else {
 			wicket.Log.error("Preact replacement: element with ID: " + element.id + ", is not the only element in its parent.");
 		}

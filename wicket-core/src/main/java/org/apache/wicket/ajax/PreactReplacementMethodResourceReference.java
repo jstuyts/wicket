@@ -44,7 +44,7 @@ public class PreactReplacementMethodResourceReference extends JavaScriptResource
 
 	private PreactReplacementMethodResourceReference()
 	{
-		super(PreactReplacementMethodResourceReference.class, "res/js/preact-replacement-method.js");
+		super(PreactReplacementMethodResourceReference.class, "res/js/preact-replacement-methods.js");
 	}
 
 	@Override
