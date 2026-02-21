@@ -30,6 +30,11 @@ import org.apache.wicket.util.lang.Args;
  * on the component so it is correctly added to the DOM. This is usually used for components attached SVG or MathML
  * elements.
  * <p>
+ * As this behavior implies that the component will be added to a
+ * {@link org.apache.wicket.page.PartialPageUpdate PartialPageUpdate}, this behavior will enable outputting of the
+ * markup ID on the component. Calling {@link Component#setOutputMarkupId(boolean) setOutputMarkupId(...)} yourself is
+ * not needed.
+ * <p>
  * Limitations:
  * <ul>
  *     <li>

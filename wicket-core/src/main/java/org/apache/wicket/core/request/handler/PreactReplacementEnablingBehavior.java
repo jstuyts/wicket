@@ -30,6 +30,11 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
  *     <li>Components with lots of markup, of which only little changes during Ajax requests.</li>
  *     <li>SVG markup, as jQuery does not properly replace SVG elements.</li>
  * </ul>
+ * As this behavior implies that the component will be added to a
+ * {@link org.apache.wicket.page.PartialPageUpdate PartialPageUpdate}, this behavior will enable outputting of the
+ * markup ID on the component. Calling {@link Component#setOutputMarkupId(boolean) setOutputMarkupId(...)} yourself is
+ * not needed.
+ * <p>
  * Requirements:
  * <ul>
  *     <li>
