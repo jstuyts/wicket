@@ -48,6 +48,26 @@
 		return createNode(dom.firstElementChild, dom.firstElementChild.namespaceURI);
 	}
 
+	function elementInfo(element) {
+		var result = {
+			localName: element.localName,
+			namespaceUri: element.namespaceURI,
+			prefix: element.prefix,
+			tagName: element.tagName,
+			numberOfChildElements: element.childElementCount,
+			id: element.id,
+			classes: element.classList,
+			childElements: []
+		};
+
+		var children = element.children;
+		for (var childIndex = 0; childIndex < children.length; childIndex += 1) {
+			result.childElements.push(elementInfo(children[childIndex]));
+		}
+
+		return result;
+	}
+
 	wicket.DOM.registerReplacementMethod("preact", function (element, text) {
 		if (element.parentElement.childElementCount === 1) {
 			preact.render(createVirtualDom(text), element.parentElement);
@@ -58,7 +78,9 @@
 
 	wicket.DOM.registerReplacementMethod("preact-xml", function (element, text) {
 		if (element.parentElement.childElementCount === 1) {
+			console.error("Before: " + JSON.stringify(elementInfo(element)));
 			preact.render(createVirtualXmlDom(text), element.parentElement);
+			console.error("After: " + JSON.stringify(elementInfo(document.getElementById(element.id))));
 		} else {
 			wicket.Log.error("Preact replacement: element with ID: " + element.id + ", is not the only element in its parent.");
 		}
