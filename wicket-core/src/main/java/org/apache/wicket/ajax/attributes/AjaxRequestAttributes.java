@@ -16,14 +16,16 @@
  */
 package org.apache.wicket.ajax.attributes;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.wicket.Component;
+import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxChannel;
 import org.apache.wicket.util.lang.Args;
-import java.time.Duration;
 
 /**
  * Attributes of an Ajax Request.
@@ -146,6 +148,10 @@ public final class AjaxRequestAttributes
 	 * children of the HTML element with the JavaScript listener
 	 */
 	private boolean serializeRecursively;
+
+	private Integer blockDuplicatesId;
+
+	private Component blockDuplicatesDataComponent;
 
 	/**
 	 * @see #childSelector
@@ -551,6 +557,92 @@ public final class AjaxRequestAttributes
 	 */
 	public AjaxRequestAttributes setSerializeRecursively(final boolean serializeRecursively) {
 		this.serializeRecursively = serializeRecursively;
+		return this;
+	}
+
+	/**
+	 * If set, duplicate Ajax requests are blocked.
+	 *
+	 * @return the ID of the property used to detect duplicate Ajax requests, or <code>null</code> if duplicates do not
+	 * have to be blocked
+	 * @see #blockDuplicates(int)
+	 * @see #blockDuplicates(int, Component)
+	 */
+	public Integer getBlockDuplicatesId()
+	{
+		return blockDuplicatesId;
+	}
+
+	/**
+	 * The component on which the previously sent data is stored.
+	 *
+	 * @return the component to use to store the previously sent data, or <code>null</code> if the data is to be stored
+	 * on the component the behavior is added to
+	 * @see #blockDuplicates(int, Component)
+	 */
+	public Component getBlockDuplicatesDataComponent()
+	{
+		return blockDuplicatesDataComponent;
+	}
+
+	/**
+	 * Blocks duplicate Ajax requests. A request is considered to be duplicate if the extra parameters, the form
+	 * (including the submitting component) or component data and the dynamic extra parameters are equal.
+	 * <p>
+	 * A behavior ID must be allocated and stored in
+	 * {@link org.apache.wicket.behavior.Behavior#bind(Component) bind(Component)} to be able to block duplicates.
+	 * </p>
+	 * <p>
+	 * If the component is updated in an Ajax response, or if duplicates from multiple behaviors of different
+	 * components (like with {@link org.apache.wicket.ajax.form.AjaxFormValidatingBehavior AjaxFormValidatingBehavior},
+	 * for example) must be blocked, use {@link #blockDuplicates(int, Component)} instead.
+	 * </p>
+	 *
+	 * @param id the behavior ID of the component the behavior is added to.
+	 * @return {@code this} object for chaining
+	 */
+	public AjaxRequestAttributes blockDuplicates(int id)
+	{
+		this.blockDuplicatesId = id;
+		return this;
+	}
+
+	/**
+	 * Blocks duplicate Ajax requests. A request is considered to be duplicate if the extra parameters, the form
+	 * (including the submitting component) or component data and the dynamic extra parameters are equal.
+	 * <p>
+	 * A behavior ID must be allocated and stored in
+	 * {@link org.apache.wicket.behavior.Behavior#bind(Component) bind(Component)} to be able to block duplicates.
+	 * </p>
+	 * <p>
+	 * The data component is where the previous request data will be stored. Use a data component if the component the
+	 * behavior is added to is updated in an Ajax response, or if duplicaties from multiple behaviors of different
+	 * components (like with {@link org.apache.wicket.ajax.form.AjaxFormValidatingBehavior AjaxFormValidatingBehavior},
+	 * for example) must be blocked. Otherwise too many requests will still be sent.
+	 * </p>
+	 * <p>
+	 * <strong>WARNING</strong>: use a unique data component per (main) behavior. It is not possible to use the same
+	 * data component for behaviors of multiple other components. Behavior IDs are used for the name of the property of
+	 * the data component used to store the previous request data. The behavior IDs are component-specific, and it is
+	 * very likely that behaviors added to different components will get the same behavior ID.
+	 * </p>
+	 *
+	 * @param id the behavior ID of the component the behavior is added to.
+	 * @param dataComponent the component on which to store the previously sent data. The component must output its
+	 *                      markup ID.
+	 * @return {@code this} object for chaining
+	 */
+	public AjaxRequestAttributes blockDuplicates(int id, Component dataComponent)
+	{
+		if (dataComponent.getOutputMarkupId() == false && !(dataComponent instanceof Page))
+		{
+			throw new IllegalArgumentException(
+					"cannot use component for data that does not have setOutputMarkupId property set to true. Component: " +
+                            dataComponent);
+		}
+
+		this.blockDuplicatesId = id;
+		this.blockDuplicatesDataComponent = dataComponent;
 		return this;
 	}
 }

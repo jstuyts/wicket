@@ -265,6 +265,16 @@ public abstract class AbstractDefaultAjaxBehavior extends AbstractAjaxBehavior
 				attributesJson.put(AjaxAttributeName.SERIALIZE_RECURSIVELY.jsonName(), true);
 			}
 
+			if (attributes.getBlockDuplicatesId() != null)
+			{
+				attributesJson.put(AjaxAttributeName.BLOCK_DUPLICATES_ID.jsonName(), attributes.getBlockDuplicatesId());
+			}
+
+			if (attributes.getBlockDuplicatesDataComponent() != null)
+			{
+				attributesJson.put(AjaxAttributeName.BLOCK_DUPLICATES_DATA_COMPONENT.jsonName(), attributes.getBlockDuplicatesDataComponent().getMarkupId());
+			}
+
 			String indicatorId = findIndicatorId();
 			if (Strings.isEmpty(indicatorId) == false)
 			{

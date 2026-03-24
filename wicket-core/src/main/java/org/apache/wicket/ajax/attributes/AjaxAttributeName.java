@@ -16,6 +16,7 @@
  */
 package org.apache.wicket.ajax.attributes;
 
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.util.lang.Args;
 
@@ -242,7 +243,18 @@ public enum AjaxAttributeName {
 	/**
 	 * @see AjaxRequestAttributes#setSerializeRecursively(boolean)
 	 */
-	SERIALIZE_RECURSIVELY("sr");
+	SERIALIZE_RECURSIVELY("sr"),
+
+	/**
+	 * @see AjaxRequestAttributes#blockDuplicates(int)
+	 * @see AjaxRequestAttributes#blockDuplicates(int, Component)
+	 */
+	BLOCK_DUPLICATES_ID("bdi"),
+
+	/**
+	 * @see AjaxRequestAttributes#blockDuplicates(int, Component)
+	 */
+	BLOCK_DUPLICATES_DATA_COMPONENT("bddc");
 
 	private final String jsonName;
 
